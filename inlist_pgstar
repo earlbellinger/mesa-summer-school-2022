@@ -23,7 +23,8 @@
   ! Add temperature/density profile
          
   Grid1_plot_name(1) = 'TRho_Profile'
-  Grid1_plot_row(1) = 1 
+  
+  file_flag = .true.Grid1_plot_row(1) = 1 
   Grid1_plot_rowspan(1) = 5
   Grid1_plot_col(1) = 1 
   Grid1_plot_colspan(1) = 4 
