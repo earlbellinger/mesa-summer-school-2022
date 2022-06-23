@@ -396,18 +396,23 @@
             real(dp), intent(inout)  :: rpar(:)
             integer, intent(out)     :: retcode
             integer :: k
+            
+            type (star_info), pointer :: s
+            ierr = 0
+            call star_ptr(id, s, ierr)
+            if (ierr /= 0) return
   
             ! Print out radial order and frequency
             
-            print *, 'Found mode: l, n_p, n_g, E, nu = ', &
-                md%l, md%n_p, md%n_g, md%E_norm(), REAL(md%freq('HZ'))
-
             if (md%n_p >= 1 .and. md%n_p <= 50) then
+            
+                print *, 'Found mode: l, n_p, n_g, E, nu = ', &
+                    md%l, md%n_p, md%n_g, md%E_norm(), REAL(md%freq('HZ'))
                 
                 if (md%l == 0) then ! radial modes 
-                    frequencies(md%l+1, md%n_p) = md%freq('UHZ')
+                    frequencies(md%l+1, md%n_p) = (md%freq('UHZ') - s% nu_max) / s% delta_nu
                     
-                    if (md%n_p == 11) then ! store the eigenfunction 
+                    if (md%n_p == 16) then ! store the eigenfunction 
                        if (allocated(xi_r_radial)) deallocate(xi_r_radial)
                        allocate(xi_r_radial(md%n_k))
                        
@@ -416,25 +421,25 @@
                        end do
                        xi_r_radial = xi_r_radial(md%n_k:1:-1)
                     end if
-                    
+                
+                else if (inertias(md%n_p) > 0 .and. md%E_norm() > inertias(md%n_p)) then
+                    write (*,*) 'Skipping mode: inertia higher than already seen'
                 else ! non-radial modes 
+                
+                    ! choose the mode with the lowest inertia 
+                    inertias(md%n_p) = md%E_norm() 
+                    frequencies(md%l+1, md%n_p) = (md%freq('UHZ') - s% nu_max) / s% delta_nu
                     
-                    if (inertias(md%n_p) .eq. 0 .or. md%E_norm() < inertias(md%n_p)) then
-                        ! choose the mode with the lowest inertia 
-                        inertias(md%n_p) = md%E_norm() 
-                        frequencies(md%l+1, md%n_p) = md%freq('UHZ') 
-                        
-                        if (md%n_p == 10) then ! store the eigenfunction 
-                           if (allocated(xi_r_dipole)) deallocate(xi_r_dipole)
-                           allocate(xi_r_dipole(md%n_k))
-                           
-                           do k = 1, md%n_k
-                              xi_r_dipole(k) = md%xi_r(k)
-                           end do
-                           xi_r_dipole = xi_r_dipole(md%n_k:1:-1)
-                        end if
-                        
+                    if (md%n_p == 15) then ! store the eigenfunction 
+                       if (allocated(xi_r_dipole)) deallocate(xi_r_dipole)
+                       allocate(xi_r_dipole(md%n_k))
+                       
+                       do k = 1, md%n_k
+                          xi_r_dipole(k) = md%xi_r(k)
+                       end do
+                       xi_r_dipole = xi_r_dipole(md%n_k:1:-1)
                     end if
+                
                 end if
             end if
 
