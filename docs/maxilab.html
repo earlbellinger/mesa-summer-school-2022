@@ -1,0 +1,527 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MaxiLab: Exploring the Instability Strip &mdash; GYRE in MESA Lab  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Supplementary Materials" href="supplementary.html" />
+    <link rel="prev" title="MiniLab 3: Plotting Wavefunctions" href="minilab-3.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GYRE in MESA Lab
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="minilab-1.html">MiniLab 1: First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minilab-2.html">MiniLab 2: Plotting Periods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minilab-3.html">MiniLab 3: Plotting Wavefunctions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MaxiLab: Exploring the Instability Strip</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#enabling-non-adiabatic-effects">Enabling Non-Adiabatic Effects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#printing-growth-decay-rates">Printing Growth/Decay Rates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-growth-rates-to-history-output">Adding Growth Rates to History Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plotting-the-growth-rates">Plotting the Growth Rates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exploring-the-driving">Exploring the Driving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adding-differential-work-to-profile-output">Adding Differential Work to Profile Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plotting-the-differential-work">Plotting the Differential Work</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#mapping-the-instability-strip">Mapping the Instability Strip</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#picking-a-mass">Picking a Mass</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#determining-boundaries">Determining Boundaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exploring-metallicity-effects">Exploring Metallicity Effects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="supplementary.html">Supplementary Materials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GYRE in MESA Lab</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>MaxiLab: Exploring the Instability Strip</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/maxilab.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="maxilab-exploring-the-instability-strip">
+<span id="maxilab"></span><h1>MaxiLab: Exploring the Instability Strip<a class="headerlink" href="#maxilab-exploring-the-instability-strip" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>In the MiniLabs, we’ve been running GYRE within the adiabatic
+approximation, where thermal exchanges between neighboring oscillating
+elements are neglected. For main-sequence stars, these exchanges
+typically have only a small effect on the periods/frequencies of
+pulsation modes; and so, if we’re interested mainly in interpreting
+these periods, the approximation is usually a good one.</p>
+<p>In the MaxiLab, we’re going to move beyond the adiabatic
+approximation. This will allow us to explore which modes are unstable
+in our model star, and by what mechanism. Then, by extending these
+non-adiabatic calculations to stars with other masses, we will map out
+the <span class="math notranslate nohighlight">\(\beta\)</span> Cephei instability strip.</p>
+<p>As the very first step, make a copy of your working directory from
+<a class="reference internal" href="minilab-3.html#minilab-3"><span class="std std-ref">MiniLab 3</span></a> (with all the changes you have made):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> cp -a townsend-2019-mini-3 townsend-2019-maxi
+<span class="gp">$</span> <span class="nb">cd</span> townsend-2019-maxi
+</pre></div>
+</div>
+<p>Alternatively, if you were unable to get things working with
+<a class="reference internal" href="minilab-3.html#minilab-3"><span class="std std-ref">MiniLab 3</span></a>, then you can grab a working directory
+for the MaxiLab from <a class="reference external" href="http://www.astro.wisc.edu/~townsend/resource/teaching/mesa-summer-school-2019/townsend-2019-maxi.tar.gz">here</a>.</p>
+</div>
+<div class="section" id="enabling-non-adiabatic-effects">
+<h2>Enabling Non-Adiabatic Effects<a class="headerlink" href="#enabling-non-adiabatic-effects" title="Permalink to this headline">¶</a></h2>
+<p>Enabling non-adiabatic effects in GYRE is straightforward: simply add
+the following highlighted code to <code class="docutils literal notranslate"><span class="pre">gyre.in</span></code>:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="p">&amp;</span><span class="n">osc</span>
+     <span class="n">inner_bound</span> <span class="o">=</span> <span class="s1">&#39;ZERO_R&#39;</span>
+<span class="hll">     <span class="n">nonadiabatic</span> <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>
+</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>If you repeat the ZAMS-to-TAMS evolution with this modification,
+things will appear largely unchanged from <a class="reference internal" href="minilab-3.html#minilab-3"><span class="std std-ref">MiniLab 3</span></a>; that’s because, as mentioned above, the mode periods are
+scarcely affected by thermal exchanges. However, a big difference from
+previous runs is that the mode frequencies calculated by GYRE are now
+complex quantities.</p>
+<div class="section" id="printing-growth-decay-rates">
+<h3>Printing Growth/Decay Rates<a class="headerlink" href="#printing-growth-decay-rates" title="Permalink to this headline">¶</a></h3>
+<p>GYRE assumes that the perturbation <span class="math notranslate nohighlight">\(f'(t)\)</span> to some quantity
+<span class="math notranslate nohighlight">\(f\)</span>, caused by an pulsation mode with angular frequency
+<span class="math notranslate nohighlight">\(\sigma\)</span>, takes the form</p>
+<div class="math notranslate nohighlight">
+\[f'(t) \propto \exp( -{\rm i} \sigma t ).\]</div>
+<p>If we decompose <span class="math notranslate nohighlight">\(\sigma\)</span> into real (<span class="math notranslate nohighlight">\(\sigma_{\rm R}\)</span>) and
+imaginary (<span class="math notranslate nohighlight">\(\sigma_{\rm I}\)</span>) parts, this becomes</p>
+<div class="math notranslate nohighlight">
+\[f'(t) \propto \exp (- {\rm i} \sigma_{\rm R} t) \, \exp ( \sigma_{\rm I} t).\]</div>
+<p>Hence, over time <span class="math notranslate nohighlight">\(f'\)</span> oscillates with period <span class="math notranslate nohighlight">\(P =
+2\pi/\sigma_{\rm R}\)</span>, but also experiences exponential growth with a
+rate given by <span class="math notranslate nohighlight">\(\sigma_{\rm I}\)</span>. If <span class="math notranslate nohighlight">\(\sigma_{\rm I}\)</span> is
+negative, then decay rather than growth occurs. Hence, the sign of
+<span class="math notranslate nohighlight">\(\sigma_{\rm I}\)</span> indicates whether the mode is unstable
+(growing) or stable (decaying).</p>
+<p>To see whether the modes in the ZAMS-to-TAMS run are stable or
+unstable, modify the <code class="docutils literal notranslate"><span class="pre">print</span></code> statement in the <code class="docutils literal notranslate"><span class="pre">process_mode</span></code>
+callback of <code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code> to display growth rates:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! Print out radial order, frequency and growth rate</span>
+
+<span class="hll"><span class="k">print</span> <span class="o">*</span><span class="p">,</span> <span class="s1">&#39;Found mode: radial order, frequency, growth rate = &#39;</span><span class="p">,</span> <span class="p">&amp;</span>
+</span><span class="hll">     <span class="n">md</span><span class="p">%</span><span class="n">n_pg</span><span class="p">,</span> <span class="kt">REAL</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">freq</span><span class="p">(</span><span class="s1">&#39;HZ&#39;</span><span class="p">)),</span> <span class="mf">2.</span><span class="o">*</span><span class="n">PI</span><span class="o">*</span><span class="nb">AIMAG</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">freq</span><span class="p">(</span><span class="s1">&#39;HZ&#39;</span><span class="p">))</span>
+</span></pre></div>
+</div>
+<p>(The extra factor of <code class="docutils literal notranslate"><span class="pre">2.*PI</span></code> appears because the
+<code class="docutils literal notranslate"><span class="pre">md%freq('HZ')</span></code> function returns the linear frequency, rather
+than the angular frequency).</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>With the above modification, repeat the ZAMS-to-TAMS run. Where in
+the run do the F and 1-O modes transition from stable to unstable?</p>
+</div>
+</div>
+<div class="section" id="adding-growth-rates-to-history-output">
+<h3>Adding Growth Rates to History Output<a class="headerlink" href="#adding-growth-rates-to-history-output" title="Permalink to this headline">¶</a></h3>
+<p>As the next step, we’ll add two extra columns to history output, to
+store the growth rates for the F and 1-O modes. Rather than storing
+the growth rates in units of per second, we’ll use per year — the
+latter is conceptially easier to work with (e.g., a growth rate of
+<span class="math notranslate nohighlight">\(3\,{\rm yr}^{-1}\)</span> means the pulsation grows by 3 e-foldings
+per year).</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>Using a similar approach as we did for the mode periods in
+<a class="reference internal" href="minilab-2.html#minilab-2"><span class="std std-ref">MiniLab 2</span></a>, modify <code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code> to add
+the growth rates.  In brief,</p>
+<ul class="simple">
+<li><p>create two new module variables to store the growth rates (call
+them <code class="docutils literal notranslate"><span class="pre">growth_f</span></code> and <code class="docutils literal notranslate"><span class="pre">growth_1o</span></code>).</p></li>
+<li><p>change the <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> callback to store the growth rate in
+<span class="math notranslate nohighlight">\({\rm yr}^{-1}\)</span> into these variables. To get the rate in
+these units, use <code class="docutils literal notranslate"><span class="pre">2.*PI*AIMAG(md%freq('HZ'))*secyer</span></code> (the
+<code class="docutils literal notranslate"><span class="pre">secyer</span></code> constant, from the <code class="docutils literal notranslate"><span class="pre">const</span></code> module, gives the number of
+seconds in a year).</p></li>
+<li><p>change the <code class="docutils literal notranslate"><span class="pre">how_many_extra_history_columns</span></code> and
+<code class="docutils literal notranslate"><span class="pre">data_for_extra_history_columns</span></code> hooks to copy data from these
+variables into the new columns.</p></li>
+</ul>
+</div>
+<p>Once you’ve made these changes, do a ZAMS-to-TAMS run and confirm that
+the columns appear correctly in the history file.</p>
+</div>
+<div class="section" id="plotting-the-growth-rates">
+<h3>Plotting the Growth Rates<a class="headerlink" href="#plotting-the-growth-rates" title="Permalink to this headline">¶</a></h3>
+<p>Let’s now update the PGstar plots to show the growth rates.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>Edit <code class="docutils literal notranslate"><span class="pre">inlist_to_tams_pgstar</span></code>, changing the history panel so that
+it shows the growth rates on the right-hand axes instead of the
+dynamical timescale. Be sure to remove (or comment out) the
+<code class="docutils literal notranslate"><span class="pre">History_Panels1_other_ymin(1)</span></code> and
+<code class="docutils literal notranslate"><span class="pre">History_Panels1_other_ymin(2)</span></code>, to ensure the plots show
+positive <em>and</em> negative growth rates.</p>
+</div>
+</div>
+</div>
+<div class="section" id="exploring-the-driving">
+<h2>Exploring the Driving<a class="headerlink" href="#exploring-the-driving" title="Permalink to this headline">¶</a></h2>
+<p>If all went well, the preceding steps will have established that the F
+and 1-O modes become unstable when the star reaches an age
+<span class="math notranslate nohighlight">\(\approx 9\,{\rm Myr}\)</span>, about three-quarters of the way through
+its main-sequence evolution. Because our model is representative of a
+<span class="math notranslate nohighlight">\(\beta\)</span> Cephei star, we expect the <span class="math notranslate nohighlight">\(\kappa\)</span> mechanism
+operating on the iron opacity bump is responsible for driving the
+modes toward instability. We’re going to confirm that this is the
+case.</p>
+<div class="section" id="adding-differential-work-to-profile-output">
+<h3>Adding Differential Work to Profile Output<a class="headerlink" href="#adding-differential-work-to-profile-output" title="Permalink to this headline">¶</a></h3>
+<p>To analyze where in the star a given mode is being driven and/or
+damped, we study the differential work <span class="math notranslate nohighlight">\({\rm d}W/{\rm d}x\)</span>. The change
+<span class="math notranslate nohighlight">\(W\)</span> in the mode energy over one pulsation cycle is given by the integral</p>
+<div class="math notranslate nohighlight">
+\[W = \int_{0}^{1} \frac{{\rm d}W}{{\rm d}x} \, {\rm d} x,\]</div>
+<p>where <span class="math notranslate nohighlight">\(x \equiv r/R\)</span> is the fractional radius.</p>
+<p>It can be shown that <span class="math notranslate nohighlight">\(W \propto \sigma_{\rm I}\)</span>; it therefore
+follows that if <span class="math notranslate nohighlight">\(W &gt; 0\)</span> then the mode is unstable. Clearly,
+regions of the star where <span class="math notranslate nohighlight">\({\rm d}W/{\rm d}x &gt; 0\)</span> contribute
+toward driving the mode, while regions with <span class="math notranslate nohighlight">\({\rm d}W/{\rm d}x &lt;
+0\)</span> contribute toward damping.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>Using a similar approach as we did for the displacement
+wavefunctions in <a class="reference internal" href="minilab-3.html#minilab-3"><span class="std std-ref">MiniLab 3</span></a>, modify
+<code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code> to add the differential work for the F and
+1-O modes to the profile output.  In brief,</p>
+<ul class="simple">
+<li><p>create two new module variables to store the differential work (call
+them <code class="docutils literal notranslate"><span class="pre">dW_dx_f</span></code> and <code class="docutils literal notranslate"><span class="pre">dW_dx_1o</span></code>).</p></li>
+<li><p>change the <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> callback to store data into these
+variables. (GYRE provides the differential work at the <code class="docutils literal notranslate"><span class="pre">k</span></code>’th
+grid point via the <code class="docutils literal notranslate"><span class="pre">md%dW_dx(k)</span></code> function).</p></li>
+<li><p>change the <code class="docutils literal notranslate"><span class="pre">how_many_extra_profile_columns</span></code> and
+<code class="docutils literal notranslate"><span class="pre">data_for_extra_profile_columns</span></code> hooks to copy data from these
+variables into the new columns.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="plotting-the-differential-work">
+<h3>Plotting the Differential Work<a class="headerlink" href="#plotting-the-differential-work" title="Permalink to this headline">¶</a></h3>
+<p>To view the fruits of our labor, let’s now add a final profile panel
+to show the differential work data. Open up <code class="docutils literal notranslate"><span class="pre">inlist_to_tams_pgstar</span></code>,
+and add the following highlighted code at the bottom:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="c">! Profile panel showing differential work</span>
+</span><span class="hll">
+</span><span class="hll"><span class="n">Grid1_plot_name</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;Profile_Panels2&#39;</span>
+</span><span class="hll">
+</span><span class="hll"><span class="n">Profile_Panels2_num_panels</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="hll"><span class="n">Profile_Panels2_title</span> <span class="o">=</span> <span class="s1">&#39;Differential Work&#39;</span>
+</span><span class="hll">
+</span><span class="hll"><span class="n">Profile_Panels2_xaxis_name</span> <span class="o">=</span> <span class="s1">&#39;logT&#39;</span>
+</span><span class="hll">
+</span><span class="hll"><span class="n">Profile_Panels2_yaxis_name</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;dW_dx_f&#39;</span>
+</span><span class="hll">
+</span><span class="hll"><span class="n">Profile_Panels2_yaxis_name</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;dW_dx_1o&#39;</span>
+</span></pre></div>
+</div>
+<p>(Unlike the previous profile panel, we now use <code class="docutils literal notranslate"><span class="pre">logT</span></code> on the x-axis;
+this allow us to read off the temperature in the driving/damping
+regions. Also, we create separate plots for the F and 1-O modes).</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>Further edit <code class="docutils literal notranslate"><span class="pre">inlist_to_tams_pgstar</span></code> to add the logarithm of the
+opacity to the right-hand axes of the differential work plots.</p>
+</div>
+<p>With these changes, repeat the ZAMS-to-TAMS run, and think about the
+following questions:</p>
+<ul class="simple">
+<li><p>Where in the star is the driving strongest?</p></li>
+<li><p>How does this driving region relate to the peak in the opacity data
+around <span class="math notranslate nohighlight">\(\log T \approx 5.3\)</span> (the ‘iron bump’)?</p></li>
+<li><p>Where in the star does damping occur?</p></li>
+<li><p>What happens as the star evolves?</p></li>
+</ul>
+<p>To get a better sense of the relative strengths of the driving and
+damping, it’s better to plot <span class="math notranslate nohighlight">\({\rm d}W/{\rm d}\ln T\)</span> instead of
+<span class="math notranslate nohighlight">\({\rm d}W/{\rm d}x\)</span>; this is because, when we use <span class="math notranslate nohighlight">\(\log T\)</span>
+on the x-axis, the area under the former is directly proportional to
+the amount of driving or damping. If we know the local pressure scale height</p>
+<div class="math notranslate nohighlight">
+\[H_{P} \equiv \left( \frac{{\rm d}\ln P}{{\rm d}r} \right)^{-1}\]</div>
+<p>and dimensionless temperature gradient</p>
+<div class="math notranslate nohighlight">
+\[\nabla \equiv \left( \frac{{\rm d}\ln T}{{\rm d}\ln P} \right),\]</div>
+<p>then we can easily calculate <span class="math notranslate nohighlight">\({\rm d}W/d\ln T\)</span> from <span class="math notranslate nohighlight">\({\rm
+d}W/{\rm d}x\)</span> via</p>
+<div class="math notranslate nohighlight">
+\[\frac{{\rm d}W}{{\rm d}\ln T} = \frac{{\rm d}W}{{\rm d}x} \frac{H_P}{R \nabla}\]</div>
+<p>(here, <span class="math notranslate nohighlight">\(R\)</span> is the stellar radius).</p>
+<blockquote>
+<div><div class="admonition-optional-exercise admonition">
+<p class="admonition-title"><em>Optional</em> Exercise</p>
+<p>Modify <code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code> to store <span class="math notranslate nohighlight">\({\rm d}W/{\rm d}\ln
+T\)</span> in new module variables <code class="docutils literal notranslate"><span class="pre">dW_dlnT_f</span></code> and <code class="docutils literal notranslate"><span class="pre">dW_dlnT_1o</span></code>
+variables. Then, change <code class="docutils literal notranslate"><span class="pre">inlist_to_tams_pgstar</span></code> to plot these
+data instead of <span class="math notranslate nohighlight">\({\rm d}W/{\rm d}x\)</span>.</p>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="mapping-the-instability-strip">
+<h2>Mapping the Instability Strip<a class="headerlink" href="#mapping-the-instability-strip" title="Permalink to this headline">¶</a></h2>
+<p>As the final part of the MaxiLab, we’re going to use GYRE and MESA to
+map out the extent of the <span class="math notranslate nohighlight">\(\beta\)</span> Cephei instability strip for
+radial modes. This will involve repeating the evolution for a range of
+different stellar masses, and noting where the F and 1-O radial modes
+transition from stable to unstable (and vice versa). To speed things
+up, we’ll crowd-source the calculations: each student will focus on a
+single stellar mass, and record their results in a shared online
+spreadsheet.</p>
+<p>If you haven’t had any luck in getting the first part of the MaxiLab
+working, then you can grab the solution from <a class="reference external" href="http://www.astro.wisc.edu/~townsend/resource/teaching/mesa-summer-school-2019/townsend-2019-maxi-solution.tar.gz">here</a>;
+use this as your working directory for the instability strip
+calculations.</p>
+<div class="section" id="picking-a-mass">
+<h3>Picking a Mass<a class="headerlink" href="#picking-a-mass" title="Permalink to this headline">¶</a></h3>
+<p>The first step is for each student to pick a (different) mass.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>Visit the Google spreadsheet <a class="reference external" href="https://docs.google.com/spreadsheets/d/1c3WuXlwzN944kdXWkwg7bO526MdZxiZeHAC4iK4T0NA/edit?usp=sharing">here</a>,
+and claim a row (identified by a unique <em>Task Index</em> number) by
+entering your name to the <em>Name</em> column. Make a note of the
+mass listed in the <em>Stellar Mass</em> column.</p>
+</div>
+</div>
+<div class="section" id="determining-boundaries">
+<h3>Determining Boundaries<a class="headerlink" href="#determining-boundaries" title="Permalink to this headline">¶</a></h3>
+<p>The next step is to perform the calculation and record the instability
+strip boundaries.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>Modify <code class="docutils literal notranslate"><span class="pre">inlist_to_zams_project</span></code> and <code class="docutils literal notranslate"><span class="pre">inlist_to_tams_project</span></code> in
+your working directory, to set the initial stellar mass to your
+assigned value. Then, repeat the pre-main sequence to ZAMS run
+(don’t forget to do this!), followed by the ZAMS-to-TAMS
+run. During the latter, note down the log effective temperature
+<span class="math notranslate nohighlight">\(\log T_{\rm eff}/{\rm K}\)</span> and log luminosity <span class="math notranslate nohighlight">\(\log
+L/{\rm L_{\odot}}\)</span> where either the F or 1-O mode first becomes unstable
+(you can do this by inspecting the terminal output, or by analyzing
+the <code class="docutils literal notranslate"><span class="pre">history.data</span></code> file after the run). Note the corresponding
+values when both modes again become stable. Enter these data in the
+appropriate <em>Solar Metallicity</em> columns of the spreadsheet. <strong>Be
+sure to enter logarithmic values, and use 3 decimal places</strong>.</p>
+</div>
+<p>For some choices of stellar mass, there can be multiple boundaries; if
+you encounter this situation for your assigned stellar mass, then
+enter the first boundary (where either mode first becomes unstable)
+and last boundary (when both modes become stable) into the
+spreadsheet.</p>
+<div class="admonition-optional-exercise admonition">
+<p class="admonition-title"><em>Optional</em> Exercise</p>
+<p>If you’re feeling bold, see if you can increase the precision with
+which the boundaries are determined. One approach is to modify the
+<code class="docutils literal notranslate"><span class="pre">extras_check_model</span></code> hook, to retry the step with a reduced
+timestep when a transition from stable to unstable (or vice versa)
+is detected. See <a class="reference external" href="http://www.astro.wisc.edu/~townsend/resource/teaching/mesa-summer-school-2019/run_star_extras_adaptive.f90">this</a>
+<code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code> file for an example implementation of this
+adaptive timestepping approach.</p>
+</div>
+<p>When all the data are collected, we’ll combine them to create a map of
+the instability strip boundaries in the Hertzsprung-Russell diagram.</p>
+</div>
+<div class="section" id="exploring-metallicity-effects">
+<h3>Exploring Metallicity Effects<a class="headerlink" href="#exploring-metallicity-effects" title="Permalink to this headline">¶</a></h3>
+<p>Since the instability of <span class="math notranslate nohighlight">\(\beta\)</span> Cephei stars is driven by iron
+and nickel opacity, we can expect it to be sensitive to metallicity
+<span class="math notranslate nohighlight">\(Z\)</span>. We’ll finish up the maxilab by exploring how our
+instability strip changes for different <span class="math notranslate nohighlight">\(Z\)</span>.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>Repeat your calculation from the previous step, for metallicities
+of 75% solar (<span class="math notranslate nohighlight">\(Z = 0.01065\)</span>) and 50% solar (<span class="math notranslate nohighlight">\(Z =
+0.0071\)</span>). Enter the results in the appropriate columns of the
+spreadsheet.</p>
+</div>
+<p>During these calculations, be sure to look for changes in the
+iron-bump opacity peak resulting from the reduced metallicity.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="supplementary.html" class="btn btn-neutral float-right" title="Supplementary Materials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="minilab-3.html" class="btn btn-neutral float-left" title="MiniLab 3: Plotting Wavefunctions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Rich Townsend, Alina Istrate &amp; Anne Thoul
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,451 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MiniLab 2: Plotting Periods &mdash; GYRE in MESA Lab  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="MiniLab 3: Plotting Wavefunctions" href="minilab-3.html" />
+    <link rel="prev" title="MiniLab 1: First Steps" href="minilab-1.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GYRE in MESA Lab
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="minilab-1.html">MiniLab 1: First Steps</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MiniLab 2: Plotting Periods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-periods-to-history-output">Adding Periods to History Output</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adding-module-variables">Adding Module Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-module-variables">Setting Module Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-history-columns">Adding History Columns</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#running-the-code">Running the Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting-the-periods">Plotting the Periods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quantifying-the-period-scaling">Quantifying the Period Scaling</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="minilab-3.html">MiniLab 3: Plotting Wavefunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maxilab.html">MaxiLab: Exploring the Instability Strip</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supplementary.html">Supplementary Materials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GYRE in MESA Lab</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>MiniLab 2: Plotting Periods</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/minilab-2.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="minilab-2-plotting-periods">
+<span id="minilab-2"></span><h1>MiniLab 2: Plotting Periods<a class="headerlink" href="#minilab-2-plotting-periods" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>In Minilab 2, we’ll take mode periods calculated by GYRE and plot them
+using PGstar. This will involve first adding the periods to MESA’s
+history output; and then modifying <code class="docutils literal notranslate"><span class="pre">inlist_to_tams_pgstar</span></code> to set up
+the plots. As the very first step, make a copy of your working
+directory from <a class="reference internal" href="minilab-1.html#minilab-1"><span class="std std-ref">MiniLab 1</span></a> (with all the changes you have made):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> cp -a townsend-2019-mini-1 townsend-2019-mini-2
+<span class="gp">$</span> <span class="nb">cd</span> townsend-2019-mini-2
+</pre></div>
+</div>
+<p>Alternatively, if you were unable to get things working with
+<a class="reference internal" href="minilab-1.html#minilab-1"><span class="std std-ref">MiniLab 1</span></a>, then you can grab a working directory
+for MiniLab 2 from <a class="reference external" href="http://www.astro.wisc.edu/~townsend/resource/teaching/mesa-summer-school-2019/townsend-2019-mini-2.tar.gz">here</a>.</p>
+</div>
+<div class="section" id="adding-periods-to-history-output">
+<h2>Adding Periods to History Output<a class="headerlink" href="#adding-periods-to-history-output" title="Permalink to this headline">¶</a></h2>
+<p>The standard approach to adding extra columns to history output is to
+modify the <code class="docutils literal notranslate"><span class="pre">how_many_extra_history_columns</span></code> and
+<code class="docutils literal notranslate"><span class="pre">data_for_extra_history_columns</span></code> hooks. The former defines how many
+extra columns we want to add; while the latter specifies the data to
+put into the columns, together with their associated names. Before we
+make these modifications, however, we have solve a logistical problem:
+how do we access the GYRE results outside of the <code class="docutils literal notranslate"><span class="pre">process_mode</span></code>
+callback routine?</p>
+<p>The answer is to store these results in ‘module variables’ —
+effectively, global variables that can be accessed from anywhere
+within <code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code>.</p>
+<div class="section" id="adding-module-variables">
+<h3>Adding Module Variables<a class="headerlink" href="#adding-module-variables" title="Permalink to this headline">¶</a></h3>
+<p>Let’s add a couple of module variables to store the periods of the
+fundamental (F) and first-overtone (1-O) modes. Add the following
+highlighted code at the appropriate place near the top of
+<code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code>:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! &gt;&gt;&gt; Insert module variables below</span>
+
+<span class="hll"><span class="c">! Periods of F and 1-O modes</span>
+</span><span class="hll">
+</span><span class="hll"><span class="kt">real</span><span class="p">(</span><span class="n">dp</span><span class="p">),</span> <span class="k">save</span> <span class="kd">::</span> <span class="n">period_f</span>
+</span><span class="hll"><span class="kt">real</span><span class="p">(</span><span class="n">dp</span><span class="p">),</span> <span class="k">save</span> <span class="kd">::</span> <span class="n">period_1o</span>
+</span></pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">save</span></code> attributes ensure that the values of the <code class="docutils literal notranslate"><span class="pre">period_f</span></code> and
+<code class="docutils literal notranslate"><span class="pre">period_1o</span></code> variables are preserved throughout program execution.</p>
+</div>
+<div class="section" id="setting-module-variables">
+<span id="minilab-2-mod-vars"></span><h3>Setting Module Variables<a class="headerlink" href="#setting-module-variables" title="Permalink to this headline">¶</a></h3>
+<p>Let’s now modify the <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> callback routine to set these
+two module variables. As a reminder, <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> is called each
+time GYRE finds a mode. Therefore, we have to add checks to see
+<em>which</em> mode has been found — and if it is the fundamental or first
+overtone, update one or the other module variable accordingly.</p>
+<p>Within <code class="docutils literal notranslate"><span class="pre">process_mode</span></code>, all data for the mode being processed are
+stored in the <code class="docutils literal notranslate"><span class="pre">md</span></code> object. The existing code that prints radial
+orders and frequencies to the screen already shows us how to access
+these data:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! Print out radial order and frequency</span>
+
+<span class="k">print</span> <span class="o">*</span><span class="p">,</span> <span class="s1">&#39;Found mode: radial order, frequency = &#39;</span><span class="p">,</span> <span class="p">&amp;</span>
+     <span class="n">md</span><span class="p">%</span><span class="n">n_pg</span><span class="p">,</span> <span class="kt">REAL</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">freq</span><span class="p">(</span><span class="s1">&#39;HZ&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">md%n_pg</span></code> is a simple integer variable containing the radial
+order (which equals 1 for the F mode; 2 for the 1-O mode; and so on);
+while <code class="docutils literal notranslate"><span class="pre">md%freq(...)</span></code> is a function that returns the mode frequency
+in the desired units (in this case, Hertz). The <code class="docutils literal notranslate"><span class="pre">REAL(...)</span></code> wrapper
+is required because <code class="docutils literal notranslate"><span class="pre">md%freq(...)</span></code> returns a complex value, with the
+real part containing the frequency and the imaginary part containing
+the growth rate (more of that later in the <a class="reference internal" href="maxilab.html#maxilab"><span class="std std-ref">MaxiLab</span></a>,
+when we consider non-adiabatic pulsations).</p>
+<p>With these points in mind, we can set <code class="docutils literal notranslate"><span class="pre">period_f</span></code> to the
+F-mode period <em>in hours</em> by adding the following highlighted
+code to the <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> subroutine:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span> <span class="c">! Print out radial order and frequency</span>
+
+ <span class="k">print</span> <span class="o">*</span><span class="p">,</span> <span class="s1">&#39;Found mode: radial order, frequency = &#39;</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="n">md</span><span class="p">%</span><span class="n">n_pg</span><span class="p">,</span> <span class="kt">REAL</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">freq</span><span class="p">(</span><span class="s1">&#39;HZ&#39;</span><span class="p">))</span>
+
+<span class="hll"> <span class="c">! If this is the F mode, store the period</span>
+</span><span class="hll">
+</span><span class="hll"> <span class="k">if</span> <span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_pg</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">then</span>
+</span><span class="hll"><span class="k">    </span><span class="n">period_f</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="p">(</span><span class="mi">360</span><span class="mf">0.</span><span class="o">*</span><span class="kt">REAL</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">freq</span><span class="p">(</span><span class="s1">&#39;HZ&#39;</span><span class="p">)))</span>
+</span><span class="hll"> <span class="k">end if</span>
+</span></pre></div>
+</div>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>Add further code to <code class="docutils literal notranslate"><span class="pre">process_mode</span></code>, to store the 1-O mode period
+in hours into <code class="docutils literal notranslate"><span class="pre">period_1o</span></code>.</p>
+</div>
+</div>
+<div class="section" id="adding-history-columns">
+<span id="minilab-2-add-hist-cols"></span><h3>Adding History Columns<a class="headerlink" href="#adding-history-columns" title="Permalink to this headline">¶</a></h3>
+<p>We’re now in a position to add two extra columns to history output, in
+which we’ll store the periods we’ve calculated. First, edit
+<code class="docutils literal notranslate"><span class="pre">how_many_extra_history_columns</span></code> to set the number of columns (here,
+the modified line is highlighted):</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! &gt;&gt;&gt; Change number of history columns below</span>
+
+<span class="hll"><span class="n">how_many_extra_history_columns</span> <span class="o">=</span> <span class="mi">2</span>
+</span></pre></div>
+</div>
+<p>Next, add code to <code class="docutils literal notranslate"><span class="pre">data_for_extra_history_columns</span></code> to set up
+the names and values of the two extra columns:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! &gt;&gt;&gt; Insert code to set history column names/values below</span>
+
+<span class="hll"><span class="n">names</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;period_f&#39;</span>
+</span><span class="hll"><span class="n">names</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;period_1o&#39;</span>
+</span><span class="hll">
+</span><span class="hll"><span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">%</span><span class="n">x_logical_ctrl</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="k">then</span>
+</span><span class="hll">
+</span><span class="hll"><span class="k">   </span><span class="n">vals</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">period_f</span>
+</span><span class="hll">   <span class="n">vals</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">period_1o</span>
+</span><span class="hll">
+</span><span class="hll"><span class="k">else</span>
+</span><span class="hll">
+</span><span class="hll"><span class="k">   </span><span class="n">vals</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.</span>
+</span><span class="hll">   <span class="n">vals</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.</span>
+</span><span class="hll">
+</span><span class="hll"><span class="n">endif</span>
+</span></pre></div>
+</div>
+<p>Note that we check <code class="docutils literal notranslate"><span class="pre">s%x_logical_ctrl(1)</span></code> before setting the <code class="docutils literal notranslate"><span class="pre">vals</span></code>
+array; that way, we avoid copying undefined values from <code class="docutils literal notranslate"><span class="pre">period_f</span></code>
+and <code class="docutils literal notranslate"><span class="pre">period_1o</span></code> if running GYRE has been skipped.</p>
+</div>
+</div>
+<div class="section" id="running-the-code">
+<h2>Running the Code<a class="headerlink" href="#running-the-code" title="Permalink to this headline">¶</a></h2>
+<p>With these changes to <code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code>, re-compile and re-run
+the code:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ./mk
+<span class="gp">$</span> ./star inlist_to_tams
+</pre></div>
+</div>
+<p>The history file written to <code class="docutils literal notranslate"><span class="pre">LOGS/history.data</span></code> should now contain
+two extra columns, containing the period data. An easy way to check
+this is to use the <code class="docutils literal notranslate"><span class="pre">less</span></code> command with the <code class="docutils literal notranslate"><span class="pre">-S</span></code> (chop long lines)
+flag:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> less -S LOGS/history.data
+</pre></div>
+</div>
+<p>(Use the left/right cursors key to scan through the columns).</p>
+</div>
+<div class="section" id="plotting-the-periods">
+<h2>Plotting the Periods<a class="headerlink" href="#plotting-the-periods" title="Permalink to this headline">¶</a></h2>
+<p>We’re now in a position to add a PGstar panel to our ZAMS-to-TAMS
+run, showing how the mode periods change as the star evolves. The type
+of panel we’ll use is called a ‘history panel’, which plots columns
+from the history file as a function of model number or time.</p>
+<p>Open up <code class="docutils literal notranslate"><span class="pre">inlist_to_tams_pgstar</span></code>, and add the following highlighted
+code at the bottom:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! &gt;&gt;&gt; Insert additional parameters below</span>
+
+<span class="hll"><span class="c">! History panel showing periods</span>
+</span><span class="hll">
+</span><span class="hll"><span class="n">Grid1_plot_name</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;History_Panels1&#39;</span>
+</span><span class="hll">
+</span><span class="hll"><span class="n">History_Panels1_num_panels</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="hll"><span class="n">History_Panels1_title</span> <span class="o">=</span> <span class="s1">&#39;Periods&#39;</span>
+</span><span class="hll">
+</span><span class="hll"><span class="n">History_Panels1_xaxis_name</span> <span class="o">=</span> <span class="s1">&#39;star_age&#39;</span>
+</span><span class="hll"><span class="n">History_Panels1_max_width</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="hll">
+</span><span class="hll"><span class="n">History_Panels1_yaxis_name</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;period_f&#39;</span>
+</span><span class="hll"><span class="n">History_Panels1_ymin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="hll"><span class="n">History_Panels1_other_yaxis_name</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</span><span class="hll"><span class="n">History_Panels1_other_ymin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="hll">
+</span><span class="hll"><span class="n">History_Panels1_yaxis_name</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;period_1o&#39;</span>
+</span><span class="hll"><span class="n">History_Panels1_ymin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="hll"><span class="n">History_Panels1_other_yaxis_name</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</span><span class="hll"><span class="n">History_Panels1_other_ymin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+</span></pre></div>
+</div>
+<p>(Here, the first line indicates where in the existing grid layout to
+place the history panel; the subsequent lines specify what to plot in
+the panel).</p>
+<p>Now re-run the ZAMS-to-TAMS evolution, and consider the following questions:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Why do the mode periods get longer for the most of the run — but
+then briefly get shorter at the end of the run?</p></li>
+<li><p>Why do the mode periods move in lockstep, with the 1-O mode being
+an almost-fixed multiple of the F mode?</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition-optional-exercise admonition">
+<p class="admonition-title"><em>Optional</em> Exercise</p>
+<p>In addition to printing periods to the terminal, it’s often useful
+to display them in the PGstar window. Modifiy
+<code class="docutils literal notranslate"><span class="pre">inlist_to_tams_pgstar</span></code> to set <code class="docutils literal notranslate"><span class="pre">Text_Summary1_name(1,4)</span></code> (i.e.,
+the first item in the fourth column of the text area) to
+<code class="docutils literal notranslate"><span class="pre">'period_f'</span></code>. Make a similar modifications to add <code class="docutils literal notranslate"><span class="pre">period_1o</span></code>
+as the second item.</p>
+</div>
+</div>
+<div class="section" id="quantifying-the-period-scaling">
+<h2>Quantifying the Period Scaling<a class="headerlink" href="#quantifying-the-period-scaling" title="Permalink to this headline">¶</a></h2>
+<p>The answer to both of the questions above lies in considering the
+response of a star to departures from hydrostatic equilibrium. One of
+the first things we learn in any course on stellar astrophysics is
+that this response occurs on the star’s dynamical timescale:
+<span class="math notranslate nohighlight">\(\tau_{\rm dyn} = \sqrt{R^{3}/GM}\)</span>. Since radial pulsations are
+an example of departures from hydrostatic equilibrium, we should
+therefore expect the pulsation periods <span class="math notranslate nohighlight">\(P\)</span> to scale
+(approximately) proportionally with <span class="math notranslate nohighlight">\(\tau_{\rm dyn}\)</span>. Our next
+step is to check whether this is the case.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>Edit the existing <code class="docutils literal notranslate"><span class="pre">history_columns.list</span></code> file in the working
+directory. Find which history item contains the dynamical
+timescale, and uncomment the corresponding line. Then, modify
+<code class="docutils literal notranslate"><span class="pre">inlist_to_tams_pgstar</span></code> to add this timescale to each of the
+plots in the history panel (hint: use the
+<code class="docutils literal notranslate"><span class="pre">History_Panels1_other_yaxis_name</span></code> controls), and repeat the
+ZAMS-to-TAMS run.</p>
+</div>
+<p>This exercise confirms that periods follow the approximate scaling
+<span class="math notranslate nohighlight">\(P \propto \tau_{\rm dyn}\)</span>. The period lengthening as the star
+evolves toward the TAMS is driven mostly by the <span class="math notranslate nohighlight">\(\tau_{\rm dyn}\)</span>
+increase, which in turn is driven by the expansion of the star. The
+brief reversal in this behavior, near the TAMS, is associated with the
+Henyey hook where the star shrinks.</p>
+<div class="admonition-optional-exercise admonition">
+<p class="admonition-title"><em>Optional</em> Exercise</p>
+<p>Modifiy <code class="docutils literal notranslate"><span class="pre">inlist_to_tams_pgstar</span></code> to add the dynamical timescale to
+the text area.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="minilab-3.html" class="btn btn-neutral float-right" title="MiniLab 3: Plotting Wavefunctions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="minilab-1.html" class="btn btn-neutral float-left" title="MiniLab 1: First Steps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Rich Townsend, Alina Istrate &amp; Anne Thoul
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
