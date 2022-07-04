@@ -7,18 +7,14 @@ MiniLab 1: First Steps
 Overview
 ========
 
-In MiniLab 1, we'll create a model for a typical :math:`\beta` Cephei
+In MiniLab 1, we'll create a model for a solar-type
 star and track it as it evolves from the zero-age main sequence
-(ZAMS) through to the terminal age main sequence (TAMS). Although MESA
-provides a pre-built set of ZAMS models, these have a metallicity
-:math:`Z=0.02`; since we'll want to explore the effects of changing
-the metallicity, we'll also be creating our own custom ZAMS model.
+(ZAMS) through to the base of the red giant branch (BRGB). 
 
 Once we've got our model working, we'll modify our
 ``run_star_extras.f90`` file to run the `GYRE
-<https://bitbucket.org/rhdtownsend/gyre/wiki/Home>`_ oscillation code
-after each timestep, calculating the star's radial pulsation
-frequencies.
+<https://gyre.readthedocs.io/>`_ oscillation code
+after each timestep, calculating the star's oscillation frequencies.
 
 Download a Working Directory
 ============================
