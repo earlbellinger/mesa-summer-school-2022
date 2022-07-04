@@ -1,10 +1,5 @@
-.. GYRE in MESA Lab documentation master file, created by
-   sphinx-quickstart on Wed Jul 24 09:26:28 2019.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 ################
-GYRE in MESA Lab
+Asteroseismology across the HRD
 ################
 
 .. toctree::
