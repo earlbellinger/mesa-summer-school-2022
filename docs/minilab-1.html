@@ -96,7 +96,7 @@ after each timestep, calculating the star’s oscillation frequencies.</p>
 </div>
 <div class="section" id="download-a-working-directory">
 <h2>Download a Working Directory<a class="headerlink" href="#download-a-working-directory" title="Permalink to this headline">¶</a></h2>
-<p>To get started, let’s set up a new working directory. Download <a class="reference external" href="http://www.astro.wisc.edu/~townsend/resource/teaching/mesa-summer-school-2019/townsend-2019-mini-1.tar.gz">this</a>
+<p>To get started, let’s set up a new working directory. Download <a class="reference external" href="http://www.astro.wisc.edu/~townsend/resource/teaching/mesa-summer-school-2019/townsend-2019-mini-1.tar.gz">this</a> TODO
 file and unpack it using tar:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> tar xf bellinger-2022-mini-1.tar.gz
 </pre></div>
@@ -113,14 +113,8 @@ the working directory and build the code:</p>
 </div>
 <div class="section" id="evolve-the-model">
 <h2>Evolve the Model<a class="headerlink" href="#evolve-the-model" title="Permalink to this headline">¶</a></h2>
-<p>Now let’s evolve the model. We run first using <code class="docutils literal notranslate"><span class="pre">inlist_to_zams</span></code> as
-our master inlist, which evolves a pre-main sequence model to the
-ZAMS; and then using <code class="docutils literal notranslate"><span class="pre">inlist_to_tams</span></code>, which takes the ZAMS model
-and evolves it to the TAMS. Note that we bypass the <code class="docutils literal notranslate"><span class="pre">rn</span></code> script,
-instead running the <code class="docutils literal notranslate"><span class="pre">star</span></code> program directly <a class="footnote-reference brackets" href="#f1" id="id1">1</a>; this allows us to
-specify the master inlist on the command line:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ./star inlist_to_zams
-<span class="gp">$</span> ./star inlist_to_tams
+<p>Now let’s evolve the model.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ./rn
 </pre></div>
 </div>
 <p>During the runs a single PGstar window will display various plots in a
@@ -128,9 +122,9 @@ grid layout. We’ll be adding to these plots during the MiniLabs and
 Maxilab. If the plots are difficult to read on your computer, and/or
 the window doesn’t fit on your screen properly, consider customizing
 the <code class="docutils literal notranslate"><span class="pre">Grid1_win_width</span></code> and <code class="docutils literal notranslate"><span class="pre">Grid1_win_aspect_ratio</span></code> parameters in
-the <code class="docutils literal notranslate"><span class="pre">inlist_to_zams_pgstar</span></code> and <code class="docutils literal notranslate"><span class="pre">inlist_to_tams_pgstar</span></code> files.</p>
+the <code class="docutils literal notranslate"><span class="pre">inlist_pgstar</span></code> file.</p>
 <p>To get an idea of what settings we’re using for these calculations,
-take a look inside <code class="docutils literal notranslate"><span class="pre">inlist_to_tams_project</span></code>, which contains the
+take a look inside <code class="docutils literal notranslate"><span class="pre">inlist_project</span></code>, which contains the
 important parts of the ZAMS-to-TAMS run. Here are a few excerpts:</p>
 <p>Here (above), we set the initial mass to <span class="math notranslate nohighlight">\(1\,{\rm M_{\odot}}\)</span>,
 and choose the helium abundance, mixing length, and metallicity corresponding
@@ -139,9 +133,9 @@ to the Sun.</p>
 (relatively) short to ensure that we can adequately follow the
 ZAMS-to-TAMS evolution, and we use the <code class="docutils literal notranslate"><span class="pre">delta_*</span></code> settings to place
 an upper limit on the logarithmic change in the central hydrogen
-abundance due to nuclear burning <a class="footnote-reference brackets" href="#f2" id="id2">2</a>. The <code class="docutils literal notranslate"><span class="pre">mesh_delta_coeff</span></code>
+abundance due to nuclear burning <a class="footnote-reference brackets" href="#f2" id="id1">2</a>. The <code class="docutils literal notranslate"><span class="pre">mesh_delta_coeff</span></code>
 ensures that models have enough mesh points for GYRE to resolve
-pulsation wavefunctions <a class="footnote-reference brackets" href="#f3" id="id3">3</a>.</p>
+pulsation wavefunctions <a class="footnote-reference brackets" href="#f3" id="id2">3</a>.</p>
 <p>Here, we configure various convection parameters. The
 <code class="docutils literal notranslate"><span class="pre">do_conv_premix</span></code> setting turns on the new convective premixing
 described in Section 5 of the <a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2019ApJS..243...10P/abstract">MESA V instrument paper</a>.</p>
@@ -294,13 +288,13 @@ the code:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ./mk
 </pre></div>
 </div>
-<p>Next, edit <code class="docutils literal notranslate"><span class="pre">inlist_to_tams_project</span></code> to add the following line to the <code class="docutils literal notranslate"><span class="pre">controls</span></code> namelist:</p>
+<p>Next, edit <code class="docutils literal notranslate"><span class="pre">inlist_project</span></code> to add the following line to the <code class="docutils literal notranslate"><span class="pre">controls</span></code> namelist:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">x_logical_ctrl</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>
 </pre></div>
 </div>
 <p>This will make sure that <code class="docutils literal notranslate"><span class="pre">run_gyre</span></code> is called during the
 ZAMS-to-TAMS evolution. You’re now ready to go ahead and run the code:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ./star inlist_to_tams
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ./rn
 </pre></div>
 </div>
 <p>As the run proceeds, you should be able to see terminal output that looks similar to this:</p>
@@ -314,7 +308,7 @@ of the modes are of the order <span class="math notranslate nohighlight">\(10^{4
 expect for <span class="math notranslate nohighlight">\(\beta\)</span> Cephei stars.</p>
 <p class="rubric">Footnotes</p>
 <dl class="footnote brackets">
-<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dt class="label" id="f1"><span class="brackets">1</span></dt>
 <dd><p>When using this <code class="docutils literal notranslate"><span class="pre">./star</span></code> trick, you can’t do restarts
 using the <code class="docutils literal notranslate"><span class="pre">./re</span></code> script. Instead, you should chose which
 photo in the <code class="docutils literal notranslate"><span class="pre">photos</span></code> subdirectory you want to restart
@@ -323,13 +317,13 @@ from; copy this into the working directory with the name
 later want to <em>stop</em> doing restarts, simply delete
 <code class="docutils literal notranslate"><span class="pre">restart_photo</span></code>.</p>
 </dd>
-<dt class="label" id="f2"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dt class="label" id="f2"><span class="brackets"><a class="fn-backref" href="#id1">2</a></span></dt>
 <dd><p>Without these settings, MESA tends to gallop off near the end
 of the main sequence, and doesn’t properly resolve the ‘Henyey hook’
 in the Hertzsprung-Russell diagram where massive stars briefly evolve
 to the blue.</p>
 </dd>
-<dt class="label" id="f3"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dt class="label" id="f3"><span class="brackets"><a class="fn-backref" href="#id2">3</a></span></dt>
 <dd><p>GYRE is able to do remeshing itself, but we’re not going to
 use that particular functionality.</p>
 </dd>

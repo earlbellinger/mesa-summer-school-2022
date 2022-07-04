@@ -20,7 +20,7 @@ Download a Working Directory
 ============================
 
 To get started, let's set up a new working directory. Download `this
-<http://www.astro.wisc.edu/~townsend/resource/teaching/mesa-summer-school-2019/townsend-2019-mini-1.tar.gz>`__
+<http://www.astro.wisc.edu/~townsend/resource/teaching/mesa-summer-school-2019/townsend-2019-mini-1.tar.gz>`__ TODO
 file and unpack it using tar:
 
 .. code-block:: console
@@ -41,30 +41,24 @@ the working directory and build the code:
 Evolve the Model
 ================
 
-Now let's evolve the model. We run first using ``inlist_to_zams`` as
-our master inlist, which evolves a pre-main sequence model to the
-ZAMS; and then using ``inlist_to_tams``, which takes the ZAMS model
-and evolves it to the TAMS. Note that we bypass the ``rn`` script,
-instead running the ``star`` program directly [#f1]_; this allows us to
-specify the master inlist on the command line:
+Now let's evolve the model. 
 
 .. code-block:: console
 
-   $ ./star inlist_to_zams
-   $ ./star inlist_to_tams
+   $ ./rn
 
 During the runs a single PGstar window will display various plots in a
 grid layout. We'll be adding to these plots during the MiniLabs and
 Maxilab. If the plots are difficult to read on your computer, and/or
 the window doesn't fit on your screen properly, consider customizing
 the ``Grid1_win_width`` and ``Grid1_win_aspect_ratio`` parameters in
-the ``inlist_to_zams_pgstar`` and ``inlist_to_tams_pgstar`` files.
+the ``inlist_pgstar`` file.
 
 To get an idea of what settings we're using for these calculations,
-take a look inside ``inlist_to_tams_project``, which contains the
+take a look inside ``inlist_project``, which contains the
 important parts of the ZAMS-to-TAMS run. Here are a few excerpts:
 
-.. literalinclude:: bellinger-2022-mini-1/inlist_to_tams_project
+.. literalinclude:: bellinger-2022-mini-1/inlist_project
    :start-after: &controls
    :end-before: ! Grid
 
@@ -72,7 +66,7 @@ Here (above), we set the initial mass to :math:`1\,{\rm M_{\odot}}`,
 and choose the helium abundance, mixing length, and metallicity corresponding 
 to the Sun.
 
-.. literalinclude:: bellinger-2022-mini-1/inlist_to_tams_project
+.. literalinclude:: bellinger-2022-mini-1/inlist_project
    :start-after: initial_Z
    :end-before: ! Stopping
 
@@ -84,7 +78,7 @@ abundance due to nuclear burning [#f2]_. The ``mesh_delta_coeff``
 ensures that models have enough mesh points for GYRE to resolve
 pulsation wavefunctions [#f3]_.
 
-.. literalinclude:: bellinger-2022-mini-1/inlist_to_tams_project
+.. literalinclude:: bellinger-2022-mini-1/inlist_project
    :start-after: use_dedt_form_of_energy_eqn
    :end-before: ! Overshooting
 
@@ -263,7 +257,7 @@ the code:
 
    $ ./mk
 
-Next, edit ``inlist_to_tams_project`` to add the following line to the ``controls`` namelist:
+Next, edit ``inlist_project`` to add the following line to the ``controls`` namelist:
 
 .. code-block:: fortran
 
@@ -274,7 +268,7 @@ ZAMS-to-TAMS evolution. You're now ready to go ahead and run the code:
 
 .. code-block:: console
 
-   $ ./star inlist_to_tams
+   $ ./rn
 
 As the run proceeds, you should be able to see terminal output that looks similar to this:
 
