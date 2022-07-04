@@ -1,5 +1,5 @@
 ################
-GYRE in MESA Lab
+Asteroseismology across the HRD
 ################
 
 .. toctree::
