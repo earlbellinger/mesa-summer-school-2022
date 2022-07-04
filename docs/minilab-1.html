@@ -98,7 +98,7 @@ after each timestep, calculating the star’s oscillation frequencies.</p>
 <h2>Download a Working Directory<a class="headerlink" href="#download-a-working-directory" title="Permalink to this headline">¶</a></h2>
 <p>To get started, let’s set up a new working directory. Download <a class="reference external" href="http://www.astro.wisc.edu/~townsend/resource/teaching/mesa-summer-school-2019/townsend-2019-mini-1.tar.gz">this</a>
 file and unpack it using tar:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> tar xf townsend-2019-mini-1.tar.gz
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> tar xf bellinger-2022-mini-1.tar.gz
 </pre></div>
 </div>
 <p>This working directory contains a pre-configured set of inlist files
@@ -106,7 +106,7 @@ and columns files, a custom <code class="docutils literal notranslate"><span cla
 editing extensively, and some other support files. After making sure
 your <code class="docutils literal notranslate"><span class="pre">MESA_DIR</span></code> environment variable is properly set, change into
 the working directory and build the code:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> townsend-2019-mini-1
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> bellinger-2022-mini-1
 <span class="gp">$</span> ./mk
 </pre></div>
 </div>
@@ -132,10 +132,9 @@ the <code class="docutils literal notranslate"><span class="pre">inlist_to_zams_
 <p>To get an idea of what settings we’re using for these calculations,
 take a look inside <code class="docutils literal notranslate"><span class="pre">inlist_to_tams_project</span></code>, which contains the
 important parts of the ZAMS-to-TAMS run. Here are a few excerpts:</p>
-<p>Here (above), we set the initial mass to <span class="math notranslate nohighlight">\(15\,{\rm M_{\odot}}\)</span>,
-and choose helium and metal mass fractions corresponding to the
-<a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2009ARA%26A..47..481A/abstract">Asplund et al. (2009)</a> proto-solar
-abundances.</p>
+<p>Here (above), we set the initial mass to <span class="math notranslate nohighlight">\(1\,{\rm M_{\odot}}\)</span>,
+and choose the helium abundance, mixing length, and metallicity corresponding
+to the Sun.</p>
 <p>Here, we configure timestep and mesh parameters. We keep the timestep
 (relatively) short to ensure that we can adequately follow the
 ZAMS-to-TAMS evolution, and we use the <code class="docutils literal notranslate"><span class="pre">delta_*</span></code> settings to place
@@ -193,6 +192,8 @@ cut-and-paste rather than typing this by hand):</p>
 </span><span class="hll"><span class="k">call </span><span class="n">gyre_set_constant</span><span class="p">(</span><span class="s1">&#39;M_SUN&#39;</span><span class="p">,</span> <span class="n">msol</span><span class="p">)</span>
 </span><span class="hll"><span class="k">call </span><span class="n">gyre_set_constant</span><span class="p">(</span><span class="s1">&#39;R_SUN&#39;</span><span class="p">,</span> <span class="n">rsol</span><span class="p">)</span>
 </span><span class="hll"><span class="k">call </span><span class="n">gyre_set_constant</span><span class="p">(</span><span class="s1">&#39;L_SUN&#39;</span><span class="p">,</span> <span class="n">lsol</span><span class="p">)</span>
+</span><span class="hll">
+</span><span class="hll"><span class="k">call </span><span class="n">gyre_set_constant</span><span class="p">(</span><span class="s1">&#39;GYRE_DIR&#39;</span><span class="p">,</span> <span class="nb">TRIM</span><span class="p">(</span><span class="n">mesa_dir</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;/gyre/gyre&#39;</span><span class="p">)</span>
 </span></pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">gyre_init</span></code> call takes care of the initialization; its single

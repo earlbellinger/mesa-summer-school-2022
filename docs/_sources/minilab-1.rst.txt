@@ -25,7 +25,7 @@ file and unpack it using tar:
 
 .. code-block:: console
 
-   $ tar xf townsend-2019-mini-1.tar.gz
+   $ tar xf bellinger-2022-mini-1.tar.gz
 
 This working directory contains a pre-configured set of inlist files
 and columns files, a custom ``run_star_extras.f90`` file that we'll be
@@ -35,7 +35,7 @@ the working directory and build the code:
 
 .. code-block:: console
 
-   $ cd townsend-2019-mini-1
+   $ cd bellinger-2022-mini-1
    $ ./mk
 
 Evolve the Model
@@ -64,16 +64,15 @@ To get an idea of what settings we're using for these calculations,
 take a look inside ``inlist_to_tams_project``, which contains the
 important parts of the ZAMS-to-TAMS run. Here are a few excerpts:
 
-.. literalinclude:: townsend-2019-mini-1/inlist_to_tams_project
+.. literalinclude:: bellinger-2022-mini-1/inlist_to_tams_project
    :start-after: &controls
    :end-before: ! Grid
 
-Here (above), we set the initial mass to :math:`15\,{\rm M_{\odot}}`,
-and choose helium and metal mass fractions corresponding to the
-:ads:`Asplund et al. (2009) <2009ARA%26A..47..481A>` proto-solar
-abundances.
+Here (above), we set the initial mass to :math:`1\,{\rm M_{\odot}}`,
+and choose the helium abundance, mixing length, and metallicity corresponding 
+to the Sun.
 
-.. literalinclude:: townsend-2019-mini-1/inlist_to_tams_project
+.. literalinclude:: bellinger-2022-mini-1/inlist_to_tams_project
    :start-after: initial_Z
    :end-before: ! Stopping
 
@@ -85,7 +84,7 @@ abundance due to nuclear burning [#f2]_. The ``mesh_delta_coeff``
 ensures that models have enough mesh points for GYRE to resolve
 pulsation wavefunctions [#f3]_.
 
-.. literalinclude:: townsend-2019-mini-1/inlist_to_tams_project
+.. literalinclude:: bellinger-2022-mini-1/inlist_to_tams_project
    :start-after: use_dedt_form_of_energy_eqn
    :end-before: ! Overshooting
 
@@ -153,6 +152,8 @@ cut-and-paste rather than typing this by hand):
     call gyre_set_constant('M_SUN', msol)
     call gyre_set_constant('R_SUN', rsol)
     call gyre_set_constant('L_SUN', lsol)
+
+    call gyre_set_constant('GYRE_DIR', TRIM(mesa_dir)//'/gyre/gyre')
 
 The ``gyre_init`` call takes care of the initialization; its single
 argument is the name of the GYRE input file to read parameters
