@@ -17,9 +17,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'GYRE in MESA Lab'
-copyright = '2019, Rich Townsend, Alina Istrate & Anne Thoul'
-author = 'Rich Townsend, Alina Istrate & Anne Thoul'
+project = 'Asteroseismology across the HRD'
+copyright = '2022, Earl Bellinger, Rich Townsend, Alina Istrate & Anne Thoul'
+author = 'Earl Bellinger, Rich Townsend, Alina Istrate & Anne Thoul'
 
 
 # -- General configuration ---------------------------------------------------
@@ -70,4 +70,4 @@ html_theme_options = {
 
 # -- Extra stuff --
 
-html_extra_path = [ '../slides', '../plots/output' ]
+#html_extra_path = [ '../slides', '../plots/output' ]
