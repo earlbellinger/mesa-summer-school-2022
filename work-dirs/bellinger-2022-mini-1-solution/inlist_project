@@ -1,6 +1,11 @@
 &star_job
     pgstar_flag = .true.
     pause_before_terminate = .true.
+    
+    relax_initial_y = .true.
+    relax_initial_z = .true.
+    new_y = 0.269
+    new_z = 0.0187
 
 / ! end of star_job namelist
 
@@ -10,7 +15,7 @@
 
 
 &kap
-    Zbase = 0.02
+    Zbase = 0.0187
 / ! end of kap namelist
 
 
@@ -19,7 +24,6 @@
 
   ! starting specifications
     initial_mass = 1 ! in Msun units
-    initial_z = 0.02
     mixing_length_alpha = 2.22
 
   ! when to stop

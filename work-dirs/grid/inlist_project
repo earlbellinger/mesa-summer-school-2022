@@ -24,7 +24,7 @@
   ! see star/defaults/controls.defaults
 
   ! starting specifications
-    initial_mass = 1.2
+    initial_mass = 2.0
     mixing_length_alpha = 2.22
 
   ! when to stop
