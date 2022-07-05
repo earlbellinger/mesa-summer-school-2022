@@ -20,7 +20,7 @@ Download a Working Directory
 ============================
 
 To get started, let's set up a new working directory. Download `this
-<http://www.astro.wisc.edu/~townsend/resource/teaching/mesa-summer-school-2019/townsend-2019-mini-1.tar.gz>`__ TODO
+<https://github.com/earlbellinger/mesa-summer-school-2022/raw/main/work-dirs/bellinger-2022-mini-1.tar.gz>`__ 
 file and unpack it using tar:
 
 .. code-block:: console
