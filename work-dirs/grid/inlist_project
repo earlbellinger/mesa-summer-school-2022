@@ -1,8 +1,8 @@
 &star_job
     relax_initial_y = .true.
     relax_initial_z = .true.
-    new_y = .2465
-    new_z = 0.0001
+    new_y = .2483
+    new_z = 0.001
     
     eosDT_cache_dir = 'cache/eosDT_cache'
     kap_cache_dir = 'cache/kap_cache'
@@ -16,7 +16,7 @@
 
 
 &kap
-    Zbase = 0.0001
+    Zbase = 0.001
 / ! end of kap namelist
 
 
@@ -24,7 +24,7 @@
   ! see star/defaults/controls.defaults
 
   ! starting specifications
-    initial_mass = 2.0
+    initial_mass = 1.2
     mixing_length_alpha = 2.22
 
   ! when to stop

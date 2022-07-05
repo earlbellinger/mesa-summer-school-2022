@@ -247,9 +247,14 @@ As the run proceeds, you should be able to see terminal output that looks simila
 
 .. code-block:: console
 
-    Found mode: radial order, frequency =            1   8.5707910250840724E-005
-    Found mode: radial order, frequency =            2   1.1184917524623201E-004
+
+ Found mode: l, n_p, n_g, E, nu =            0           1           0   9.6744296164353559E-003   2.9946761840058696E-004
+ Found mode: l, n_p, n_g, E, nu =            0           2           0   2.2622227776063577E-003   4.5568978091446087E-004
+ Found mode: l, n_p, n_g, E, nu =            0           3           0   4.5829289819634191E-004   6.1980505638224942E-004
+ Found mode: l, n_p, n_g, E, nu =            0           4           0   1.3768693565643185E-004   7.9872212926827813E-004
+ Found mode: l, n_p, n_g, E, nu =            0           5           0   4.7056235086389738E-005   9.7581695965845720E-004
+ ...
 
 This confirms that GYRE is being run, and that modes are being found. 
-The frequencies of the modes are of the order :math:`10^{4}\,{\rm s}`, 
+The frequencies of the modes are of the order :math:`10^{-3}\,{\rm Hz}`, 
 just what we'd expect for solar-like stars. 
