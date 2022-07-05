@@ -1,0 +1,699 @@
+DATE: 2022-07-05
+TIME: 14:26:22
+ reading user weak rate file /afs/mpa/temp/earl/mesa/mesa/data/rates_data/rate_tables/S13_r_be7_wk_li7.h5
+ version_number r22.05.1
+ read inlist_project
+
+
+ The terminal output contains the following information
+
+      'step' is the number of steps since the start of the run,
+      'lg_dt' is log10 timestep in years,
+      'age_yr' is the simulated years since the start run,
+      'lg_Tcntr' is log10 center temperature (K),
+      'lg_Dcntr' is log10 center density (g/cm^3),
+      'lg_Tmax' is log10 max temperature (K),
+      'Teff' is the surface temperature (K),
+      'lg_R' is log10 surface radius (Rsun),
+      'lg_L' is log10 surface luminosity (Lsun),
+      'lg_LH' is log10 total PP and CNO hydrogen burning power (Lsun),
+      'lg_L3a' is log10 total triple-alpha helium burning power (Lsun),
+      'lg_gsurf' is log10 surface gravity,
+      'lg_LNuc' is log10 nuclear power (Lsun),
+      'lg_LNeu' is log10 total neutrino power (Lsun),
+      'lg_Lphoto' is log10 total photodisintegration (Lsun),
+      'Mass' is the total stellar baryonic mass (Msun),
+      'lg_Mdot' is log10 magnitude of rate of change of mass (Msun/year),
+      'lg_Dsurf' is log10 surface density (g/cm^3),
+      'H_env' is the amount of mass where H is dominant,
+      'He_core' is the largest mass where He is dominant.
+      'CO_core' is the largest mass where CO is dominant.
+      'H_cntr' is the center H1 mass fraction,
+      'He_cntr' is the center He4 mass fraction,
+      'C_cntr' is the center C12 mass fraction,
+      'N_cntr' is the center N14 mass fraction,
+      'O_cntr' is the center O16 mass fraction,
+      'Ne_cntr' is the center Ne20 mass fraction,
+      'gam_cntr' is the center plasma interaction parameter,
+      'eta_cntr' is the center electron degeneracy parameter,
+      'zones' is the number of zones in the current model,
+      'iters' is the number of solver iterations for the current step,
+      'retry' is the number of step retries required during the run,
+      'dt_limit' is an indication of what limited the timestep.
+
+ All this and more are saved in the LOGS directory during the run.
+write /afs/mpa/temp/earl/mesa/mesa/data/eosDT_data/cache/mesa-FreeEOS_00z90x.bin
+ mv failed for './.mesa_temp_cache/eosDT_cache/mesa-FreeEOS_00z90x.bin' '/afs/mpa/temp/earl/mesa/mesa/data/eosDT_data/cache/mesa-FreeEOS_00z90x.bin' skipping
+write /afs/mpa/temp/earl/mesa/mesa/data/kap_data/cache/lowT_fa05_gs98_z0.01_x0.7.bin
+ mv failed for './.mesa_temp_cache/kap_cache/lowT_fa05_gs98_z0.01_x0.7.bin' '/afs/mpa/temp/earl/mesa/mesa/data/kap_data/cache/lowT_fa05_gs98_z0.01_x0.7.bin' skipping
+write /afs/mpa/temp/earl/mesa/mesa/data/kap_data/cache/lowT_fa05_gs98_z0.01_x0.8.bin
+ mv failed for './.mesa_temp_cache/kap_cache/lowT_fa05_gs98_z0.01_x0.8.bin' '/afs/mpa/temp/earl/mesa/mesa/data/kap_data/cache/lowT_fa05_gs98_z0.01_x0.8.bin' skipping
+write /afs/mpa/temp/earl/mesa/mesa/data/kap_data/cache/lowT_fa05_gs98_z0.01_x0.5.bin
+ mv failed for './.mesa_temp_cache/kap_cache/lowT_fa05_gs98_z0.01_x0.5.bin' '/afs/mpa/temp/earl/mesa/mesa/data/kap_data/cache/lowT_fa05_gs98_z0.01_x0.5.bin' skipping
+write /afs/mpa/temp/earl/mesa/mesa/data/kap_data/cache/lowT_fa05_gs98_z0.02_x0.8.bin
+ mv failed for './.mesa_temp_cache/kap_cache/lowT_fa05_gs98_z0.02_x0.8.bin' '/afs/mpa/temp/earl/mesa/mesa/data/kap_data/cache/lowT_fa05_gs98_z0.02_x0.8.bin' skipping
+write /afs/mpa/temp/earl/mesa/mesa/data/kap_data/cache/lowT_fa05_gs98_z0.02_x0.5.bin
+ mv failed for './.mesa_temp_cache/kap_cache/lowT_fa05_gs98_z0.02_x0.5.bin' '/afs/mpa/temp/earl/mesa/mesa/data/kap_data/cache/lowT_fa05_gs98_z0.02_x0.5.bin' skipping
+write /afs/mpa/temp/earl/mesa/mesa/data/kap_data/cache/lowT_fa05_gs98_z0.03_x0.8.bin
+ mv failed for './.mesa_temp_cache/kap_cache/lowT_fa05_gs98_z0.03_x0.8.bin' '/afs/mpa/temp/earl/mesa/mesa/data/kap_data/cache/lowT_fa05_gs98_z0.03_x0.8.bin' skipping
+                             set_initial_number_retries           0
+ net name basic.net
+ kap_option gs98
+ kap_CO_option gs98_co
+ kap_lowT_option lowT_fa05_gs98
+                                        OMP_NUM_THREADS          12
+
+
+__________________________________________________________________________________________________________________________________________________
+
+       step    lg_Tmax     Teff     lg_LH      lg_Lnuc     Mass       H_rich     H_cntr     N_cntr     Y_surf   eta_cntr   zones  retry
+  lg_dt_yrs    lg_Tcntr    lg_R     lg_L3a     lg_Lneu     lg_Mdot    He_core    He_cntr    O_cntr     Z_surf   gam_cntr   iters  
+    age_yrs    lg_Dcntr    lg_L     lg_LZ      lg_Lphoto   lg_Dsurf   CO_core    C_cntr     Ne_cntr    Z_cntr   v_div_cs       dt_limit
+__________________________________________________________________________________________________________________________________________________
+
+          1   7.136656   5619.316  -0.149753  -0.149753   1.000000   1.000000   0.699498   0.001542   0.280000  -1.779663   3832      0
+ 5.0000E+00   7.136656  -0.051478 -46.891163  -1.675773 -99.000000   0.000000   0.280426   0.009381   0.020000   0.083752      3
+ 1.0000E+05   1.887348  -0.149528 -15.954590 -99.000000  -6.705073   0.000000   0.002991   0.002085   0.020076  0.000E+00    initial dt
+
+ Found mode: l, n_p, n_g, E, nu =            0           1           0   9.6744296164353559E-003   2.9946761840058696E-004
+ Found mode: l, n_p, n_g, E, nu =            0           2           0   2.2622227776063577E-003   4.5568978091446087E-004
+ Found mode: l, n_p, n_g, E, nu =            0           3           0   4.5829289819634191E-004   6.1980505638224942E-004
+ Found mode: l, n_p, n_g, E, nu =            0           4           0   1.3768693565643185E-004   7.9872212926827813E-004
+ Found mode: l, n_p, n_g, E, nu =            0           5           0   4.7056235086389738E-005   9.7581695965845720E-004
+ Found mode: l, n_p, n_g, E, nu =            0           6           0   1.8445125681684387E-005   1.1540339510115972E-003
+ Found mode: l, n_p, n_g, E, nu =            0           7           0   7.9638923231828391E-006   1.3285210031233668E-003
+ Found mode: l, n_p, n_g, E, nu =            0           8           0   3.5670711282574578E-006   1.5033762117515872E-003
+ Found mode: l, n_p, n_g, E, nu =            0           9           0   1.6623209963125908E-006   1.6762973454021066E-003
+ Found mode: l, n_p, n_g, E, nu =            0          10           0   7.6554868046113913E-007   1.8470518455625925E-003
+ Found mode: l, n_p, n_g, E, nu =            0          11           0   3.6449397014563742E-007   2.0152507301478095E-003
+ Found mode: l, n_p, n_g, E, nu =            0          12           0   1.8595362376932033E-007   2.1793771869588925E-003
+ Found mode: l, n_p, n_g, E, nu =            0          13           0   1.0498676827940096E-007   2.3419545336868957E-003
+ Found mode: l, n_p, n_g, E, nu =            0          14           0   6.5736856425591634E-008   2.5039369515934520E-003
+ Found mode: l, n_p, n_g, E, nu =            0          15           0   4.3004668740768125E-008   2.6662521920893774E-003
+ Found mode: l, n_p, n_g, E, nu =            0          16           0   2.8853721564038983E-008   2.8286494846637210E-003
+ Found mode: l, n_p, n_g, E, nu =            0          17           0   2.0011628409582204E-008   2.9894401562903222E-003
+ Found mode: l, n_p, n_g, E, nu =            0          18           0   1.4746277189908268E-008   3.1494502655658703E-003
+ Found mode: l, n_p, n_g, E, nu =            0          19           0   1.1743390340858310E-008   3.3093288284712203E-003
+ Found mode: l, n_p, n_g, E, nu =            0          20           0   9.8217525428036642E-009   3.4697964937181898E-003
+ Found mode: l, n_p, n_g, E, nu =            0          21           0   8.4631838284471037E-009   3.6312487279406081E-003
+ Found mode: l, n_p, n_g, E, nu =            0          22           0   7.4156876057545372E-009   3.7927963546278208E-003
+ Found mode: l, n_p, n_g, E, nu =            0          23           0   6.5998795674192773E-009   3.9545314603086409E-003
+ Found mode: l, n_p, n_g, E, nu =            0          24           0   6.0422312890814712E-009   4.1162933314911661E-003
+ Found mode: l, n_p, n_g, E, nu =            0          25           0   5.6630911363803108E-009   4.2782258240876992E-003
+ Found mode: l, n_p, n_g, E, nu =            0          26           0   5.4151126641738212E-009   4.4407831861939858E-003
+ Found mode: l, n_p, n_g, E, nu =            0          27           0   5.2408502209650372E-009   4.6035384610144531E-003
+ Found mode: l, n_p, n_g, E, nu =            0          28           0   5.1074980182895355E-009   4.7666157403533378E-003
+ Found mode: l, n_p, n_g, E, nu =            0          29           0   5.0368403003350828E-009   4.9298296897889284E-003
+ Found mode: l, n_p, n_g, E, nu =            0          30           0   5.0030689551776442E-009   5.0930990217862336E-003
+ Found mode: l, n_p, n_g, E, nu =            0          31           0   5.0116269762105741E-009   5.2565605557392328E-003
+ Found mode: l, n_p, n_g, E, nu =            0          32           0   5.0625087597799046E-009   5.4198054456028998E-003
+ Found mode: l, n_p, n_g, E, nu =            0          33           0   5.1648787118307131E-009   5.5828547691276114E-003
+ Found mode: l, n_p, n_g, E, nu =            0          34           0   5.3719288079122147E-009   5.7452276241179443E-003
+ Found mode: l, n_p, n_g, E, nu =            0          35           0   5.8612179428496121E-009   5.9048665819881408E-003
+ Found mode: l, n_p, n_g, E, nu =            1           1           0   9.1277943104969795E-004   5.3095455422636406E-004
+ Found mode: l, n_p, n_g, E, nu =            1           2           0   2.4916553151654554E-004   7.0708780230369398E-004
+ Found mode: l, n_p, n_g, E, nu =            1           3           0   7.9166157065810940E-005   8.8660486112222901E-004
+ Found mode: l, n_p, n_g, E, nu =            1           4           0   3.0234465368352197E-005   1.0617779931439727E-003
+ Found mode: l, n_p, n_g, E, nu =            1           5           0   1.2266310338241903E-005   1.2365946647511709E-003
+ Found mode: l, n_p, n_g, E, nu =            1           6           0   5.4938803851201571E-006   1.4107686208046002E-003
+ Found mode: l, n_p, n_g, E, nu =            1           7           0   2.5102391759979844E-006   1.5832999512190708E-003
+ Found mode: l, n_p, n_g, E, nu =            1           8           0   1.1600113754768067E-006   1.7556826281276388E-003
+ Found mode: l, n_p, n_g, E, nu =            1           9           0   5.4421767776210400E-007   1.9246368430729172E-003
+ Found mode: l, n_p, n_g, E, nu =            1          10           0   2.6363480410166407E-007   2.0909447088008162E-003
+ Found mode: l, n_p, n_g, E, nu =            1          11           0   1.4134881256403740E-007   2.2542772045129268E-003
+ Found mode: l, n_p, n_g, E, nu =            1          12           0   8.3835988743018367E-008   2.4161092227061574E-003
+ Found mode: l, n_p, n_g, E, nu =            1          13           0   5.3761785854397160E-008   2.5786922756638932E-003
+ Found mode: l, n_p, n_g, E, nu =            1          14           0   3.5753988897475863E-008   2.7410883440150990E-003
+ Found mode: l, n_p, n_g, E, nu =            1          15           0   2.4152799210940744E-008   2.9029785643154508E-003
+ Found mode: l, n_p, n_g, E, nu =            1          16           0   1.7214945078847612E-008   3.0636103084908974E-003
+ Found mode: l, n_p, n_g, E, nu =            1          17           0   1.3149799414674064E-008   3.2233666986855522E-003
+ Found mode: l, n_p, n_g, E, nu =            1          18           0   1.0732033773981883E-008   3.3838219759775956E-003
+ Found mode: l, n_p, n_g, E, nu =            1          19           0   9.1472633521303850E-009   3.5448532111719898E-003
+ Found mode: l, n_p, n_g, E, nu =            1          20           0   7.9252559722593289E-009   3.7065317182496623E-003
+ Found mode: l, n_p, n_g, E, nu =            1          21           0   6.9997799441831526E-009   3.8684682498203501E-003
+ Found mode: l, n_p, n_g, E, nu =            1          22           0   6.3066596539284301E-009   4.0302104498242154E-003
+ Found mode: l, n_p, n_g, E, nu =            1          23           0   5.8333459604582309E-009   4.1922951642635684E-003
+ Found mode: l, n_p, n_g, E, nu =            1          24           0   5.5355858338720231E-009   4.3546223813273350E-003
+ Found mode: l, n_p, n_g, E, nu =            1          25           0   5.3172374848989768E-009   4.5174084323787835E-003
+ Found mode: l, n_p, n_g, E, nu =            1          26           0   5.1688951340200298E-009   4.6805627728887028E-003
+ Found mode: l, n_p, n_g, E, nu =            1          27           0   5.0645106092945063E-009   4.8437396334228477E-003
+ Found mode: l, n_p, n_g, E, nu =            1          28           0   5.0087808854439373E-009   5.0071995745681937E-003
+ Found mode: l, n_p, n_g, E, nu =            1          29           0   5.0025752675740746E-009   5.1706647520139938E-003
+ Found mode: l, n_p, n_g, E, nu =            1          30           0   5.0234106042710155E-009   5.3341430433982446E-003
+ Found mode: l, n_p, n_g, E, nu =            1          31           0   5.1006362976339329E-009   5.4974932911861151E-003
+ Found mode: l, n_p, n_g, E, nu =            1          32           0   5.2447732870097833E-009   5.6603236210065570E-003
+ Found mode: l, n_p, n_g, E, nu =            1          33           0   5.5274432641357551E-009   5.8221295030884031E-003
+ abs freq:   20.508774403994515     
+ new best!
+ abs freq:   19.462680037596030     
+ new best!
+ abs freq:   18.396488469834523     
+ new best!
+ abs freq:   17.356096445315277     
+ new best!
+ abs freq:   16.317821518138924     
+ new best!
+ abs freq:   15.283363820970726     
+ new best!
+ abs freq:   14.258662041244429     
+ new best!
+ abs freq:   13.234843147610153     
+ new best!
+ abs freq:   12.231386648835221     
+ new best!
+ abs freq:   11.243647404116761     
+ new best!
+ abs freq:   10.273579540840725     
+ new best!
+ abs freq:   9.3124233458416423     
+ new best!
+ abs freq:   8.3468065890537169     
+ new best!
+ abs freq:   7.3823003752531626     
+ new best!
+ abs freq:   6.4207985050505831     
+ new best!
+ abs freq:   5.4667710032530650     
+ new best!
+ abs freq:   4.5179424226013651     
+ new best!
+ abs freq:   3.5649629967043364     
+ new best!
+ abs freq:   2.6085628292749190     
+ new best!
+ abs freq:   1.6483183707873574     
+ new best!
+ abs freq:  0.68654144769426417     
+ new best!
+ abs freq:  0.27408129718724350     
+ new best!
+ abs freq:   1.2367383111535815     
+ abs freq:   2.2008356019103874     
+ abs freq:   3.1676580093323632     
+ abs freq:   4.1366677694087413     
+ abs freq:   5.1058112808962282     
+ abs freq:   6.0766360708240272     
+ abs freq:   7.0474919602998387     
+ abs freq:   8.0184257363602942     
+ abs freq:   8.9885990331456060     
+ abs freq:   9.9556844219825056     
+ abs freq:   10.916685388828034     
+ abs freq:   0.0000000000000000     
+ new best!
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ best_k, n_gs(best_k)          34           0
+save LOGS/profile1.data for model 1
+          2   7.136615   5616.119  -0.151304  -0.151304   1.000000   1.000000   0.699492   0.001552   0.280000  -1.779535   1937      0
+ 5.0792E+00   7.136615  -0.051767 -46.893643  -1.676570 -99.000000   0.000000   0.280430   0.009381   0.020000   0.083760      2
+ 2.2000E+05   1.887341  -0.151095 -15.954590 -99.000000  -6.704010   0.000000   0.002982   0.002085   0.020077  0.000E+00  max increase
+
+ Found mode: l, n_p, n_g, E, nu =            0           1           0   9.7100885716921298E-003   2.9968688420744556E-004
+ Found mode: l, n_p, n_g, E, nu =            0           2           0   2.2696626755944289E-003   4.5600948684439938E-004
+ Found mode: l, n_p, n_g, E, nu =            0           3           0   4.5949802091506381E-004   6.2038064353258108E-004
+ Found mode: l, n_p, n_g, E, nu =            0           4           0   1.3809704575771208E-004   7.9951056386781184E-004
+ Found mode: l, n_p, n_g, E, nu =            0           5           0   4.7207292177582208E-005   9.7680328799874144E-004
+ Found mode: l, n_p, n_g, E, nu =            0           6           0   1.8511779466476217E-005   1.1552088452216594E-003
+ Found mode: l, n_p, n_g, E, nu =            0           7           0   7.9942381768480833E-006   1.3298760318343457E-003
+ Found mode: l, n_p, n_g, E, nu =            0           8           0   3.5820055725972066E-006   1.5049142058539409E-003
+ Found mode: l, n_p, n_g, E, nu =            0           9           0   1.6698636290559461E-006   1.6780110471114507E-003
+ Found mode: l, n_p, n_g, E, nu =            0          10           0   7.6931402591231456E-007   1.8489486486880644E-003
+ Found mode: l, n_p, n_g, E, nu =            0          11           0   3.6641664527564054E-007   2.0173305468202613E-003
+ Found mode: l, n_p, n_g, E, nu =            0          12           0   1.8691710125701460E-007   2.1816422530222938E-003
+ Found mode: l, n_p, n_g, E, nu =            0          13           0   1.0551085014384480E-007   2.3443985299035431E-003
+ Found mode: l, n_p, n_g, E, nu =            0          14           0   6.6046013521139035E-008   2.5065456042862714E-003
+ Found mode: l, n_p, n_g, E, nu =            0          15           0   4.3206573477438827E-008   2.6690308552108234E-003
+ Found mode: l, n_p, n_g, E, nu =            0          16           0   2.8991962304061770E-008   2.8316010234768888E-003
+ Found mode: l, n_p, n_g, E, nu =            0          17           0   2.0102348438521466E-008   2.9925690354625934E-003
+ Found mode: l, n_p, n_g, E, nu =            0          18           0   1.4807347302853978E-008   3.1527553571746173E-003
+ Found mode: l, n_p, n_g, E, nu =            0          19           0   1.1785015897746672E-008   3.3127978985340980E-003
+ Found mode: l, n_p, n_g, E, nu =            0          20           0   9.8527263398533363E-009   3.4734272272161472E-003
+ Found mode: l, n_p, n_g, E, nu =            0          21           0   8.4882559690176923E-009   3.6350408687744157E-003
+ Found mode: l, n_p, n_g, E, nu =            0          22           0   7.4356453347597661E-009   3.7967547152059477E-003
+ Found mode: l, n_p, n_g, E, nu =            0          23           0   6.6161434388763859E-009   3.9586578625676935E-003
+ Found mode: l, n_p, n_g, E, nu =            0          24           0   6.0545203314813695E-009   4.1205820150645271E-003
+ Found mode: l, n_p, n_g, E, nu =            0          25           0   5.6726271836214972E-009   4.2826789695969364E-003
+ Found mode: l, n_p, n_g, E, nu =            0          26           0   5.4229326105340152E-009   4.4453974638970608E-003
+ Found mode: l, n_p, n_g, E, nu =            0          27           0   5.2468326896034607E-009   4.6083133150446060E-003
+ Found mode: l, n_p, n_g, E, nu =            0          28           0   5.1124459414019551E-009   4.7715571916944954E-003
+ Found mode: l, n_p, n_g, E, nu =            0          29           0   5.0398594282091996E-009   4.9349343239494742E-003
+ Found mode: l, n_p, n_g, E, nu =            0          30           0   5.0047341036726104E-009   5.0983668724171290E-003
+ Found mode: l, n_p, n_g, E, nu =            0          31           0   5.0122851804518109E-009   5.2619935753310740E-003
+ Found mode: l, n_p, n_g, E, nu =            0          32           0   5.0612359400941852E-009   5.4254083372060587E-003
+ Found mode: l, n_p, n_g, E, nu =            0          33           0   5.1620413518215196E-009   5.5886319761592170E-003
+ Found mode: l, n_p, n_g, E, nu =            0          34           0   5.3647791329249262E-009   5.7511908234188129E-003
+ Found mode: l, n_p, n_g, E, nu =            0          35           0   5.8363385245718266E-009   5.9111522964675027E-003
+ Found mode: l, n_p, n_g, E, nu =            1           1           0   9.1544907269783119E-004   5.3144934337426308E-004
+ Found mode: l, n_p, n_g, E, nu =            1           2           0   2.4991160318544112E-004   7.0775691419793353E-004
+ Found mode: l, n_p, n_g, E, nu =            1           3           0   7.9427943731776994E-005   8.8746822400487507E-004
+ Found mode: l, n_p, n_g, E, nu =            1           4           0   3.0340894385059304E-005   1.0628261554707042E-003
+ Found mode: l, n_p, n_g, E, nu =            1           5           0   1.2312399961319584E-005   1.2378365747347587E-003
+ Found mode: l, n_p, n_g, E, nu =            1           6           0   5.5161635464544733E-006   1.4121937115346367E-003
+ Found mode: l, n_p, n_g, E, nu =            1           7           0   2.5210142430077421E-006   1.5849096132030385E-003
+ Found mode: l, n_p, n_g, E, nu =            1           8           0   1.1655533772271165E-006   1.7574767317046418E-003
+ Found mode: l, n_p, n_g, E, nu =            1           9           0   5.4696410728569600E-007   1.9266155427605533E-003
+ Found mode: l, n_p, n_g, E, nu =            1          10           0   2.6502182432770188E-007   2.0931138122230629E-003
+ Found mode: l, n_p, n_g, E, nu =            1          11           0   1.4206912180311907E-007   2.2566282744292884E-003
+ Found mode: l, n_p, n_g, E, nu =            1          12           0   8.4235451259419875E-008   2.4186380577489279E-003
+ Found mode: l, n_p, n_g, E, nu =            1          13           0   5.4014068967670303E-008   2.5813893302096364E-003
+ Found mode: l, n_p, n_g, E, nu =            1          14           0   3.5920598048742404E-008   2.7439541878991514E-003
+ Found mode: l, n_p, n_g, E, nu =            1          15           0   2.4266551870949631E-008   2.9060260802625643E-003
+ Found mode: l, n_p, n_g, E, nu =            1          16           0   1.7289837660881094E-008   3.0668352568968132E-003
+ Found mode: l, n_p, n_g, E, nu =            1          17           0   1.3199612715063549E-008   3.2267632046188055E-003
+ Found mode: l, n_p, n_g, E, nu =            1          18           0   1.0768266705200827E-008   3.3873830103123065E-003
+ Found mode: l, n_p, n_g, E, nu =            1          19           0   9.1745804654104217E-009   3.5485756347296542E-003
+ Found mode: l, n_p, n_g, E, nu =            1          20           0   7.9477653651373274E-009   3.7104200733799747E-003
+ Found mode: l, n_p, n_g, E, nu =            1          21           0   7.0179315887464957E-009   3.8725231106478157E-003
+ Found mode: l, n_p, n_g, E, nu =            1          22           0   6.3207107805153550E-009   4.0344358490999460E-003
+ Found mode: l, n_p, n_g, E, nu =            1          23           0   5.8443663416884175E-009   4.1966856602274026E-003
+ Found mode: l, n_p, n_g, E, nu =            1          24           0   5.5438801608887373E-009   4.3591726740904906E-003
+ Found mode: l, n_p, n_g, E, nu =            1          25           0   5.3243272022839816E-009   4.5221259135205640E-003
+ Found mode: l, n_p, n_g, E, nu =            1          26           0   5.1744070328654735E-009   4.6854460083469059E-003
+ Found mode: l, n_p, n_g, E, nu =            1          27           0   5.0682863014933337E-009   4.8487883272741727E-003
+ Found mode: l, n_p, n_g, E, nu =            1          28           0   5.0114733674911961E-009   5.0124149050540887E-003
+ Found mode: l, n_p, n_g, E, nu =            1          29           0   5.0034793089807842E-009   5.1760460356764957E-003
+ Found mode: l, n_p, n_g, E, nu =            1          30           0   5.0234411837009616E-009   5.3396935722277283E-003
+ Found mode: l, n_p, n_g, E, nu =            1          31           0   5.0988142465978303E-009   5.5032151124709350E-003
+ Found mode: l, n_p, n_g, E, nu =            1          32           0   5.2402217643684214E-009   5.6662274590929202E-003
+ Found mode: l, n_p, n_g, E, nu =            1          33           0   5.5172745336954567E-009   5.8282403463770253E-003
+ abs freq:   20.523262219522113     
+ new best!
+ abs freq:   19.477198290012236     
+ new best!
+ abs freq:   18.410939376479647     
+ new best!
+ abs freq:   17.370509824856320     
+ new best!
+ abs freq:   16.332142124449270     
+ new best!
+ abs freq:   15.297650464182542     
+ new best!
+ abs freq:   14.272896541568610     
+ new best!
+ abs freq:   13.249025375738057     
+ new best!
+ abs freq:   12.245494962953186     
+ new best!
+ abs freq:   11.257631349400610     
+ new best!
+ abs freq:   10.287471190832001     
+ new best!
+ abs freq:   9.3262385576180815     
+ new best!
+ abs freq:   8.3606065384845909     
+ new best!
+ abs freq:   7.3960805510839540     
+ new best!
+ abs freq:   6.4344794139533628     
+ new best!
+ abs freq:   5.4803701920668653     
+ new best!
+ abs freq:   4.5314894568213333     
+ new best!
+ abs freq:   3.5785038061433125     
+ new best!
+ abs freq:   2.6221195208952341     
+ new best!
+ abs freq:   1.6618679067816506     
+ new best!
+ abs freq:  0.70008198143715139     
+ new best!
+ abs freq:  0.26057486745297903     
+ new best!
+ abs freq:   1.2232316280067728     
+ abs freq:   2.1872957542486331     
+ abs freq:   3.1541260790511294     
+ abs freq:   4.1231330216561810     
+ abs freq:   5.0922718237737596     
+ abs freq:   6.0630971838253611     
+ abs freq:   7.0339495566948695     
+ abs freq:   8.0048992688351444     
+ abs freq:   8.9751014226461852     
+ abs freq:   9.9422824408485262     
+ abs freq:   10.903533490431361     
+ abs freq:   0.0000000000000000     
+ new best!
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ best_k, n_gs(best_k)          34           0
+write /afs/mpa/temp/earl/mesa/mesa/data/kap_data/cache/lowT_fa05_gs98_z0.03_x0.5.bin
+ mv failed for './.mesa_temp_cache/kap_cache/lowT_fa05_gs98_z0.03_x0.5.bin' '/afs/mpa/temp/earl/mesa/mesa/data/kap_data/cache/lowT_fa05_gs98_z0.03_x0.5.bin' skipping
+          3   7.136584   5614.622  -0.152814  -0.152814   1.000000   1.000000   0.699485   0.001564   0.280000  -1.779262   1253      0
+ 5.1584E+00   7.136584  -0.052105 -46.896845  -1.677517 -99.000000   0.000000   0.280436   0.009381   0.020000   0.083771      2
+ 3.6400E+05   1.887408  -0.152234 -15.352530 -99.000000  -6.703286   0.000000   0.002972   0.002085   0.020079  0.000E+00  max increase
+
+ Found mode: l, n_p, n_g, E, nu =            0           1           0   9.7509724481263486E-003   2.9995168548777604E-004
+ Found mode: l, n_p, n_g, E, nu =            0           2           0   2.2773617689727100E-003   4.5639013978061621E-004
+ Found mode: l, n_p, n_g, E, nu =            0           3           0   4.6070938771039326E-004   6.2105902323839621E-004
+ Found mode: l, n_p, n_g, E, nu =            0           4           0   1.3847900379645246E-004   8.0042798750983165E-004
+ Found mode: l, n_p, n_g, E, nu =            0           5           0   4.7347573613018134E-005   9.7794978007188977E-004
+ Found mode: l, n_p, n_g, E, nu =            0           6           0   1.8570487342610050E-005   1.1565647672634343E-003
+ Found mode: l, n_p, n_g, E, nu =            0           7           0   8.0205556853074247E-006   1.3314380123205982E-003
+ Found mode: l, n_p, n_g, E, nu =            0           8           0   3.5947408985981285E-006   1.5066811062055222E-003
+ Found mode: l, n_p, n_g, E, nu =            0           9           0   1.6760592271804328E-006   1.6799772900818089E-003
+ Found mode: l, n_p, n_g, E, nu =            0          10           0   7.7241357574900499E-007   1.8511196601637193E-003
+ Found mode: l, n_p, n_g, E, nu =            0          11           0   3.6793817622904861E-007   2.0197007618324415E-003
+ Found mode: l, n_p, n_g, E, nu =            0          12           0   1.8766892929461110E-007   2.1842225760018256E-003
+ Found mode: l, n_p, n_g, E, nu =            0          13           0   1.0589790163195185E-007   2.3471724516630822E-003
+ Found mode: l, n_p, n_g, E, nu =            0          14           0   6.6261069532522440E-008   2.5094988472039005E-003
+ Found mode: l, n_p, n_g, E, nu =            0          15           0   4.3345437406157095E-008   2.6721761182306849E-003
+ Found mode: l, n_p, n_g, E, nu =            0          16           0   2.9081191540119624E-008   2.8349315454925168E-003
+ Found mode: l, n_p, n_g, E, nu =            0          17           0   2.0159192621772132E-008   2.9960904198076824E-003
+ Found mode: l, n_p, n_g, E, nu =            0          18           0   1.4842966573453910E-008   3.1564666677799569E-003
+ Found mode: l, n_p, n_g, E, nu =            0          19           0   1.1805883301361363E-008   3.3166868107063823E-003
+ Found mode: l, n_p, n_g, E, nu =            0          20           0   9.8668591561456100E-009   3.4774923070994756E-003
+ Found mode: l, n_p, n_g, E, nu =            0          21           0   8.4980869099091198E-009   3.6392766824749011E-003
+ Found mode: l, n_p, n_g, E, nu =            0          22           0   7.4427863773216108E-009   3.8011740010312567E-003
+ Found mode: l, n_p, n_g, E, nu =            0          23           0   6.6210583884276495E-009   3.9632550770161319E-003
+ Found mode: l, n_p, n_g, E, nu =            0          24           0   6.0566798282338231E-009   4.1253474430750850E-003
+ Found mode: l, n_p, n_g, E, nu =            0          25           0   5.6735894979096409E-009   4.2876302733649372E-003
+ Found mode: l, n_p, n_g, E, nu =            0          26           0   5.4221507296681898E-009   4.4505199589444482E-003
+ Found mode: l, n_p, n_g, E, nu =            0          27           0   5.2450154506008896E-009   4.6136039351477648E-003
+ Found mode: l, n_p, n_g, E, nu =            0          28           0   5.1102744074607792E-009   4.7770301926771102E-003
+ Found mode: l, n_p, n_g, E, nu =            0          29           0   5.0360769929275984E-009   4.9405830907855424E-003
+ Found mode: l, n_p, n_g, E, nu =            0          30           0   5.0003411101518715E-009   5.1041921083559757E-003
+ Found mode: l, n_p, n_g, E, nu =            0          31           0   5.0069779002438390E-009   5.2679962698876249E-003
+ Found mode: l, n_p, n_g, E, nu =            0          32           0   5.0544194059525247E-009   5.4315999827582433E-003
+ Found mode: l, n_p, n_g, E, nu =            0          33           0   5.1535390537181699E-009   5.5950087103706237E-003
+ Found mode: l, n_p, n_g, E, nu =            0          34           0   5.3526895859899852E-009   5.7577624592116414E-003
+ Found mode: l, n_p, n_g, E, nu =            0          35           0   5.8095920203965329E-009   5.9180494650020350E-003
+ Found mode: l, n_p, n_g, E, nu =            1           1           0   9.1823451376148407E-004   5.3202517825578480E-004
+ Found mode: l, n_p, n_g, E, nu =            1           2           0   2.5064894467333735E-004   7.0853837698945179E-004
+ Found mode: l, n_p, n_g, E, nu =            1           3           0   7.9677365958121760E-005   8.8846836862149119E-004
+ Found mode: l, n_p, n_g, E, nu =            1           4           0   3.0437016786156399E-005   1.0640372531196356E-003
+ Found mode: l, n_p, n_g, E, nu =            1           5           0   1.2353756107632578E-005   1.2392684673250532E-003
+ Found mode: l, n_p, n_g, E, nu =            1           6           0   5.5350498096076709E-006   1.4138313927704927E-003
+ Found mode: l, n_p, n_g, E, nu =            1           7           0   2.5301677450848889E-006   1.5867583931863628E-003
+ Found mode: l, n_p, n_g, E, nu =            1           8           0   1.1700832886097318E-006   1.7595307610530219E-003
+ Found mode: l, n_p, n_g, E, nu =            1           9           0   5.4917222972193912E-007   1.9288812352797565E-003
+ Found mode: l, n_p, n_g, E, nu =            1          10           0   2.6611059732969004E-007   2.0955878954408993E-003
+ Found mode: l, n_p, n_g, E, nu =            1          11           0   1.4260538074514489E-007   2.2593022253136557E-003
+ Found mode: l, n_p, n_g, E, nu =            1          12           0   8.4524796183596349E-008   2.4215165116741899E-003
+ Found mode: l, n_p, n_g, E, nu =            1          13           0   5.4182836517997900E-008   2.5844522233372867E-003
+ Found mode: l, n_p, n_g, E, nu =            1          14           0   3.6029013016714096E-008   2.7472047182088731E-003
+ Found mode: l, n_p, n_g, E, nu =            1          15           0   2.4338857955965581E-008   2.9094789979372654E-003
+ Found mode: l, n_p, n_g, E, nu =            1          16           0   1.7332966613665990E-008   3.0704809442883706E-003
+ Found mode: l, n_p, n_g, E, nu =            1          17           0   1.3226314823016476E-008   3.2305993300520059E-003
+ Found mode: l, n_p, n_g, E, nu =            1          18           0   1.0784943406477491E-008   3.3914013055830312E-003
+ Found mode: l, n_p, n_g, E, nu =            1          19           0   9.1852799854472501E-009   3.5527772510422248E-003
+ Found mode: l, n_p, n_g, E, nu =            1          20           0   7.9559007674534224E-009   3.7148051501376426E-003
+ Found mode: l, n_p, n_g, E, nu =            1          21           0   7.0232302210253372E-009   3.8770886466208045E-003
+ Found mode: l, n_p, n_g, E, nu =            1          22           0   6.3241912521541014E-009   4.0391987611572725E-003
+ Found mode: l, n_p, n_g, E, nu =            1          23           0   5.8454595425147769E-009   4.2016293461776631E-003
+ Found mode: l, n_p, n_g, E, nu =            1          24           0   5.5432822516433450E-009   4.3642910498392865E-003
+ Found mode: l, n_p, n_g, E, nu =            1          25           0   5.3234935458459280E-009   4.5274382544594058E-003
+ Found mode: l, n_p, n_g, E, nu =            1          26           0   5.1720383071079809E-009   4.6909407872106467E-003
+ Found mode: l, n_p, n_g, E, nu =            1          27           0   5.0652187221557312E-009   4.8544652419596837E-003
+ Found mode: l, n_p, n_g, E, nu =            1          28           0   5.0077812532969738E-009   5.0182777914892463E-003
+ Found mode: l, n_p, n_g, E, nu =            1          29           0   4.9985591235233696E-009   5.1820961042260468E-003
+ Found mode: l, n_p, n_g, E, nu =            1          30           0   5.0179127574928958E-009   5.3459294611355743E-003
+ Found mode: l, n_p, n_g, E, nu =            1          31           0   5.0916535275816590E-009   5.5096355899410376E-003
+ Found mode: l, n_p, n_g, E, nu =            1          32           0   5.2310179733168332E-009   5.6728512601986417E-003
+ Found mode: l, n_p, n_g, E, nu =            1          33           0   5.5030656913410750E-009   5.8350746692381978E-003
+ abs freq:   20.536483371403325     
+ new best!
+ abs freq:   19.490389079411663     
+ new best!
+ abs freq:   18.424045380726643     
+ new best!
+ abs freq:   17.383547507239172     
+ new best!
+ abs freq:   16.345050815353595     
+ new best!
+ abs freq:   15.310514694474781     
+ new best!
+ abs freq:   14.285673779664613     
+ new best!
+ abs freq:   13.261749284862953     
+ new best!
+ abs freq:   12.258104425976388     
+ new best!
+ abs freq:   11.270127963691007     
+ new best!
+ abs freq:   10.299885357326271     
+ new best!
+ abs freq:   9.3385326638243242     
+ new best!
+ abs freq:   8.3729044889616464     
+ new best!
+ abs freq:   7.4083621368089485     
+ new best!
+ abs freq:   6.4466538964123581     
+ new best!
+ abs freq:   5.4924860591869713     
+ new best!
+ abs freq:   4.5435545878187078     
+ new best!
+ abs freq:   3.5905718649924179     
+ new best!
+ abs freq:   2.6341875457419595     
+ new best!
+ abs freq:   1.6739394645610008     
+ new best!
+ abs freq:  0.71217660165105545     
+ new best!
+ abs freq:  0.24855872413378130     
+ new best!
+ abs freq:   1.2111932979430600     
+ abs freq:   2.1751975817406071     
+ abs freq:   3.1420791562171688     
+ abs freq:   4.1110665603564183     
+ abs freq:   5.0801838838270790     
+ abs freq:   6.0510085827666620     
+ abs freq:   7.0218674369889040     
+ abs freq:   7.9928154495479262     
+ abs freq:   8.9630094528068014     
+ abs freq:   9.9302967845473162     
+ abs freq:   10.891703543028660     
+ abs freq:   0.0000000000000000     
+ new best!
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ best_k, n_gs(best_k)          34           0
+          4   7.136521   5612.994  -0.154227  -0.154227   1.000000   1.000000   0.699476   0.001579   0.280000  -1.778849    933      0
+ 5.2375E+00   7.136521  -0.052479 -46.900114  -1.678579 -99.000000   0.000000   0.280443   0.009381   0.020000   0.083789      2
+ 5.3680E+05   1.887485  -0.153486 -15.954590 -99.000000  -6.702493   0.000000   0.002959   0.002085   0.020081  0.000E+00  max increase
+
+ Found mode: l, n_p, n_g, E, nu =            0           1           0   9.7980644983076941E-003   3.0023232047673797E-004
+ Found mode: l, n_p, n_g, E, nu =            0           2           0   2.2862647356869581E-003   4.5681034920037758E-004
+ Found mode: l, n_p, n_g, E, nu =            0           3           0   4.6209150764781319E-004   6.2180214547321883E-004
+ Found mode: l, n_p, n_g, E, nu =            0           4           0   1.3891966426055486E-004   8.0144782529706490E-004
+ Found mode: l, n_p, n_g, E, nu =            0           5           0   4.7507758947954576E-005   9.7920992720288628E-004
+ Found mode: l, n_p, n_g, E, nu =            0           6           0   1.8637491984205665E-005   1.1580607028831708E-003
+ Found mode: l, n_p, n_g, E, nu =            0           7           0   8.0510509036773775E-006   1.3331649344992952E-003
+ Found mode: l, n_p, n_g, E, nu =            0           8           0   3.6090633180086224E-006   1.5086320595263311E-003
+ Found mode: l, n_p, n_g, E, nu =            0           9           0   1.6831923278347370E-006   1.6821463238302482E-003
+ Found mode: l, n_p, n_g, E, nu =            0          10           0   7.7593397115265349E-007   1.8535151631687424E-003
+ Found mode: l, n_p, n_g, E, nu =            0          11           0   3.6967089451650265E-007   2.0223247634881146E-003
+ Found mode: l, n_p, n_g, E, nu =            0          12           0   1.8852212486931714E-007   2.1870701302483925E-003
+ Found mode: l, n_p, n_g, E, nu =            0          13           0   1.0633500239717318E-007   2.3502400309768842E-003
+ Found mode: l, n_p, n_g, E, nu =            0          14           0   6.6506668308329113E-008   2.5127740254828148E-003
+ Found mode: l, n_p, n_g, E, nu =            0          15           0   4.3498304560451791E-008   2.6756522267830894E-003
+ Found mode: l, n_p, n_g, E, nu =            0          16           0   2.9182753396822208E-008   2.8386216417683545E-003
+ Found mode: l, n_p, n_g, E, nu =            0          17           0   2.0223378714582587E-008   3.0000046045946319E-003
+ Found mode: l, n_p, n_g, E, nu =            0          18           0   1.4881255783606564E-008   3.1605893496178114E-003
+ Found mode: l, n_p, n_g, E, nu =            0          19           0   1.1829489754362598E-008   3.3210065849842104E-003
+ Found mode: l, n_p, n_g, E, nu =            0          20           0   9.8824818994973573E-009   3.4820196715198213E-003
+ Found mode: l, n_p, n_g, E, nu =            0          21           0   8.5087476816951772E-009   3.6440103181537612E-003
+ Found mode: l, n_p, n_g, E, nu =            0          22           0   7.4502683497626422E-009   3.8061053041746301E-003
+ Found mode: l, n_p, n_g, E, nu =            0          23           0   6.6262437640120823E-009   3.9683933862095294E-003
+ Found mode: l, n_p, n_g, E, nu =            0          24           0   6.0593668904772050E-009   4.1306971311572457E-003
+ Found mode: l, n_p, n_g, E, nu =            0          25           0   5.6741373139251530E-009   4.2931815026722364E-003
+ Found mode: l, n_p, n_g, E, nu =            0          26           0   5.4215142149235827E-009   4.4562760726343260E-003
+ Found mode: l, n_p, n_g, E, nu =            0          27           0   5.2433208279243228E-009   4.6195699905829833E-003
+ Found mode: l, n_p, n_g, E, nu =            0          28           0   5.1074062869679939E-009   4.7831943252004188E-003
+ Found mode: l, n_p, n_g, E, nu =            0          29           0   5.0325431262583285E-009   4.9469517723832093E-003
+ Found mode: l, n_p, n_g, E, nu =            0          30           0   4.9960814885619442E-009   5.1107816843043233E-003
+ Found mode: l, n_p, n_g, E, nu =            0          31           0   5.0012936823521824E-009   5.2747907573550438E-003
+ Found mode: l, n_p, n_g, E, nu =            0          32           0   5.0475991220934246E-009   5.4385927266978676E-003
+ Found mode: l, n_p, n_g, E, nu =            0          33           0   5.1452587117345898E-009   5.6022262502535688E-003
+ Found mode: l, n_p, n_g, E, nu =            0          34           0   5.3407490514957881E-009   5.7652154045234709E-003
+ Found mode: l, n_p, n_g, E, nu =            0          35           0   5.7827092435170013E-009   5.9258244530118681E-003
+ Found mode: l, n_p, n_g, E, nu =            1           1           0   9.2136190551089445E-004   5.3266626543872807E-004
+ Found mode: l, n_p, n_g, E, nu =            1           2           0   2.5150035641261246E-004   7.0939796149756219E-004
+ Found mode: l, n_p, n_g, E, nu =            1           3           0   7.9956560855640242E-005   8.8957415601495233E-004
+ Found mode: l, n_p, n_g, E, nu =            1           4           0   3.0547642248525288E-005   1.0653844197373733E-003
+ Found mode: l, n_p, n_g, E, nu =            1           5           0   1.2399956233568913E-005   1.2408506505404307E-003
+ Found mode: l, n_p, n_g, E, nu =            1           6           0   5.5566344324111606E-006   1.4156448333720053E-003
+ Found mode: l, n_p, n_g, E, nu =            1           7           0   2.5405700350232961E-006   1.5888058668391005E-003
+ Found mode: l, n_p, n_g, E, nu =            1           8           0   1.1751869842429373E-006   1.7618085344500635E-003
+ Found mode: l, n_p, n_g, E, nu =            1           9           0   5.5169154536027062E-007   1.9313851254954115E-003
+ Found mode: l, n_p, n_g, E, nu =            1          10           0   2.6734012849382815E-007   2.0983247144648874E-003
+ Found mode: l, n_p, n_g, E, nu =            1          11           0   1.4322007306465586E-007   2.2622649512224319E-003
+ Found mode: l, n_p, n_g, E, nu =            1          12           0   8.4851357674432059E-008   2.4246917845544770E-003
+ Found mode: l, n_p, n_g, E, nu =            1          13           0   5.4377531714392212E-008   2.5878383017063486E-003
+ Found mode: l, n_p, n_g, E, nu =            1          14           0   3.6154203454270701E-008   2.7508015615560415E-003
+ Found mode: l, n_p, n_g, E, nu =            1          15           0   2.4419563027335652E-008   2.9132844162621158E-003
+ Found mode: l, n_p, n_g, E, nu =            1          16           0   1.7383964718277620E-008   3.0744997356412142E-003
+ Found mode: l, n_p, n_g, E, nu =            1          17           0   1.3257436154232161E-008   3.2348336108900307E-003
+ Found mode: l, n_p, n_g, E, nu =            1          18           0   1.0803904553111705E-008   3.3958334617893754E-003
+ Found mode: l, n_p, n_g, E, nu =            1          19           0   9.1981320799146913E-009   3.5573976394768507E-003
+ Found mode: l, n_p, n_g, E, nu =            1          20           0   7.9656249308758080E-009   3.7196299101208831E-003
+ Found mode: l, n_p, n_g, E, nu =            1          21           0   7.0300231967244027E-009   3.8821222723571464E-003
+ Found mode: l, n_p, n_g, E, nu =            1          22           0   6.3281460444306300E-009   4.0444316477448719E-003
+ Found mode: l, n_p, n_g, E, nu =            1          23           0   5.8471782305964744E-009   4.2070631872357092E-003
+ Found mode: l, n_p, n_g, E, nu =            1          24           0   5.5432628841271062E-009   4.3699270297537897E-003
+ Found mode: l, n_p, n_g, E, nu =            1          25           0   5.3223206471993742E-009   4.5332709230755828E-003
+ Found mode: l, n_p, n_g, E, nu =            1          26           0   5.1701466153254744E-009   4.6969805453862239E-003
+ Found mode: l, n_p, n_g, E, nu =            1          27           0   5.0621882877154801E-009   4.8607191771661675E-003
+ Found mode: l, n_p, n_g, E, nu =            1          28           0   5.0033451007924260E-009   5.0247275885168322E-003
+ Found mode: l, n_p, n_g, E, nu =            1          29           0   4.9935250207494252E-009   5.1887469124651496E-003
+ Found mode: l, n_p, n_g, E, nu =            1          30           0   5.0120648058496745E-009   5.3528062987601016E-003
+ Found mode: l, n_p, n_g, E, nu =            1          31           0   5.0836979604387934E-009   5.5167280996003560E-003
+ Found mode: l, n_p, n_g, E, nu =            1          32           0   5.2206679389590017E-009   5.6801507898349745E-003
+ Found mode: l, n_p, n_g, E, nu =            1          33           0   5.4878295906682607E-009   5.8426274493250455E-003
+ abs freq:   20.551101827575529     
+ new best!
+ abs freq:   19.505029794105820     
+ new best!
+ abs freq:   18.438569830303429     
+ new best!
+ abs freq:   17.397951739840838     
+ new best!
+ abs freq:   16.359369974630397     
+ new best!
+ abs freq:   15.324766050428643     
+ new best!
+ abs freq:   14.299828710743187     
+ new best!
+ abs freq:   13.275828735983492     
+ new best!
+ abs freq:   12.272107652671899     
+ new best!
+ abs freq:   11.283994941742209     
+ new best!
+ abs freq:   10.313635347754156     
+ new best!
+ abs freq:   9.3522335640178955     
+ new best!
+ abs freq:   8.3865719834616534     
+ new best!
+ abs freq:   7.4219950998953319     
+ new best!
+ abs freq:   6.4602617265576852     
+ new best!
+ abs freq:   5.5060308741970516     
+ new best!
+ abs freq:   4.5570172753020710     
+ new best!
+ abs freq:   3.6040617773673302     
+ new best!
+ abs freq:   2.6477660383554933     
+ new best!
+ abs freq:   1.6875158680039601     
+ new best!
+ abs freq:  0.72572621974981244     
+ new best!
+ abs freq:  0.23498033232510793     
+ new best!
+ abs freq:   1.1975937684846010     
+ abs freq:   2.1615822024826739     
+ abs freq:   3.1284120493772827     
+ abs freq:   4.0974066402063105     
+ abs freq:   5.0665729376121496     
+ abs freq:   6.0373360559076481     
+ abs freq:   7.0081637656910978     
+ abs freq:   7.9792286038524471     
+ abs freq:   8.9494790759460212     
+ abs freq:   9.9167753204855824     
+ abs freq:   10.878472024440505     
+ abs freq:   0.0000000000000000     
+ new best!
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ abs freq:   0.0000000000000000     
+ best_k, n_gs(best_k)          34           0
+          5   7.136446   5611.171  -0.155270  -0.155270   1.000000   1.000000   0.699465   0.001597   0.280000  -1.778321    819      0
+ 5.3167E+00   7.136446  -0.052883 -46.903843  -1.679753 -99.000000   0.000000   0.280452   0.009381   0.020000   0.083812      2
+ 7.4416E+05   1.887592  -0.154858 -15.653560 -99.000000  -6.701624   0.000000   0.002944   0.002085   0.020084  0.000E+00  max increase
+
+ Found mode: l, n_p, n_g, E, nu =            0           1           0   9.8508100219725572E-003   3.0052984013840720E-004
+ Found mode: l, n_p, n_g, E, nu =            0           2           0   2.2959960484947211E-003   4.5726897096953176E-004
+ Found mode: l, n_p, n_g, E, nu =            0           3           0   4.6363464139983048E-004   6.2260641439260220E-004
+ Found mode: l, n_p, n_g, E, nu =            0           4           0   1.3940927608915515E-004   8.0255064611449325E-004
+ Found mode: l, n_p, n_g, E, nu =            0           5           0   4.7686564557336627E-005   9.8057906049433402E-004
+ Found mode: l, n_p, n_g, E, nu =            0           6           0   1.8711565389741970E-005   1.1596854583219671E-003
+ Found mode: l, n_p, n_g, E, nu =            0           7           0   8.0845758880543976E-006   1.3350323530292984E-003
+ Found mode: l, n_p, n_g, E, nu =            0           8           0   3.6249302188668505E-006   1.5107419395714279E-003
+ Found mode: l, n_p, n_g, E, nu =            0           9           0   1.6911137805958868E-006   1.6845000063255755E-003
+ Found mode: l, n_p, n_g, E, nu =            0          10           0   7.7981197299260133E-007   1.8561154355672181E-003
+ Found mode: l, n_p, n_g, E, nu =            0          11           0   3.7157287199819770E-007   2.0251709178522319E-003
+ Found mode: l, n_p, n_g, E, nu =            0          12           0   1.8945995070569611E-007   2.1901573103134406E-003
+ Found mode: l, n_p, n_g, E, nu =            0          13           0   1.0681648540372417E-007   2.3535629857078509E-003
+ Found mode: l, n_p, n_g, E, nu =            0          14           0   6.6779902372450507E-008   2.5163246837660498E-003
+ Found mode: l, n_p, n_g, E, nu =            0          15           0   4.3668298891136960E-008   2.6794287194703320E-003
+ Found mode: l, n_p, n_g, E, nu =            0          16           0   2.9294020682307254E-008   2.8426272232168347E-003
+ Found mode: l, n_p, n_g, E, nu =            0          17           0   2.0294152039303432E-008   3.0042436237935253E-003
+ Found mode: l, n_p, n_g, E, nu =            0          18           0   1.4924427456164908E-008   3.1650612337621210E-003
+ Found mode: l, n_p, n_g, E, nu =            0          19           0   1.1855999771085642E-008   3.3257021864238280E-003
+ Found mode: l, n_p, n_g, E, nu =            0          20           0   9.8995814844446402E-009   3.4869297137058866E-003
+ Found mode: l, n_p, n_g, E, nu =            0          21           0   8.5210505966759319E-009   3.6491336483554684E-003
+ Found mode: l, n_p, n_g, E, nu =            0          22           0   7.4596823411743096E-009   3.8114509054232464E-003
+ Found mode: l, n_p, n_g, E, nu =            0          23           0   6.6327134032393420E-009   3.9739684377849485E-003
+ Found mode: l, n_p, n_g, E, nu =            0          24           0   6.0627421775483536E-009   4.1364940986846890E-003
+ Found mode: l, n_p, n_g, E, nu =            0          25           0   5.6750925481845181E-009   4.2991874776739788E-003
+ Found mode: l, n_p, n_g, E, nu =            0          26           0   5.4212359380788038E-009   4.4624921432324148E-003
+ Found mode: l, n_p, n_g, E, nu =            0          27           0   5.2423532379038964E-009   4.6260097685644737E-003
+ Found mode: l, n_p, n_g, E, nu =            0          28           0   5.1052320283730961E-009   4.7898634994630708E-003
+ Found mode: l, n_p, n_g, E, nu =            0          29           0   5.0287836170153504E-009   4.9538416985752121E-003
+ Found mode: l, n_p, n_g, E, nu =            0          30           0   4.9910501029438242E-009   5.1178870524475348E-003
+ Found mode: l, n_p, n_g, E, nu =            0          31           0   4.9952554007111021E-009   5.2821214224814837E-003
+ Found mode: l, n_p, n_g, E, nu =            0          32           0   5.0403519507712885E-009   5.4461608394102056E-003
+ Found mode: l, n_p, n_g, E, nu =            0          33           0   5.1358903583097219E-009   5.6100335613554781E-003
+ Found mode: l, n_p, n_g, E, nu =            0          34           0   5.3278109890285195E-009   5.7732703488189291E-003
+ Found mode: l, n_p, n_g, E, nu =            0          35           0   5.7550887154601357E-009   5.9342366616998094E-003

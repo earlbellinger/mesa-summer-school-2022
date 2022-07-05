@@ -30,13 +30,14 @@
 
       implicit none
 
-      real(dp), save :: period_f
-      real(dp), save :: period_1o
+      real(dp), allocatable, save :: frequencies(:,:)
+      real(dp), allocatable, save :: inertias(:)
+      integer, allocatable, save :: n_gs(:)
 
       ! Displacement wavefunctions of F and 1-O modes
 
-      real(dp), allocatable, save :: xi_r_f(:)
-      real(dp), allocatable, save :: xi_r_1o(:)
+      real(dp), allocatable, save :: xi_r_radial(:)
+      real(dp), allocatable, save :: xi_r_dipole(:)
 
       logical, save :: gyre_has_run
       
@@ -102,6 +103,10 @@
          call gyre_set_constant('L_SUN', Lsun)
 
          call gyre_set_constant('GYRE_DIR', TRIM(mesa_dir)//'/gyre/gyre')
+         
+         allocate(inertias(50))
+         allocate(frequencies(2,50))
+         allocate(n_gs(50))
 
       end subroutine extras_startup
       
@@ -109,13 +114,20 @@
       integer function extras_start_step(id)
          integer, intent(in) :: id
          integer :: ierr
+         integer :: k
          type (star_info), pointer :: s
          ierr = 0
          call star_ptr(id, s, ierr)
          if (ierr /= 0) return
 
          gyre_has_run = .false.
-         !write(*,*) 'setting gyre_has_run false'
+
+         do k = 1, 50
+            frequencies(1,k) = 0
+            frequencies(2,k) = 0
+            inertias(k) = 0
+            n_gs(k) = 0
+         end do
 
          extras_start_step = 0
       end function extras_start_step
@@ -161,7 +173,7 @@
          ierr = 0
          call star_ptr(id, s, ierr)
          if (ierr /= 0) return
-         how_many_extra_history_columns = 2
+         how_many_extra_history_columns = 100
       end function how_many_extra_history_columns
       
       
@@ -169,24 +181,29 @@
          integer, intent(in) :: id, n
          character (len=maxlen_history_column_name) :: names(n)
          real(dp) :: vals(n)
+         integer :: k
          integer, intent(out) :: ierr
          type (star_info), pointer :: s
          ierr = 0
          call star_ptr(id, s, ierr)
          if (ierr /= 0) return
          
-         names(1) = 'period_f'
-         names(2) = 'period_1o'
-
          if (s%x_logical_ctrl(1)) then
 
-            vals(1) = period_f
-            vals(2) = period_1o
-
+            ! save the frequencies of the radial and dipole modes 
+            do k = 1, 50
+                write (names(k),    '(A,I0)') 'nu_radial_', k 
+                write (names(k+50), '(A,I0)') 'nu_dipole_', k 
+                vals(k)    = frequencies(1, k)
+                vals(k+50) = frequencies(2, k)
+            end do
+            
          else
-
-            vals(1) = 0.
-            vals(2) = 0.
+            
+            ! write out zeros for the 2*50 columns 
+            do k = 1, 100
+                vals(k) = 0
+            end do
 
          endif
 
@@ -231,8 +248,8 @@
          !   vals(k,1) = s% Pgas(k)/s% P(k)
          !end do
 
-         names(1) = 'xi_r_f'
-         names(2) = 'xi_r_1o'
+         names(1) = 'xi_r_radial'
+         names(2) = 'xi_r_dipole'
 
          if (s%x_logical_ctrl(1)) then
 
@@ -241,13 +258,8 @@
                 call run_gyre(id, ierr)
             endif
 
-            !write(*,*) "here"
-            !write(*,*) size(xi_r_f)
-            !write(*,*) size(vals)
-            !write(*,*) s% nz
-
-            vals(:,1) = xi_r_f
-            vals(:,2) = xi_r_1o
+            vals(:,1) = xi_r_radial
+            vals(:,2) = xi_r_dipole
 
           else
 
@@ -322,11 +334,42 @@
       integer function extras_finish_step(id)
          integer, intent(in) :: id
          integer :: ierr
+         
+         integer :: k, best_k
+         real(dp) :: best_freq
+         
          type (star_info), pointer :: s
          ierr = 0
          call star_ptr(id, s, ierr)
          if (ierr /= 0) return
          extras_finish_step = keep_going
+
+         if (s%x_logical_ctrl(1)) then
+
+            if (.NOT. gyre_has_run) then
+               write(*,*) 'calling run_gyre'
+                call run_gyre(id, ierr)
+            endif
+
+            ! find the dipole mode closest to nu_max 
+            ! since we have normalized by nu_max, this should be the mode closest to 0
+            best_freq = 1d99
+            do k = 1, 50
+               if (frequencies(2,k) .ne. 0 .and. abs(frequencies(2,k)) < best_freq) then
+                   !write (*,*) 'new best!'
+                   best_k = k
+                   best_freq = abs(frequencies(2,k))
+               end if 
+            end do 
+
+            ! stop if n_g != 0 for this mode 
+            !write (*,*) 'best_k, n_gs(best_k)', best_k, n_gs(best_k)
+            if (n_gs(best_k) .ne. 0) then
+               write (*,*) 'Found an observable mixed mode!'
+               extras_finish_step = terminate
+            end if
+
+         end if
 
          ! to save a profile, 
             ! s% need_to_save_profiles_now = .true.
@@ -358,84 +401,83 @@
          real(dp), allocatable :: point_data(:,:)
          integer               :: ipar(0)
          real(dp)              :: rpar(0)
- 
+
          ! Pass model data to GYRE
- 
+
          call star_get_pulse_data(id, 'GYRE', .FALSE., .TRUE., .FALSE., &
               global_data, point_data, ierr)
          if (ierr /= 0) then
             print *,'Failed when calling star_get_pulse_data'
             return
          end if
- 
+
          call gyre_set_model(global_data, point_data, 101)
- 
+
          ! Run GYRE to get modes
- 
+
          call gyre_get_modes(0, process_mode, ipar, rpar)
+         call gyre_get_modes(1, process_mode, ipar, rpar)
 
          gyre_has_run = .true.
 
       contains
 
          subroutine process_mode (md, ipar, rpar, retcode)
- 
+
             type(mode_t), intent(in) :: md
             integer, intent(inout)   :: ipar(:)
             real(dp), intent(inout)  :: rpar(:)
             integer, intent(out)     :: retcode
             integer :: k
+            
+            type (star_info), pointer :: s
+            ierr = 0
+            call star_ptr(id, s, ierr)
+            if (ierr /= 0) return
   
             ! Print out radial order and frequency
             
-             print *, 'Found mode: radial order, frequency = ', &
-                  md%n_pg, REAL(md%freq('HZ'))
-
-             ! If this is the F mode, store the period
-
-            if (md%n_pg == 1) then
-
-               !write(*,*) 'process mode'
-               !write(*,*) size(xi_r_f)
-               !write(*,*) md%n_k
-
-               if (allocated(xi_r_f)) deallocate(xi_r_f)
-               allocate(xi_r_f(md%n_k))
-
-               !write(*,*) size(xi_r_f)
-
-               do k = 1, md%n_k
-                  xi_r_f(k) = md%xi_r(k)
-               end do
-
-               xi_r_f = xi_r_f(md%n_k:1:-1)
-
+            if (md%n_p >= 1 .and. md%n_p <= 50) then
+            
+                print *, 'Found mode: l, n_p, n_g, E, nu = ', &
+                    md%l, md%n_p, md%n_g, md%E_norm(), REAL(md%freq('HZ'))
+                
+                if (md%l == 0) then ! radial modes 
+                    frequencies(md%l+1, md%n_p) = (md%freq('UHZ') - s% nu_max) / s% delta_nu
+                    
+                    if (md%n_p == 16) then ! store the eigenfunction 
+                       if (allocated(xi_r_radial)) deallocate(xi_r_radial)
+                       allocate(xi_r_radial(md%n_k))
+                       
+                       do k = 1, md%n_k
+                          xi_r_radial(k) = md%xi_r(k)
+                       end do
+                       xi_r_radial = xi_r_radial(md%n_k:1:-1)
+                    end if
+                
+                else if (inertias(md%n_p) > 0 .and. md%E_norm() > inertias(md%n_p)) then
+                    write (*,*) 'Skipping mode: inertia higher than already seen'
+                else ! non-radial modes 
+                
+                    ! choose the mode with the lowest inertia 
+                    inertias(md%n_p) = md%E_norm() 
+                    frequencies(md%l+1, md%n_p) = (md%freq('UHZ') - s% nu_max) / s% delta_nu
+                    n_gs(md%n_p) = md%n_g
+                    
+                    if (md%n_p == 15) then ! store the eigenfunction 
+                       if (allocated(xi_r_dipole)) deallocate(xi_r_dipole)
+                       allocate(xi_r_dipole(md%n_k))
+                       
+                       do k = 1, md%n_k
+                          xi_r_dipole(k) = md%xi_r(k)
+                       end do
+                       xi_r_dipole = xi_r_dipole(md%n_k:1:-1)
+                    end if
+                
+                end if
             end if
 
-            ! If this is the 1-O mode, store the period
-
-            if (md%n_pg == 2) then
-               period_1o = 1. / (3600.*REAL(md%freq('HZ')))
-            end if
-
-            ! If this is the 1-O mode, store the displacement wavefunction
-
-            if (md%n_pg == 2) then
-
-               if (allocated(xi_r_1o)) deallocate(xi_r_1o)
-               allocate(xi_r_1o(md%n_k))
-
-               do k = 1, md%n_k
-                  xi_r_1o(k) = md%xi_r(k)
-               end do
-
-               xi_r_1o = xi_r_1o(md%n_k:1:-1)
-
-            end if
-     
-            ! Set return code
             retcode = 0
- 
          end subroutine process_mode
 
       end subroutine run_gyre

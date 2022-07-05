@@ -1,9 +1,11 @@
 &star_job
-    create_pre_main_sequence_model = .false.
-
     pgstar_flag = .true.
-
     pause_before_terminate = .true.
+    
+    relax_initial_y = .true.
+    relax_initial_z = .true.
+    new_y = 0.269
+    new_z = 0.0187
 
 / ! end of star_job namelist
 
@@ -13,7 +15,7 @@
 
 
 &kap
-    Zbase = 0.02
+    Zbase = 0.0187
 / ! end of kap namelist
 
 
@@ -22,28 +24,13 @@
 
   ! starting specifications
     initial_mass = 1 ! in Msun units
-    initial_z = 0.02
-
-    x_logical_ctrl(1) = .true.
+    mixing_length_alpha = 2.22
 
   ! when to stop
-
-    ! stop when the star nears ZAMS (Lnuc/L > 0.99)
-    !Lnuc_div_L_zams_limit = 0.99d0
-    !stop_near_zams = .true.
-
-    ! stop when the center mass fraction of h1 drops below this limit
-    !xa_central_lower_limit_species(1) = 'h1'
-    !xa_central_lower_limit(1) = 1d-8
-    
-    !photosphere_r_upper_limit = 5
     log_Teff_lower_limit = 3.69
 
-    ! options for energy conservation (see MESA V, Section 3)
-    !energy_eqn_option = 'dedt'
-    !use_gold_tolerances = .true.
-
-  ! output
+  ! run GYRE to calculate oscillation modes 
+    x_logical_ctrl(1) = .true.
 
 / ! end of controls namelist
 
