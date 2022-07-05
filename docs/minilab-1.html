@@ -290,32 +290,9 @@ ZAMS-to-TAMS evolution. You’re now ready to go ahead and run the code:</p>
 <span class="go">Found mode: radial order, frequency =            2   1.1184917524623201E-004</span>
 </pre></div>
 </div>
-<p>This confirms that GYRE is being run, and that radial modes (in this
-case, the fundamental and first overtone) are being found. The periods
-of the modes are of the order <span class="math notranslate nohighlight">\(10^{4}\,{\rm s}\)</span>, just what we’d
-expect for <span class="math notranslate nohighlight">\(\beta\)</span> Cephei stars.</p>
-<p class="rubric">Footnotes</p>
-<dl class="footnote brackets">
-<dt class="label" id="f1"><span class="brackets">1</span></dt>
-<dd><p>When using this <code class="docutils literal notranslate"><span class="pre">./star</span></code> trick, you can’t do restarts
-using the <code class="docutils literal notranslate"><span class="pre">./re</span></code> script. Instead, you should chose which
-photo in the <code class="docutils literal notranslate"><span class="pre">photos</span></code> subdirectory you want to restart
-from; copy this into the working directory with the name
-<code class="docutils literal notranslate"><span class="pre">restart_photo</span></code>; and then run <code class="docutils literal notranslate"><span class="pre">./star</span></code> as before. If you
-later want to <em>stop</em> doing restarts, simply delete
-<code class="docutils literal notranslate"><span class="pre">restart_photo</span></code>.</p>
-</dd>
-<dt class="label" id="f2"><span class="brackets">2</span></dt>
-<dd><p>Without these settings, MESA tends to gallop off near the end
-of the main sequence, and doesn’t properly resolve the ‘Henyey hook’
-in the Hertzsprung-Russell diagram where massive stars briefly evolve
-to the blue.</p>
-</dd>
-<dt class="label" id="f3"><span class="brackets">3</span></dt>
-<dd><p>GYRE is able to do remeshing itself, but we’re not going to
-use that particular functionality.</p>
-</dd>
-</dl>
+<p>This confirms that GYRE is being run, and that modes are being found.
+The frequencies of the modes are of the order <span class="math notranslate nohighlight">\(10^{4}\,{\rm s}\)</span>,
+just what we’d expect for solar-like stars.</p>
 </div>
 </div>
 

@@ -250,24 +250,6 @@ As the run proceeds, you should be able to see terminal output that looks simila
     Found mode: radial order, frequency =            1   8.5707910250840724E-005
     Found mode: radial order, frequency =            2   1.1184917524623201E-004
 
-This confirms that GYRE is being run, and that radial modes (in this
-case, the fundamental and first overtone) are being found. The periods
-of the modes are of the order :math:`10^{4}\,{\rm s}`, just what we'd
-expect for :math:`\beta` Cephei stars.
-
-.. rubric:: Footnotes
-
-.. [#f1] When using this ``./star`` trick, you can't do restarts
-	 using the ``./re`` script. Instead, you should chose which
-	 photo in the ``photos`` subdirectory you want to restart
-	 from; copy this into the working directory with the name
-	 ``restart_photo``; and then run ``./star`` as before. If you
-	 later want to *stop* doing restarts, simply delete
-	 ``restart_photo``.
-
-.. [#f2] Without these settings, MESA tends to gallop off near the end
-         of the main sequence, and doesn't properly resolve the 'Henyey hook'
-	 in the Hertzsprung-Russell diagram where massive stars briefly evolve
-	 to the blue.
-.. [#f3] GYRE is able to do remeshing itself, but we're not going to
-         use that particular functionality.
+This confirms that GYRE is being run, and that modes are being found. 
+The frequencies of the modes are of the order :math:`10^{4}\,{\rm s}`, 
+just what we'd expect for solar-like stars. 
