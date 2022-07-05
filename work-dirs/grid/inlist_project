@@ -1,8 +1,12 @@
 &star_job
     relax_initial_y = .true.
     relax_initial_z = .true.
-    new_y = 0.269
-    new_z = 0.0187
+    new_y = .2663
+    new_z = 0.01
+    
+    eosDT_cache_dir = 'cache/eosDT_cache'
+    kap_cache_dir = 'cache/kap_cache'
+    rates_cache_dir = 'cache/rates_cache'
 
 / ! end of star_job namelist
 
@@ -12,7 +16,7 @@
 
 
 &kap
-    Zbase = 0.0001
+    Zbase = 0.01
 / ! end of kap namelist
 
 
@@ -20,7 +24,7 @@
   ! see star/defaults/controls.defaults
 
   ! starting specifications
-    initial_mass = 0.8
+    initial_mass = 1.2
     mixing_length_alpha = 2.22
 
   ! when to stop
@@ -28,6 +32,9 @@
 
   ! run GYRE to calculate oscillation modes 
     x_logical_ctrl(1) = .true.
+    write_profiles_flag = .false.
+    
+    !mesh_delta_coeff = 2
 
 / ! end of controls namelist
 

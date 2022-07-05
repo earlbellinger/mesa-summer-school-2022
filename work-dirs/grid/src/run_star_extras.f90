@@ -187,13 +187,16 @@
          ierr = 0
          call star_ptr(id, s, ierr)
          if (ierr /= 0) return
+        
+        do k = 1, 50
+            write (names(k),    '(A,I0)') 'nu_radial_', k 
+            write (names(k+50), '(A,I0)') 'nu_dipole_', k 
+        end do
          
          if (s%x_logical_ctrl(1)) then
 
             ! save the frequencies of the radial and dipole modes 
             do k = 1, 50
-                write (names(k),    '(A,I0)') 'nu_radial_', k 
-                write (names(k+50), '(A,I0)') 'nu_dipole_', k 
                 vals(k)    = frequencies(1, k)
                 vals(k+50) = frequencies(2, k)
             end do
@@ -353,6 +356,7 @@
 
             ! find the dipole mode closest to nu_max 
             ! since we have normalized by nu_max, this should be the mode closest to 0
+            best_k = 1
             best_freq = 1d99
             do k = 1, 50
                if (frequencies(2,k) .ne. 0 .and. abs(frequencies(2,k)) < best_freq) then
@@ -401,6 +405,11 @@
          real(dp), allocatable :: point_data(:,:)
          integer               :: ipar(0)
          real(dp)              :: rpar(0)
+         
+         type (star_info), pointer :: s
+         ierr = 0
+         call star_ptr(id, s, ierr)
+         if (ierr /= 0) return
 
          ! Pass model data to GYRE
 
@@ -415,8 +424,10 @@
 
          ! Run GYRE to get modes
 
+         if (s%xa(1,s%nz) < 0.001) then
          call gyre_get_modes(0, process_mode, ipar, rpar)
          call gyre_get_modes(1, process_mode, ipar, rpar)
+         end if
 
          gyre_has_run = .true.
 

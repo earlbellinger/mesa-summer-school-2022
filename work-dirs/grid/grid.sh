@@ -34,9 +34,9 @@ for Z in 0.0001 0.001 0.01 0.02; do
         
         rm -rf LOGS
         
-        change initial_y $Y
-        change initial_z $Z
-        change Zbase     $Z
+        change new_y $Y
+        change new_z $Z
+        change Zbase $Z
         change initial_mass $M
         
         ./rn
