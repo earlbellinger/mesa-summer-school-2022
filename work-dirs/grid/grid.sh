@@ -1,5 +1,6 @@
 #!/bin/bash
 
+INLIST=inlist_project
 change() { 
     # Modifies a parameter in the current inlist. 
     # args: ($1) name of parameter 
@@ -14,7 +15,9 @@ change() {
     escapedParam=$(sed 's#[^^]#[&]#g; s#\^#\\^#g' <<< "$param")
     search="^\s*\!*\s*$escapedParam\s*=.+$" 
     replace="    $param = $newval" 
-    sed -r -i.bak -e "s#$search#$replace#g" $filename 
+    if [ ! "$filename" == "" ]; then
+        sed -r -i.bak -e "s#$search#$replace#g" $filename 
+    fi
     if [ ! "$filename" == "$INLIST" ]; then 
         change $param $newval "$INLIST"
     fi 
@@ -31,10 +34,10 @@ for Z in 0.0001 0.001 0.01 0.02; do
         
         rm -rf LOGS
         
-        change initial_y $Y "inlist_project"
-        change initial_z $Z "inlist_project"
-        change Zbase     $Z "inlist_project"
-        change initial_mass $M "inlist_project"
+        change initial_y $Y
+        change initial_z $Z
+        change Zbase     $Z
+        change initial_mass $M
         
         ./rn
         
