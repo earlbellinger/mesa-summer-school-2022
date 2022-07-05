@@ -1,8 +1,8 @@
 &star_job
     relax_initial_y = .true.
     relax_initial_z = .true.
-    new_y = .2663
-    new_z = 0.01
+    new_y = .2465
+    new_z = 0.0001
     
     eosDT_cache_dir = 'cache/eosDT_cache'
     kap_cache_dir = 'cache/kap_cache'
@@ -16,7 +16,7 @@
 
 
 &kap
-    Zbase = 0.01
+    Zbase = 0.0001
 / ! end of kap namelist
 
 

@@ -124,21 +124,9 @@ the window doesn’t fit on your screen properly, consider customizing
 the <code class="docutils literal notranslate"><span class="pre">Grid1_win_width</span></code> and <code class="docutils literal notranslate"><span class="pre">Grid1_win_aspect_ratio</span></code> parameters in
 the <code class="docutils literal notranslate"><span class="pre">inlist_pgstar</span></code> file.</p>
 <p>To get an idea of what settings we’re using for these calculations,
-take a look inside <code class="docutils literal notranslate"><span class="pre">inlist_project</span></code>, which contains the
-important parts of the ZAMS-to-TAMS run. Here are a few excerpts:</p>
-<p>Here (above), we set the initial mass to <span class="math notranslate nohighlight">\(1\,{\rm M_{\odot}}\)</span>,
-and choose the helium abundance, mixing length, and metallicity corresponding
-to the Sun.</p>
-<p>Here, we configure timestep and mesh parameters. We keep the timestep
-(relatively) short to ensure that we can adequately follow the
-ZAMS-to-TAMS evolution, and we use the <code class="docutils literal notranslate"><span class="pre">delta_*</span></code> settings to place
-an upper limit on the logarithmic change in the central hydrogen
-abundance due to nuclear burning <a class="footnote-reference brackets" href="#f2" id="id1">2</a>. The <code class="docutils literal notranslate"><span class="pre">mesh_delta_coeff</span></code>
-ensures that models have enough mesh points for GYRE to resolve
-pulsation wavefunctions <a class="footnote-reference brackets" href="#f3" id="id2">3</a>.</p>
-<p>Here, we configure various convection parameters. The
-<code class="docutils literal notranslate"><span class="pre">do_conv_premix</span></code> setting turns on the new convective premixing
-described in Section 5 of the <a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2019ApJS..243...10P/abstract">MESA V instrument paper</a>.</p>
+take a look inside <code class="docutils literal notranslate"><span class="pre">inlist_project</span></code>. We set the initial mass to
+<span class="math notranslate nohighlight">\(1\,{\rm M_{\odot}}\)</span>, and chose the helium abundance,
+mixing length, and metallicity to be similar to that of the Sun.</p>
 </div>
 <div class="section" id="modify-the-code">
 <h2>Modify the Code<a class="headerlink" href="#modify-the-code" title="Permalink to this headline">¶</a></h2>
@@ -317,13 +305,13 @@ from; copy this into the working directory with the name
 later want to <em>stop</em> doing restarts, simply delete
 <code class="docutils literal notranslate"><span class="pre">restart_photo</span></code>.</p>
 </dd>
-<dt class="label" id="f2"><span class="brackets"><a class="fn-backref" href="#id1">2</a></span></dt>
+<dt class="label" id="f2"><span class="brackets">2</span></dt>
 <dd><p>Without these settings, MESA tends to gallop off near the end
 of the main sequence, and doesn’t properly resolve the ‘Henyey hook’
 in the Hertzsprung-Russell diagram where massive stars briefly evolve
 to the blue.</p>
 </dd>
-<dt class="label" id="f3"><span class="brackets"><a class="fn-backref" href="#id2">3</a></span></dt>
+<dt class="label" id="f3"><span class="brackets">3</span></dt>
 <dd><p>GYRE is able to do remeshing itself, but we’re not going to
 use that particular functionality.</p>
 </dd>

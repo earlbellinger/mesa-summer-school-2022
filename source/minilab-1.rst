@@ -55,37 +55,10 @@ the ``Grid1_win_width`` and ``Grid1_win_aspect_ratio`` parameters in
 the ``inlist_pgstar`` file.
 
 To get an idea of what settings we're using for these calculations,
-take a look inside ``inlist_project``, which contains the
-important parts of the ZAMS-to-TAMS run. Here are a few excerpts:
+take a look inside ``inlist_project``. We set the initial mass to 
+:math:`1\,{\rm M_{\odot}}`, and chose the helium abundance, 
+mixing length, and metallicity to be similar to that of the Sun. 
 
-.. literalinclude:: bellinger-2022-mini-1/inlist_project
-   :start-after: &controls
-   :end-before: ! Grid
-
-Here (above), we set the initial mass to :math:`1\,{\rm M_{\odot}}`,
-and choose the helium abundance, mixing length, and metallicity corresponding 
-to the Sun.
-
-.. literalinclude:: bellinger-2022-mini-1/inlist_project
-   :start-after: initial_Z
-   :end-before: ! Stopping
-
-Here, we configure timestep and mesh parameters. We keep the timestep
-(relatively) short to ensure that we can adequately follow the
-ZAMS-to-TAMS evolution, and we use the ``delta_*`` settings to place
-an upper limit on the logarithmic change in the central hydrogen
-abundance due to nuclear burning [#f2]_. The ``mesh_delta_coeff``
-ensures that models have enough mesh points for GYRE to resolve
-pulsation wavefunctions [#f3]_.
-
-.. literalinclude:: bellinger-2022-mini-1/inlist_project
-   :start-after: use_dedt_form_of_energy_eqn
-   :end-before: ! Overshooting
-
-Here, we configure various convection parameters. The
-``do_conv_premix`` setting turns on the new convective premixing
-described in Section 5 of the :ads:`MESA V instrument paper
-<2019ApJS..243...10P>`.
 
 Modify the Code
 ===============

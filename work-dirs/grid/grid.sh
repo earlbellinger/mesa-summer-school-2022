@@ -41,6 +41,6 @@ for Z in 0.0001 0.001 0.01 0.02; do
         
         ./rn
         
-        cp LOGS/history results/"$M_$Z.dat"
+        cp LOGS/history.data results/"$M_$Z.dat"
     done
 done 
