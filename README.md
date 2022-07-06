@@ -1,6 +1,6 @@
 **MESA Summer School 2022**
 
-Asteroseismology across the HR diagram
+Asteroseismology Across the HR diagram
 ===
 
 Earl Patrick Bellinger<sup>1,2</sup>\
