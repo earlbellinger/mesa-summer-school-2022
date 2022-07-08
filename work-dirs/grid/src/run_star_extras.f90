@@ -34,7 +34,7 @@
       real(dp), allocatable, save :: inertias(:)
       integer, allocatable, save :: n_gs(:)
 
-      ! Displacement wavefunctions of F and 1-O modes
+      ! Radial displacement eigenfunctions 
 
       real(dp), allocatable, save :: xi_r_radial(:)
       real(dp), allocatable, save :: xi_r_dipole(:)

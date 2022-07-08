@@ -216,7 +216,7 @@ flag:
 (Use the left/right cursors key to scan through the columns).
 
 Plotting the Frequencies 
-====================
+========================
 
 We're now in a position to add a PGstar panel to our
 run, showing how the mode frequencies change as the star evolves. The type
@@ -264,4 +264,4 @@ and radial order:
 where :math:`\nu_{n,\ell}` is the frequency of a mode with 
 radial order :math:`n` and spherical degree :math:`\ell`;
 :math:`\Delta\nu` is the large frequency separation, and 
-:math:`\epsilon` is a phase. 
+:math:`\epsilon` is a phase term. 

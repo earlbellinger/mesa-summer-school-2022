@@ -18,7 +18,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="MaxiLab: Exploring the Instability Strip" href="maxilab.html" />
+    <link rel="next" title="MaxiLab: Exploring Mixed Oscillation Modes" href="maxilab.html" />
     <link rel="prev" title="MiniLab 2: Plotting Frequencies" href="minilab-2.html" /> 
 </head>
 
@@ -43,7 +43,7 @@
 <li class="toctree-l1"><a class="reference internal" href="minilab-2.html">MiniLab 2: Plotting Frequencies</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">MiniLab 3: Plotting Eigenfunctions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#adding-wavefunctions-to-profile-output">Adding Wavefunctions to Profile Output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#adding-eigenfunctions-to-profile-output">Adding Eigenfunctions to Profile Output</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#adding-module-variables">Adding Module Variables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#setting-module-variables">Setting Module Variables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#adding-profile-columns">Adding Profile Columns</a></li>
@@ -51,10 +51,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#running-the-code">Running the Code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fixing-the-crash">Fixing the Crash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#plotting-the-wavefunctions">Plotting the Wavefunctions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting-the-eigenfunctions">Plotting the Eigenfunctions</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="maxilab.html">MaxiLab: Exploring the Instability Strip</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maxilab.html">MaxiLab: Exploring Mixed Oscillation Modes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="supplementary.html">Supplementary Materials</a></li>
 </ul>
 
@@ -86,27 +86,25 @@
 <span id="minilab-3"></span><h1>MiniLab 3: Plotting Eigenfunctions<a class="headerlink" href="#minilab-3-plotting-eigenfunctions" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>In <a class="reference internal" href="minilab-2.html#minilab-2"><span class="std std-ref">MiniLab 2</span></a>, we found that the periods of the
-fundamental and first-overtone radial modes scale approximately with
-the dynamical timescale, <span class="math notranslate nohighlight">\(P \propto \tau_{\rm dyn}\)</span>. In MiniLab
-3, we’re going to examine the mode radial displacement wavefunctions
-<span class="math notranslate nohighlight">\(\xi_{r}\)</span>, which ultimately determine the constant of
-proportionality in this scaling. The steps are similar to before:
+<p>In <a class="reference internal" href="minilab-2.html#minilab-2"><span class="std std-ref">MiniLab 2</span></a>, we calculated the frequencies of the
+modes, and plotted a radial and a dipole mode.
+In MiniLab 3, we’re going to examine the radial displacement eigenfunctions
+<span class="math notranslate nohighlight">\(\xi_{r}\)</span> of these modes. The steps are similar to before:
 first we’ll add the <span class="math notranslate nohighlight">\(\xi_{r}\)</span> data to MESA’s profile output, and
-then modify <code class="docutils literal notranslate"><span class="pre">inlist_to_tams_pgstar</span></code> to plot these wavefunctions. As
+then modify <code class="docutils literal notranslate"><span class="pre">inlist_pgstar</span></code> to plot these wavefunctions. As
 the very first step, make a copy of your working directory from
 <a class="reference internal" href="minilab-2.html#minilab-2"><span class="std std-ref">MiniLab 2</span></a> (with all the changes you have made):</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> cp -a townsend-2019-mini-2 townsend-2019-mini-3
-<span class="gp">$</span> <span class="nb">cd</span> townsend-2019-mini-3
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> cp -a bellinger-2022-mini-2 bellinger-2022-mini-3
+<span class="gp">$</span> <span class="nb">cd</span> bellinger-2022-mini-3
 </pre></div>
 </div>
 <p>Alternatively, if you were unable to get things working with
 <a class="reference internal" href="minilab-2.html#minilab-2"><span class="std std-ref">MiniLab 2</span></a>, then you can grab a working directory
-for MiniLab 3 from <a class="reference external" href="http://www.astro.wisc.edu/~townsend/resource/teaching/mesa-summer-school-2019/townsend-2019-mini-3.tar.gz">here</a>.</p>
+for MiniLab 3 from <a class="reference external" href="https://github.com/earlbellinger/mesa-summer-school-2022/raw/main/work-dirs/bellinger-2022-mini-2-solution.tar.gz">here</a>.</p>
 </div>
-<div class="section" id="adding-wavefunctions-to-profile-output">
-<h2>Adding Wavefunctions to Profile Output<a class="headerlink" href="#adding-wavefunctions-to-profile-output" title="Permalink to this headline">¶</a></h2>
-<p>As with the mode periods, to communicate data from <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> to
+<div class="section" id="adding-eigenfunctions-to-profile-output">
+<h2>Adding Eigenfunctions to Profile Output<a class="headerlink" href="#adding-eigenfunctions-to-profile-output" title="Permalink to this headline">¶</a></h2>
+<p>As with the mode frequencies, to communicate data from <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> to
 other routines in <code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code>, we’ll make use of module
 variables.</p>
 <div class="section" id="adding-module-variables">
@@ -115,73 +113,72 @@ variables.</p>
 top of <code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code>:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! &gt;&gt;&gt; Insert module variables below</span>
 
-<span class="c">! Periods of fundamental and first overtone</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">dp</span><span class="p">),</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">save</span> <span class="kd">::</span> <span class="n">frequencies</span><span class="p">(:,:)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">dp</span><span class="p">),</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">save</span> <span class="kd">::</span> <span class="n">inertias</span><span class="p">(:)</span>
 
-<span class="kt">real</span><span class="p">(</span><span class="n">dp</span><span class="p">),</span> <span class="k">save</span> <span class="kd">::</span> <span class="n">period_f</span>
-<span class="kt">real</span><span class="p">(</span><span class="n">dp</span><span class="p">),</span> <span class="k">save</span> <span class="kd">::</span> <span class="n">period_1o</span>
+    <span class="c">! Radial displacement eigenfunctions</span>
 
-<span class="hll"><span class="c">! Displacement wavefunctions of F and 1-O modes</span>
-</span><span class="hll">
-</span><span class="hll"><span class="kt">real</span><span class="p">(</span><span class="n">dp</span><span class="p">),</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">save</span> <span class="kd">::</span> <span class="n">xi_r_f</span><span class="p">(:)</span>
-</span><span class="hll"><span class="kt">real</span><span class="p">(</span><span class="n">dp</span><span class="p">),</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">save</span> <span class="kd">::</span> <span class="n">xi_r_1o</span><span class="p">(:)</span>
-</span></pre></div>
+    <span class="kt">real</span><span class="p">(</span><span class="n">dp</span><span class="p">),</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">save</span> <span class="kd">::</span> <span class="n">xi_r_radial</span><span class="p">(:)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">dp</span><span class="p">),</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">save</span> <span class="kd">::</span> <span class="n">xi_r_dipole</span><span class="p">(:)</span>
+</pre></div>
 </div>
-<p>Note that we declare the variables as allocatable arrays — that’s
-because the displacement wavefunctions are functions of position
-within the star.</p>
 </div>
 <div class="section" id="setting-module-variables">
 <h3>Setting Module Variables<a class="headerlink" href="#setting-module-variables" title="Permalink to this headline">¶</a></h3>
-<p>Next, modify the <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> callback routine to set the two two
-module variables. GYRE provides the radial displacement wavefunction
+<p>Next, modify the <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> callback routine to set the two
+module variables. GYRE provides the radial displacement eigenfunction
 at the <code class="docutils literal notranslate"><span class="pre">k</span></code>’th grid point via the <code class="docutils literal notranslate"><span class="pre">md%xi_r(k)</span></code> function. However, a
 wrinkle here is that GYRE indexes its grid points in the opposite
-order to MESA. With this in mind, the following highlighted code
-illustrates how to set up the <code class="docutils literal notranslate"><span class="pre">xi_r_f</span></code> variable for the fundamental
-mode:</p>
-<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="kt">integer</span> <span class="kd">::</span> <span class="n">k</span>
-</span>
-<span class="c">! Print out radial order and frequency</span>
+order to MESA. With this in mind, the following code
+illustrates how to set up the <code class="docutils literal notranslate"><span class="pre">xi_r_radial</span></code> variable for the <code class="docutils literal notranslate"><span class="pre">md%n_p==16</span></code>
+radial mode:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="kt">integer</span> <span class="kd">::</span> <span class="n">k</span>
 
-<span class="k">print</span> <span class="o">*</span><span class="p">,</span> <span class="s1">&#39;Found mode: radial order, frequency = &#39;</span><span class="p">,</span> <span class="p">&amp;</span>
-     <span class="n">md</span><span class="p">%</span><span class="n">n_pg</span><span class="p">,</span> <span class="kt">REAL</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">freq</span><span class="p">(</span><span class="s1">&#39;HZ&#39;</span><span class="p">))</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_p</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="p">.</span><span class="nb">and</span><span class="p">.</span> <span class="n">md</span><span class="p">%</span><span class="n">n_p</span> <span class="o">&lt;=</span> <span class="mi">50</span><span class="p">)</span> <span class="k">then</span>
 
-<span class="c">! If this is the F mode, store the period</span>
+    <span class="c">! Print out degree, radial order, mode inertia, and frequency</span>
+    <span class="k">print</span> <span class="o">*</span><span class="p">,</span> <span class="s1">&#39;Found mode: l, n_p, n_g, E, nu = &#39;</span><span class="p">,</span> <span class="p">&amp;</span>
+        <span class="n">md</span><span class="p">%</span><span class="n">l</span><span class="p">,</span> <span class="n">md</span><span class="p">%</span><span class="n">n_p</span><span class="p">,</span> <span class="n">md</span><span class="p">%</span><span class="n">n_g</span><span class="p">,</span> <span class="n">md</span><span class="p">%</span><span class="n">E_norm</span><span class="p">(),</span> <span class="kt">REAL</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">freq</span><span class="p">(</span><span class="s1">&#39;HZ&#39;</span><span class="p">))</span>
 
-<span class="k">if</span> <span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_pg</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">then</span>
-<span class="k">   </span><span class="n">period_f</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="p">(</span><span class="mi">360</span><span class="mf">0.</span><span class="o">*</span><span class="kt">REAL</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">freq</span><span class="p">(</span><span class="s1">&#39;HZ&#39;</span><span class="p">)))</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">l</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span> <span class="c">! radial modes</span>
+        <span class="n">frequencies</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">md</span><span class="p">%</span><span class="n">n_p</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">freq</span><span class="p">(</span><span class="s1">&#39;UHZ&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="n">s</span><span class="p">%</span> <span class="n">nu_max</span><span class="p">)</span> <span class="o">/</span> <span class="n">s</span><span class="p">%</span> <span class="n">delta_nu</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_p</span> <span class="o">==</span> <span class="mi">16</span><span class="p">)</span> <span class="k">then</span> <span class="c">! store the eigenfunction</span>
+           <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">xi_r_radial</span><span class="p">))</span> <span class="k">deallocate</span><span class="p">(</span><span class="n">xi_r_radial</span><span class="p">)</span>
+           <span class="k">allocate</span><span class="p">(</span><span class="n">xi_r_radial</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_k</span><span class="p">))</span>
+
+           <span class="k">do </span><span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">md</span><span class="p">%</span><span class="n">n_k</span>
+              <span class="n">xi_r_radial</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="n">md</span><span class="p">%</span><span class="n">xi_r</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+           <span class="k">end do</span>
+<span class="k">           </span><span class="n">xi_r_radial</span> <span class="o">=</span> <span class="n">xi_r_radial</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_k</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">end if</span>
+
+<span class="k">    else if</span> <span class="p">(</span><span class="n">inertias</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_p</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">.</span><span class="nb">and</span><span class="p">.</span> <span class="n">md</span><span class="p">%</span><span class="n">E_norm</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">inertias</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_p</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">        write</span> <span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;Skipping mode: inertia higher than already seen&#39;</span>
+    <span class="k">else</span> <span class="c">! non-radial modes</span>
+
+        <span class="c">! choose the mode with the lowest inertia</span>
+        <span class="n">inertias</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_p</span><span class="p">)</span> <span class="o">=</span> <span class="n">md</span><span class="p">%</span><span class="n">E_norm</span><span class="p">()</span>
+        <span class="n">frequencies</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">md</span><span class="p">%</span><span class="n">n_p</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">freq</span><span class="p">(</span><span class="s1">&#39;UHZ&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="n">s</span><span class="p">%</span> <span class="n">nu_max</span><span class="p">)</span> <span class="o">/</span> <span class="n">s</span><span class="p">%</span> <span class="n">delta_nu</span>
+
+    <span class="k">end if</span>
 <span class="k">end if</span>
-
-<span class="hll"><span class="c">! If this is the F mode, store the displacement wavefunction</span>
-</span><span class="hll">
-</span><span class="hll"><span class="k">if</span> <span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_pg</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">then</span>
-</span><span class="hll">
-</span><span class="hll"><span class="k">   if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">xi_r_f</span><span class="p">))</span> <span class="k">deallocate</span><span class="p">(</span><span class="n">xi_r_f</span><span class="p">)</span>
-</span><span class="hll">   <span class="k">allocate</span><span class="p">(</span><span class="n">xi_r_f</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_k</span><span class="p">))</span>
-</span><span class="hll">
-</span><span class="hll">   <span class="k">do </span><span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">md</span><span class="p">%</span><span class="n">n_k</span>
-</span><span class="hll">      <span class="n">xi_r_f</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="n">md</span><span class="p">%</span><span class="n">xi_r</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
-</span><span class="hll">   <span class="k">end do</span>
-</span><span class="hll">
-</span><span class="hll"><span class="k">   </span><span class="n">xi_r_f</span> <span class="o">=</span> <span class="n">xi_r_f</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_k</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-</span><span class="hll">
-</span><span class="hll"><span class="k">end if</span>
-</span></pre></div>
+</pre></div>
 </div>
-<p>(Don’t overlook the first, highlighted line, where we declare a new
+<p>(Don’t overlook the first line, where we declare a new
 integer variable <code class="docutils literal notranslate"><span class="pre">k</span></code>).</p>
-<p>In this code, we first deallocate <code class="docutils literal notranslate"><span class="pre">xi_r_f</span></code> (if currently allocated),
+<p>In this code, we first deallocate <code class="docutils literal notranslate"><span class="pre">xi_r_radial</span></code> (if currently allocated),
 and then allocate it at the correct size (<code class="docutils literal notranslate"><span class="pre">md%n_k</span></code> is the number of
 grid points). Following that, we loop over the grid index <code class="docutils literal notranslate"><span class="pre">k</span></code>,
-storing values in the <code class="docutils literal notranslate"><span class="pre">xi_r_f</span></code> array. . As a final step, we reverse
+storing values in the <code class="docutils literal notranslate"><span class="pre">xi_r_radial</span></code> array. . As a final step, we reverse
 the order of elements in this array (the strange-looking expression
-<code class="docutils literal notranslate"><span class="pre">xi_r_f(md%n_k:1:-1)</span></code> uses Fortran’s array-slice notation to access
-the elements of <code class="docutils literal notranslate"><span class="pre">xi_r_f</span></code> from the last to the first, in increments
+<code class="docutils literal notranslate"><span class="pre">xi_r_radial(md%n_k:1:-1)</span></code> uses Fortran’s array-slice notation to access
+the elements of <code class="docutils literal notranslate"><span class="pre">xi_r_radial</span></code> from the last to the first, in increments
 of <code class="docutils literal notranslate"><span class="pre">-1</span></code>).</p>
 <div class="admonition-exercise admonition">
 <p class="admonition-title">Exercise</p>
 <p>Add further code to <code class="docutils literal notranslate"><span class="pre">process_mode</span></code>, to store the radial
-displacement wavefunction of the 1-O mode into <code class="docutils literal notranslate"><span class="pre">xi_r_1o</span></code>.</p>
+displacement eigenfunction of the <code class="docutils literal notranslate"><span class="pre">md%n_p==15</span></code> dipole mode into <code class="docutils literal notranslate"><span class="pre">xi_r_dipole</span></code>.</p>
 </div>
 </div>
 <div class="section" id="adding-profile-columns">
@@ -193,14 +190,14 @@ store the radial displacement wavefunctions we’ve calculated.</p>
 <p>Modify <code class="docutils literal notranslate"><span class="pre">how_many_extra_profile_columns</span></code> to set the number of
 columns, and <code class="docutils literal notranslate"><span class="pre">data_for_extra_profile_columns</span></code> to set up the names
 and values of the columns. Be sure to check <code class="docutils literal notranslate"><span class="pre">s%x_logical_ctrl(1)</span></code>
-before setting the <code class="docutils literal notranslate"><span class="pre">vals</span></code> array, as we did <a class="reference internal" href="minilab-2.html#minilab-2-add-hist-cols"><span class="std std-ref">here</span></a> when adding history columns .</p>
+before setting the <code class="docutils literal notranslate"><span class="pre">vals</span></code> array, as we did <a class="reference internal" href="minilab-2.html#minilab-2-add-hist-cols"><span class="std std-ref">here</span></a> when adding history columns.</p>
 </div>
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">vals</span></code> array in <code class="docutils literal notranslate"><span class="pre">data_for_extra_profile_columns</span></code> is
 <em>two-dimensional</em> — the first dimension is grid location, and the
-second dimension is column number. So, to store <code class="docutils literal notranslate"><span class="pre">xi_r_f</span></code> into the
+second dimension is column number. So, to store <code class="docutils literal notranslate"><span class="pre">xi_r_radial</span></code> into the
 first column of <code class="docutils literal notranslate"><span class="pre">vals</span></code>, we could use Fortran’s array-slice notation
 like this:</p>
-<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">vals</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">xi_r_f</span>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">vals</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">xi_r_radial</span>
 </pre></div>
 </div>
 </div>
@@ -228,15 +225,15 @@ an error message something like this:</p>
 <p>The code crashes at the end of execution because the
 <code class="docutils literal notranslate"><span class="pre">extras_check_model</span></code> hook (and hence the <code class="docutils literal notranslate"><span class="pre">run_gyre</span></code> and
 <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> routines) doesn’t get called before the final call to
-<code class="docutils literal notranslate"><span class="pre">data_for_extra_profile_columns</span></code>. Therefore, the <code class="docutils literal notranslate"><span class="pre">xi_r_f</span></code> and
-<code class="docutils literal notranslate"><span class="pre">xi_r_1o</span></code> arrays contain data from the previous timestep, when the
+<code class="docutils literal notranslate"><span class="pre">data_for_extra_profile_columns</span></code>. Therefore, the <code class="docutils literal notranslate"><span class="pre">xi_r_radial</span></code> and
+<code class="docutils literal notranslate"><span class="pre">xi_r_dipole</span></code> arrays contain data from the previous timestep, when the
 model had a different number of grid points. Attempting to copy data
 from these arrays into the <code class="docutils literal notranslate"><span class="pre">vals</span></code> array triggers the crash, because
 the arrays have different sizes.</p>
 <p>To fix this problem, we have to modify
 <code class="docutils literal notranslate"><span class="pre">data_for_extra_profile_columns</span></code> to check whether <code class="docutils literal notranslate"><span class="pre">run_gyre</span></code> has
 been called since the beginning of the timestep. If not, it should
-make the call itself, thereby updating the <code class="docutils literal notranslate"><span class="pre">xi_r_f</span></code> and <code class="docutils literal notranslate"><span class="pre">xi_r_1o</span></code>
+make the call itself, thereby updating the <code class="docutils literal notranslate"><span class="pre">xi_r_radial</span></code> and <code class="docutils literal notranslate"><span class="pre">xi_r_dipole</span></code>
 arrays.</p>
 <div class="admonition-excercise admonition">
 <p class="admonition-title">Excercise</p>
@@ -261,35 +258,31 @@ GYRE has been run.</p></li>
 </div>
 <p>Be sure to check that these changes fix the crash.</p>
 </div>
-<div class="section" id="plotting-the-wavefunctions">
-<h2>Plotting the Wavefunctions<a class="headerlink" href="#plotting-the-wavefunctions" title="Permalink to this headline">¶</a></h2>
-<p>Our final step is to add a PGstar window to our ZAMS-to-TAMS run,
+<div class="section" id="plotting-the-eigenfunctions">
+<h2>Plotting the Eigenfunctions<a class="headerlink" href="#plotting-the-eigenfunctions" title="Permalink to this headline">¶</a></h2>
+<p>Our final step is to add a PGstar window to our run,
 showing how the mode radial displacement wavefunctions change as the
 star evolves. For this window, we’ll use a ‘profile panel’.</p>
-<p>Open up <code class="docutils literal notranslate"><span class="pre">inlist_to_tams_pgstar</span></code>, and add the following highlighted
+<p>Open up <code class="docutils literal notranslate"><span class="pre">inlist_pgstar</span></code>, and add the following highlighted
 code at the bottom:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="c">! Profile panel showing wavefunctions</span>
 </span><span class="hll">
 </span><span class="hll"><span class="n">Grid1_plot_name</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;Profile_Panels1&#39;</span>
 </span><span class="hll">
 </span><span class="hll"><span class="n">Profile_Panels1_num_panels</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span class="hll"><span class="n">Profile_Panels1_title</span> <span class="o">=</span> <span class="s1">&#39;Displacement Wavefunctions&#39;</span>
+</span><span class="hll"><span class="n">Profile_Panels1_title</span> <span class="o">=</span> <span class="s1">&#39;Eigenfunctions&#39;</span>
+</span><span class="hll"><span class="n">Profile_Panels1_xaxis_name</span> <span class="o">=</span> <span class="s1">&#39;logR&#39;</span> <span class="c">! &#39;logxq&#39;</span>
+</span><span class="hll"><span class="n">Profile_Panels1_yaxis_name</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;xi_r_radial&#39;</span>
+</span><span class="hll"><span class="n">Profile_Panels1_other_yaxis_name</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;xi_r_dipole&#39;</span>
 </span><span class="hll">
-</span><span class="hll"><span class="n">Profile_Panels1_xaxis_name</span> <span class="o">=</span> <span class="s1">&#39;logxq&#39;</span>
-</span><span class="hll">
-</span><span class="hll"><span class="n">Profile_Panels1_yaxis_name</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;xi_r_f&#39;</span>
-</span><span class="hll"><span class="n">Profile_Panels1_other_yaxis_name</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;xi_r_1o&#39;</span>
+</span><span class="hll"><span class="n">Profile_Panels1_ymin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
+</span><span class="hll"><span class="n">Profile_Panels1_ymax</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">10</span>
+</span><span class="hll"><span class="n">Profile_Panels1_other_ymin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
+</span><span class="hll"><span class="n">Profile_Panels1_other_ymax</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">10</span>
 </span></pre></div>
 </div>
-<p>(Here, the <code class="docutils literal notranslate"><span class="pre">logxq</span></code> choice for the x-axis uses the quantity
-<span class="math notranslate nohighlight">\(\log(1-m/M)\)</span>, which nicely emphasizes the outer parts of the
-star).</p>
-<p>Looking at the wavefunctions, we can clearly see the key difference
-between the radial and first-overtone modes: the latter has a node
-(<span class="math notranslate nohighlight">\(\xi_{r} = 0\)</span>) somewhere between the center and the surface,
-while the former does not. This sign change means that the effective
-wavelength of the first overtone is shorter — and hence, its
-frequency is higher, and its period shorter.</p>
+<p>Now watch the evolution, and see how the sensitivity in the dipole
+mode develops as the star becomes a subgiant!</p>
 <p>As an aside: the radial displacement wavefunctions are in units of the
 stellar radius <span class="math notranslate nohighlight">\(R\)</span>. Reading off the plots, it would seem that
 the radial displacement at the stellar surface is tens or even
@@ -304,7 +297,7 @@ scaling.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="minilab-2.html" class="btn btn-neutral float-left" title="MiniLab 2: Plotting Frequencies" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="maxilab.html" class="btn btn-neutral float-right" title="MaxiLab: Exploring the Instability Strip" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="maxilab.html" class="btn btn-neutral float-right" title="MaxiLab: Exploring Mixed Oscillation Modes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -1,8 +1,8 @@
 .. _maxilab:
 
-****************************************
-MaxiLab: Exploring the Instability Strip
-****************************************
+******************************************
+MaxiLab: Exploring Mixed Oscillation Modes
+******************************************
 
 Overview
 ========

@@ -7,31 +7,29 @@ MiniLab 3: Plotting Eigenfunctions
 Overview
 ========
 
-In :ref:`MiniLab 2 <minilab-2>`, we found that the periods of the
-fundamental and first-overtone radial modes scale approximately with
-the dynamical timescale, :math:`P \propto \tau_{\rm dyn}`. In MiniLab
-3, we're going to examine the mode radial displacement wavefunctions
-:math:`\xi_{r}`, which ultimately determine the constant of
-proportionality in this scaling. The steps are similar to before:
+In :ref:`MiniLab 2 <minilab-2>`, we calculated the frequencies of the
+modes, and plotted a radial and a dipole mode. 
+In MiniLab 3, we're going to examine the radial displacement eigenfunctions 
+:math:`\xi_{r}` of these modes. The steps are similar to before:
 first we'll add the :math:`\xi_{r}` data to MESA's profile output, and
-then modify ``inlist_to_tams_pgstar`` to plot these wavefunctions. As
+then modify ``inlist_pgstar`` to plot these wavefunctions. As
 the very first step, make a copy of your working directory from
 :ref:`MiniLab 2 <minilab-2>` (with all the changes you have made):
 
 .. code-block:: console
 
-   $ cp -a townsend-2019-mini-2 townsend-2019-mini-3
-   $ cd townsend-2019-mini-3
+   $ cp -a bellinger-2022-mini-2 bellinger-2022-mini-3
+   $ cd bellinger-2022-mini-3
 
 Alternatively, if you were unable to get things working with
 :ref:`MiniLab 2 <minilab-2>`, then you can grab a working directory
 for MiniLab 3 from `here
-<http://www.astro.wisc.edu/~townsend/resource/teaching/mesa-summer-school-2019/townsend-2019-mini-3.tar.gz>`__.
+<https://github.com/earlbellinger/mesa-summer-school-2022/raw/main/work-dirs/bellinger-2022-mini-2-solution.tar.gz>`__.
 
-Adding Wavefunctions to Profile Output
-======================================
+Adding Eigenfunctions to Profile Output
+=======================================
 
-As with the mode periods, to communicate data from ``process_mode`` to
+As with the mode frequencies, to communicate data from ``process_mode`` to
 other routines in ``run_star_extras.f90``, we'll make use of module
 variables.
 
@@ -42,83 +40,79 @@ Add the following highlighted code at the appropriate place near the
 top of ``run_star_extras.f90``:
 
 .. code-block:: fortran
-    :emphasize-lines: 8-
 
-    ! >>> Insert module variables below
+  ! >>> Insert module variables below
 
-    ! Periods of fundamental and first overtone
+      real(dp), allocatable, save :: frequencies(:,:)
+      real(dp), allocatable, save :: inertias(:)
 
-    real(dp), save :: period_f
-    real(dp), save :: period_1o
+      ! Radial displacement eigenfunctions 
 
-    ! Displacement wavefunctions of F and 1-O modes
-
-    real(dp), allocatable, save :: xi_r_f(:)
-    real(dp), allocatable, save :: xi_r_1o(:)
-
-Note that we declare the variables as allocatable arrays --- that's
-because the displacement wavefunctions are functions of position
-within the star.
+      real(dp), allocatable, save :: xi_r_radial(:)
+      real(dp), allocatable, save :: xi_r_dipole(:)
 
 Setting Module Variables
 ------------------------
 
-Next, modify the ``process_mode`` callback routine to set the two two
-module variables. GYRE provides the radial displacement wavefunction
+Next, modify the ``process_mode`` callback routine to set the two 
+module variables. GYRE provides the radial displacement eigenfunction 
 at the ``k``'th grid point via the ``md%xi_r(k)`` function. However, a
 wrinkle here is that GYRE indexes its grid points in the opposite
-order to MESA. With this in mind, the following highlighted code
-illustrates how to set up the ``xi_r_f`` variable for the fundamental
-mode:
+order to MESA. With this in mind, the following code
+illustrates how to set up the ``xi_r_radial`` variable for the ``md%n_p==16``
+radial mode:
 
 .. code-block:: fortran
-      :emphasize-lines: 1,14-
 
-      integer :: k
+        integer :: k
 
-      ! Print out radial order and frequency
+        if (md%n_p >= 1 .and. md%n_p <= 50) then
 
-      print *, 'Found mode: radial order, frequency = ', &
-           md%n_pg, REAL(md%freq('HZ'))
+            ! Print out degree, radial order, mode inertia, and frequency
+            print *, 'Found mode: l, n_p, n_g, E, nu = ', &
+                md%l, md%n_p, md%n_g, md%E_norm(), REAL(md%freq('HZ'))
 
-      ! If this is the F mode, store the period
+            if (md%l == 0) then ! radial modes 
+                frequencies(md%l+1, md%n_p) = (md%freq('UHZ') - s% nu_max) / s% delta_nu
 
-      if (md%n_pg == 1) then
-         period_f = 1. / (3600.*REAL(md%freq('HZ')))
-      end if
+                if (md%n_p == 16) then ! store the eigenfunction 
+                   if (allocated(xi_r_radial)) deallocate(xi_r_radial)
+                   allocate(xi_r_radial(md%n_k))
 
-      ! If this is the F mode, store the displacement wavefunction
+                   do k = 1, md%n_k
+                      xi_r_radial(k) = md%xi_r(k)
+                   end do
+                   xi_r_radial = xi_r_radial(md%n_k:1:-1)
+                end if
 
-      if (md%n_pg == 1) then
+            else if (inertias(md%n_p) > 0 .and. md%E_norm() > inertias(md%n_p)) then
+                write (*,*) 'Skipping mode: inertia higher than already seen'
+            else ! non-radial modes 
 
-         if (allocated(xi_r_f)) deallocate(xi_r_f)
-         allocate(xi_r_f(md%n_k))
+                ! choose the mode with the lowest inertia 
+                inertias(md%n_p) = md%E_norm() 
+                frequencies(md%l+1, md%n_p) = (md%freq('UHZ') - s% nu_max) / s% delta_nu
 
-         do k = 1, md%n_k
-            xi_r_f(k) = md%xi_r(k)
-         end do
-
-	 xi_r_f = xi_r_f(md%n_k:1:-1)
-
-      end if
+            end if
+        end if
 
 
-(Don't overlook the first, highlighted line, where we declare a new
+(Don't overlook the first line, where we declare a new
 integer variable ``k``).
 
-In this code, we first deallocate ``xi_r_f`` (if currently allocated),
+In this code, we first deallocate ``xi_r_radial`` (if currently allocated),
 and then allocate it at the correct size (``md%n_k`` is the number of
 grid points). Following that, we loop over the grid index ``k``,
-storing values in the ``xi_r_f`` array. . As a final step, we reverse
+storing values in the ``xi_r_radial`` array. . As a final step, we reverse
 the order of elements in this array (the strange-looking expression
-``xi_r_f(md%n_k:1:-1)`` uses Fortran's array-slice notation to access
-the elements of ``xi_r_f`` from the last to the first, in increments
+``xi_r_radial(md%n_k:1:-1)`` uses Fortran's array-slice notation to access
+the elements of ``xi_r_radial`` from the last to the first, in increments
 of ``-1``).
 
 .. admonition:: Exercise
       
    Add further code to ``process_mode``, to store the radial
-   displacement wavefunction of the 1-O mode into ``xi_r_1o``.
+   displacement eigenfunction of the ``md%n_p==15`` dipole mode into ``xi_r_dipole``.
    
 Adding Profile Columns
 ----------------------
@@ -132,17 +126,17 @@ store the radial displacement wavefunctions we've calculated.
    columns, and ``data_for_extra_profile_columns`` to set up the names
    and values of the columns. Be sure to check ``s%x_logical_ctrl(1)``
    before setting the ``vals`` array, as we did :ref:`here
-   <minilab-2-add-hist-cols>` when adding history columns .
+   <minilab-2-add-hist-cols>` when adding history columns.
 
 Note that the ``vals`` array in ``data_for_extra_profile_columns`` is
 *two-dimensional* --- the first dimension is grid location, and the
-second dimension is column number. So, to store ``xi_r_f`` into the
+second dimension is column number. So, to store ``xi_r_radial`` into the
 first column of ``vals``, we could use Fortran's array-slice notation
 like this:
 
 .. code-block:: fortran
 
-   vals(:,1) = xi_r_f
+   vals(:,1) = xi_r_radial
 
 Running the Code
 ================
@@ -172,8 +166,8 @@ Fixing the Crash
 The code crashes at the end of execution because the
 ``extras_check_model`` hook (and hence the ``run_gyre`` and
 ``process_mode`` routines) doesn't get called before the final call to
-``data_for_extra_profile_columns``. Therefore, the ``xi_r_f`` and
-``xi_r_1o`` arrays contain data from the previous timestep, when the
+``data_for_extra_profile_columns``. Therefore, the ``xi_r_radial`` and
+``xi_r_dipole`` arrays contain data from the previous timestep, when the
 model had a different number of grid points. Attempting to copy data
 from these arrays into the ``vals`` array triggers the crash, because
 the arrays have different sizes.
@@ -181,7 +175,7 @@ the arrays have different sizes.
 To fix this problem, we have to modify
 ``data_for_extra_profile_columns`` to check whether ``run_gyre`` has
 been called since the beginning of the timestep. If not, it should
-make the call itself, thereby updating the ``xi_r_f`` and ``xi_r_1o``
+make the call itself, thereby updating the ``xi_r_radial`` and ``xi_r_dipole``
 arrays.
 
 .. admonition:: Excercise
@@ -208,14 +202,14 @@ arrays.
 
 Be sure to check that these changes fix the crash.
 
-Plotting the Wavefunctions
-==========================
+Plotting the Eigenfunctions
+===========================
 
-Our final step is to add a PGstar window to our ZAMS-to-TAMS run,
+Our final step is to add a PGstar window to our run,
 showing how the mode radial displacement wavefunctions change as the
 star evolves. For this window, we'll use a 'profile panel'.
 
-Open up ``inlist_to_tams_pgstar``, and add the following highlighted
+Open up ``inlist_pgstar``, and add the following highlighted
 code at the bottom:
 
 .. code-block:: fortran
@@ -226,23 +220,18 @@ code at the bottom:
   Grid1_plot_name(6) = 'Profile_Panels1'
 
   Profile_Panels1_num_panels = 1
-  Profile_Panels1_title = 'Displacement Wavefunctions'
+  Profile_Panels1_title = 'Eigenfunctions'
+  Profile_Panels1_xaxis_name = 'logR' ! 'logxq'
+  Profile_Panels1_yaxis_name(1) = 'xi_r_radial'
+  Profile_Panels1_other_yaxis_name(1) = 'xi_r_dipole'
+  
+  Profile_Panels1_ymin(1) = -10
+  Profile_Panels1_ymax(1) = 10
+  Profile_Panels1_other_ymin(1) = -10
+  Profile_Panels1_other_ymax(1) = 10
 
-  Profile_Panels1_xaxis_name = 'logxq'
-
-  Profile_Panels1_yaxis_name(1) = 'xi_r_f'
-  Profile_Panels1_other_yaxis_name(1) = 'xi_r_1o'
-
-(Here, the ``logxq`` choice for the x-axis uses the quantity
-:math:`\log(1-m/M)`, which nicely emphasizes the outer parts of the
-star).
-
-Looking at the wavefunctions, we can clearly see the key difference
-between the radial and first-overtone modes: the latter has a node
-(:math:`\xi_{r} = 0`) somewhere between the center and the surface,
-while the former does not. This sign change means that the effective
-wavelength of the first overtone is shorter --- and hence, its
-frequency is higher, and its period shorter.
+Now watch the evolution, and see how the sensitivity in the dipole 
+mode develops as the star becomes a subgiant! 
 
 As an aside: the radial displacement wavefunctions are in units of the
 stellar radius :math:`R`. Reading off the plots, it would seem that
