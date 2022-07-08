@@ -9,3 +9,5 @@ Earl Patrick Bellinger<sup>1,2</sup>\
 <sub><sup>2</sup> Stellar Astrophysics Centre, Denmark</sub>
 
 *August 11, 2022*
+
+![HRD](work-dirs/grid/HR.png)
