@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MiniLab 2: Plotting Frequencies &mdash; Asteroseismology across the HRD  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>MiniLab 2: Plotting Frequencies &mdash; Asteroseismology Across the HRD  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/style.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -27,7 +27,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> Asteroseismology across the HRD
+            <a href="index.html" class="icon icon-home"> Asteroseismology Across the HRD
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -63,7 +63,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Asteroseismology across the HRD</a>
+          <a href="index.html">Asteroseismology Across the HRD</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -136,18 +136,15 @@ code blocks and make the following additions:</p>
 </pre></div>
 </div>
 <p>as well as</p>
-<blockquote>
-<div><p>! &gt;&gt;&gt; Insert additional code below</p>
-<blockquote>
-<div><dl class="simple">
-<dt>do k = 1, 50</dt><dd><p>frequencies(1,k) = 0
-frequencies(2,k) = 0
-inertias(k) = 0</p>
-</dd>
-</dl>
-<p>end do</p>
-</div></blockquote>
-</div></blockquote>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! &gt;&gt;&gt; Insert additional code below</span>
+
+       <span class="k">do </span><span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span>
+          <span class="n">frequencies</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+          <span class="n">frequencies</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+          <span class="n">inertias</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+       <span class="k">end do</span>
+</pre></div>
+</div>
 <p>Note that we are also storing the inertias of the dipole modes.
 That is because we want the most p-dominated modes, and therefore
 need to select the modes with the lowest mode inertias.
@@ -170,16 +167,17 @@ these data:</p>
     <span class="n">md</span><span class="p">%</span><span class="n">l</span><span class="p">,</span> <span class="n">md</span><span class="p">%</span><span class="n">n_p</span><span class="p">,</span> <span class="n">md</span><span class="p">%</span><span class="n">n_g</span><span class="p">,</span> <span class="n">md</span><span class="p">%</span><span class="n">E_norm</span><span class="p">(),</span> <span class="kt">REAL</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">freq</span><span class="p">(</span><span class="s1">&#39;HZ&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Here, <code class="docutils literal notranslate"><span class="pre">md%n_p</span></code> is a simple integer variable containing the radial
+<p>Here, <code class="docutils literal notranslate"><span class="pre">md%n_p</span></code> is a simple integer variable containing the acoustic radial
 order, while <code class="docutils literal notranslate"><span class="pre">md%freq(...)</span></code> is a function that returns the mode frequency
 in the desired units (in this case, Hertz). The <code class="docutils literal notranslate"><span class="pre">REAL(...)</span></code> wrapper
 is required because <code class="docutils literal notranslate"><span class="pre">md%freq(...)</span></code> returns a complex value, with the
 real part containing the frequency and the imaginary part containing
-the growth rate.</p>
+the growth rate. This also prints the spherical degree <code class="docutils literal notranslate"><span class="pre">md%l`,</span>
+<span class="pre">the</span> <span class="pre">g-mode</span> <span class="pre">radial</span> <span class="pre">order</span> <span class="pre">``md%n_g</span></code>, and the mode inertia <code class="docutils literal notranslate"><span class="pre">md%E_norm()</span></code>.</p>
 <p>With these points in mind, we can store the frequencies by adding the following
 highlighted code to the <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> subroutine. Note that we will calculate
-the frequencies in microHertz (<cite>‘UHZ’</cite>) and then normalize
-the frequencies by <cite>nu_max</cite> and <cite>delta_nu</cite> in order to make the plots look nicer.</p>
+the frequencies in microHertz (<code class="docutils literal notranslate"><span class="pre">'UHZ'</span></code>) and then normalize
+the frequencies by <code class="docutils literal notranslate"><span class="pre">s%</span> <span class="pre">nu_max</span></code> and <code class="docutils literal notranslate"><span class="pre">s%</span> <span class="pre">delta_nu</span></code> in order to make the plots look nicer.</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_p</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="p">.</span><span class="nb">and</span><span class="p">.</span> <span class="n">md</span><span class="p">%</span><span class="n">n_p</span> <span class="o">&lt;=</span> <span class="mi">50</span><span class="p">)</span> <span class="k">then</span>
 
     <span class="c">! Print out degree, radial order, mode inertia, and frequency</span>
@@ -201,7 +199,7 @@ the frequencies by <cite>nu_max</cite> and <cite>delta_nu</cite> in order to mak
 <span class="k">end if</span>
 </pre></div>
 </div>
-<p>Note that we are only saving the dipole mode with the lowest inertia.</p>
+<p>Notice here that we are only saving the dipole mode with the lowest inertia.</p>
 </div>
 <div class="section" id="adding-history-columns">
 <span id="minilab-2-add-hist-cols"></span><h3>Adding History Columns<a class="headerlink" href="#adding-history-columns" title="Permalink to this headline">¶</a></h3>
@@ -298,8 +296,14 @@ having a nearly constant offset from the radial mode?</p></li>
 </div></blockquote>
 <p>The answer can be found by considering the asymptotic relation,
 which gives that the frequencies of the modes scale with the
-large frequency separation <cite>delta_nu</cite>, the spherical degree,
-and radial order.</p>
+large frequency separation <code class="docutils literal notranslate"><span class="pre">delta_nu</span></code>, the spherical degree,
+and radial order:</p>
+<div class="math notranslate nohighlight">
+\[\nu_{n,\ell} \simeq \Delta\nu\left( n + \ell/2 + \epsilon \right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\nu_{n,\ell}\)</span> is the frequency of a mode with
+radial order <span class="math notranslate nohighlight">\(n\)</span> and spherical degree <span class="math notranslate nohighlight">\(\ell\)</span>;
+<span class="math notranslate nohighlight">\(\Delta\nu\)</span> is the large frequency separation, and
+<span class="math notranslate nohighlight">\(\epsilon\)</span> is a phase.</p>
 </div>
 </div>
 

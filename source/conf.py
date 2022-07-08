@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Asteroseismology across the HRD'
+project = 'Asteroseismology Across the HRD'
 copyright = '2022, Earl Bellinger, Rich Townsend, Alina Istrate & Anne Thoul'
 author = 'Earl Bellinger, Rich Townsend, Alina Istrate & Anne Thoul'
 

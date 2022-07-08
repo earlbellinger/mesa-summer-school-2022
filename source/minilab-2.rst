@@ -70,6 +70,8 @@ code blocks and make the following additions:
 
 as well as 
 
+.. code-block:: fortran
+
   ! >>> Insert additional code below
 
          do k = 1, 50
@@ -106,17 +108,18 @@ these data:
     print *, 'Found mode: l, n_p, n_g, E, nu = ', &
         md%l, md%n_p, md%n_g, md%E_norm(), REAL(md%freq('HZ'))
 
-Here, ``md%n_p`` is a simple integer variable containing the radial
+Here, ``md%n_p`` is a simple integer variable containing the acoustic radial
 order, while ``md%freq(...)`` is a function that returns the mode frequency
 in the desired units (in this case, Hertz). The ``REAL(...)`` wrapper
 is required because ``md%freq(...)`` returns a complex value, with the
 real part containing the frequency and the imaginary part containing
-the growth rate.
+the growth rate. This also prints the spherical degree ``md%l`, 
+the g-mode radial order ``md%n_g``, and the mode inertia ``md%E_norm()``.
 
 With these points in mind, we can store the frequencies by adding the following 
 highlighted code to the ``process_mode`` subroutine. Note that we will calculate 
-the frequencies in microHertz (`'UHZ'`) and then normalize 
-the frequencies by `nu_max` and `delta_nu` in order to make the plots look nicer. 
+the frequencies in microHertz (``'UHZ'``) and then normalize 
+the frequencies by ``s% nu_max`` and ``s% delta_nu`` in order to make the plots look nicer. 
 
 .. code-block:: fortran
 
@@ -140,7 +143,7 @@ the frequencies by `nu_max` and `delta_nu` in order to make the plots look nicer
         end if
     end if
 
-Note that we are only saving the dipole mode with the lowest inertia. 
+Notice here that we are only saving the dipole mode with the lowest inertia. 
 
 .. _minilab-2-add-hist-cols:
    
@@ -251,5 +254,14 @@ Now re-run the evolution, and consider the following question:
 
 The answer can be found by considering the asymptotic relation, 
 which gives that the frequencies of the modes scale with the 
-large frequency separation `delta_nu`, the spherical degree,
-and radial order. 
+large frequency separation ``delta_nu``, the spherical degree,
+and radial order: 
+
+.. math::
+
+   \nu_{n,\ell} \simeq \Delta\nu\left( n + \ell/2 + \epsilon \right)
+
+where :math:`\nu_{n,\ell}` is the frequency of a mode with 
+radial order :math:`n` and spherical degree :math:`\ell`;
+:math:`\Delta\nu` is the large frequency separation, and 
+:math:`\epsilon` is a phase. 
