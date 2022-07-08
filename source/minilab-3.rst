@@ -12,7 +12,7 @@ modes, and plotted a radial and a dipole mode.
 In MiniLab 3, we're going to examine the radial displacement eigenfunctions 
 :math:`\xi_{r}` of these modes. The steps are similar to before:
 first we'll add the :math:`\xi_{r}` data to MESA's profile output, and
-then modify ``inlist_pgstar`` to plot these wavefunctions. As
+then modify ``inlist_pgstar`` to plot these eigenfunctions. As
 the very first step, make a copy of your working directory from
 :ref:`MiniLab 2 <minilab-2>` (with all the changes you have made):
 
@@ -118,7 +118,7 @@ Adding Profile Columns
 ----------------------
 
 Next, we'll add two extra columns to profile output, in which we'll
-store the radial displacement wavefunctions we've calculated.
+store the radial displacement eigenfunctions we've calculated.
 
 .. admonition:: Exercise
 
@@ -148,7 +148,7 @@ the code.
 
    Check that the profile files written to ``LOGS/profileN.data``
    (where ``N`` is an integer) contain two extra columns, containing
-   the radial displacement wavefunction data.
+   the radial displacement eigenfunction data.
 
 At the end of this run, you'll likely find that the code crashes with
 an error message something like this:
@@ -206,7 +206,7 @@ Plotting the Eigenfunctions
 ===========================
 
 Our final step is to add a PGstar window to our run,
-showing how the mode radial displacement wavefunctions change as the
+showing how the mode radial displacement eigenfunctions change as the
 star evolves. For this window, we'll use a 'profile panel'.
 
 Open up ``inlist_pgstar``, and add the following highlighted
@@ -215,7 +215,7 @@ code at the bottom:
 .. code-block:: fortran
   :emphasize-lines: 1-
 
-  ! Profile panel showing wavefunctions
+  ! Profile panel showing eigenfunctions
 
   Grid1_plot_name(6) = 'Profile_Panels1'
 
@@ -233,7 +233,7 @@ code at the bottom:
 Now watch the evolution, and see how the sensitivity in the dipole 
 mode develops as the star becomes a subgiant! 
 
-As an aside: the radial displacement wavefunctions are in units of the
+As an aside: the radial displacement eigenfunctions are in units of the
 stellar radius :math:`R`. Reading off the plots, it would seem that
 the radial displacement at the stellar surface is tens or even
 hundreds times :math:`R`. This shouldn't alarm you; GYRE is a *linear*
