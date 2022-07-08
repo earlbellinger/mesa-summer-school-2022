@@ -237,5 +237,5 @@ As an aside: the radial displacement eigenfunctions are in units of the
 stellar radius :math:`R`. Reading off the plots, it would seem that
 the radial displacement at the stellar surface is tens or even
 hundreds times :math:`R`. This shouldn't alarm you; GYRE is a *linear*
-oscillation code, and therefore its wavefunctions have an arbitrary
+oscillation code, and therefore its eigenfunctions have an arbitrary
 scaling.
