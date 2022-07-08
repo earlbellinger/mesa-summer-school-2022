@@ -91,7 +91,7 @@ modes, and plotted a radial and a dipole mode.
 In MiniLab 3, we’re going to examine the radial displacement eigenfunctions
 <span class="math notranslate nohighlight">\(\xi_{r}\)</span> of these modes. The steps are similar to before:
 first we’ll add the <span class="math notranslate nohighlight">\(\xi_{r}\)</span> data to MESA’s profile output, and
-then modify <code class="docutils literal notranslate"><span class="pre">inlist_pgstar</span></code> to plot these wavefunctions. As
+then modify <code class="docutils literal notranslate"><span class="pre">inlist_pgstar</span></code> to plot these eigenfunctions. As
 the very first step, make a copy of your working directory from
 <a class="reference internal" href="minilab-2.html#minilab-2"><span class="std std-ref">MiniLab 2</span></a> (with all the changes you have made):</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> cp -a bellinger-2022-mini-2 bellinger-2022-mini-3
@@ -184,7 +184,7 @@ displacement eigenfunction of the <code class="docutils literal notranslate"><sp
 <div class="section" id="adding-profile-columns">
 <h3>Adding Profile Columns<a class="headerlink" href="#adding-profile-columns" title="Permalink to this headline">¶</a></h3>
 <p>Next, we’ll add two extra columns to profile output, in which we’ll
-store the radial displacement wavefunctions we’ve calculated.</p>
+store the radial displacement eigenfunctions we’ve calculated.</p>
 <div class="admonition-exercise admonition">
 <p class="admonition-title">Exercise</p>
 <p>Modify <code class="docutils literal notranslate"><span class="pre">how_many_extra_profile_columns</span></code> to set the number of
@@ -210,7 +210,7 @@ the code.</p>
 <p class="admonition-title">Exercise</p>
 <p>Check that the profile files written to <code class="docutils literal notranslate"><span class="pre">LOGS/profileN.data</span></code>
 (where <code class="docutils literal notranslate"><span class="pre">N</span></code> is an integer) contain two extra columns, containing
-the radial displacement wavefunction data.</p>
+the radial displacement eigenfunction data.</p>
 </div>
 <p>At the end of this run, you’ll likely find that the code crashes with
 an error message something like this:</p>
@@ -261,11 +261,11 @@ GYRE has been run.</p></li>
 <div class="section" id="plotting-the-eigenfunctions">
 <h2>Plotting the Eigenfunctions<a class="headerlink" href="#plotting-the-eigenfunctions" title="Permalink to this headline">¶</a></h2>
 <p>Our final step is to add a PGstar window to our run,
-showing how the mode radial displacement wavefunctions change as the
+showing how the mode radial displacement eigenfunctions change as the
 star evolves. For this window, we’ll use a ‘profile panel’.</p>
 <p>Open up <code class="docutils literal notranslate"><span class="pre">inlist_pgstar</span></code>, and add the following highlighted
 code at the bottom:</p>
-<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="c">! Profile panel showing wavefunctions</span>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="c">! Profile panel showing eigenfunctions</span>
 </span><span class="hll">
 </span><span class="hll"><span class="n">Grid1_plot_name</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;Profile_Panels1&#39;</span>
 </span><span class="hll">
@@ -283,7 +283,7 @@ code at the bottom:</p>
 </div>
 <p>Now watch the evolution, and see how the sensitivity in the dipole
 mode develops as the star becomes a subgiant!</p>
-<p>As an aside: the radial displacement wavefunctions are in units of the
+<p>As an aside: the radial displacement eigenfunctions are in units of the
 stellar radius <span class="math notranslate nohighlight">\(R\)</span>. Reading off the plots, it would seem that
 the radial displacement at the stellar surface is tens or even
 hundreds times <span class="math notranslate nohighlight">\(R\)</span>. This shouldn’t alarm you; GYRE is a <em>linear</em>
