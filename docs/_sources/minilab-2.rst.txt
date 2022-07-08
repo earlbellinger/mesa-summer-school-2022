@@ -1,30 +1,30 @@
 .. _minilab-2:
 
-***************************
-MiniLab 2: Plotting Periods
-***************************
+*******************************
+MiniLab 2: Plotting Frequencies
+*******************************
 
 Overview
 ========
 
 In Minilab 2, we'll take mode periods calculated by GYRE and plot them
 using PGstar. This will involve first adding the periods to MESA's
-history output; and then modifying ``inlist_to_tams_pgstar`` to set up
+history output; and then modifying ``inlist_pgstar`` to set up
 the plots. As the very first step, make a copy of your working
 directory from :ref:`MiniLab 1 <minilab-1>` (with all the changes you have made):
 
 .. code-block:: console
 
-   $ cp -a townsend-2019-mini-1 townsend-2019-mini-2
-   $ cd townsend-2019-mini-2
+   $ cp -a bellinger-2022-mini-1 bellinger-2022-mini-2
+   $ cd bellinger-2022-mini-2
 
 Alternatively, if you were unable to get things working with
 :ref:`MiniLab 1 <minilab-1>`, then you can grab a working directory
 for MiniLab 2 from `here
-<http://www.astro.wisc.edu/~townsend/resource/teaching/mesa-summer-school-2019/townsend-2019-mini-2.tar.gz>`__.
+<TODO>`__.
 
-Adding Periods to History Output
-================================
+Adding Frequencies to History Output
+====================================
 
 The standard approach to adding extra columns to history output is to
 modify the ``how_many_extra_history_columns`` and

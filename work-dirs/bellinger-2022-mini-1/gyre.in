@@ -3,33 +3,33 @@
 /
 
 &mode
-	l = 0
-	n_pg_max = 50
+    l = 0
+    n_pg_max = 50
 /
 
 &mode
-	l = 1
-	n_pg_max = 50
+    l = 1
+    n_pg_max = 50
 /
 
 &osc
     outer_bound = 'JCD'
-	nonadiabatic = .false.
-	inner_bound = 'ZERO_R'
+    nonadiabatic = .false.
+    inner_bound = 'ZERO_R'
 /
 
 &rot
 /
 
 &num
-	diff_scheme = 'MAGNUS_GL2'
+    diff_scheme = 'MAGNUS_GL2'
 /
 
 &scan
-	grid_type = 'LINEAR'
-	freq_min = 100
-	freq_max = 1
-	n_freq = 100
+    grid_type = 'LINEAR'
+    freq_min = 100
+    freq_max = 1
+    n_freq = 100
     freq_min_units = 'UHZ'
     freq_max_units = 'ACOUSTIC_CUTOFF'
     !freq_units = 'UHZ'

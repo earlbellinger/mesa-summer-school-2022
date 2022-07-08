@@ -5,14 +5,13 @@ Supplementary Materials
 Talk Slides
 ===========
 
-The slides for the talk accompanying the GYRE-in-MESA lab are
-available as a `Keynote presentation <gyre-in-mesa.key>`__ and a `PDF
-file <gyre-in-mesa.pdf>`__.
+The slides for the talk accompanying the Asteroseismology Across the HRD lab are
+available as a `PDF file <asteroseismology.pdf>`__.
 
 Instability Strips
 ==================
 
-Plots of the :math:`\beta` Cephei instability strips, constructed by
+Plots of the mixed mode instability strips, constructed by
 the class during the :ref:`Maxilab <maxilab>`, are available:
 
 - `Solar metallicity <fig_strips_1.00.pdf>`__

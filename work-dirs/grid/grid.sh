@@ -41,6 +41,26 @@ for Z in 0.0001 0.001 0.01 0.02; do
         
         ./rn
         
-        cp LOGS/history.data results/"$M_$Z.dat"
+        cp LOGS/history.data results/"$M"_"$Z".dat
+    done
+done 
+
+
+mkdir results_full
+for Z in 0.0001 0.001 0.01 0.02; do
+    for M in 0.8 1 1.2 1.5 2.0 2.5 3; do
+        Y=$(echo "0.2463 + 2 * $Z" | bc -l)
+        echo $M, $Z, $Y
+        
+        rm -rf LOGS
+        
+        change new_y $Y
+        change new_z $Z
+        change Zbase $Z
+        change initial_mass $M
+        
+        ./rn
+        
+        cp LOGS/history.data results_full/"$M"_"$Z".dat
     done
 done 

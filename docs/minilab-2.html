@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MiniLab 2: Plotting Periods &mdash; Asteroseismology across the HRD  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>MiniLab 2: Plotting Frequencies &mdash; Asteroseismology across the HRD  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/style.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,7 +18,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="MiniLab 3: Plotting Wavefunctions" href="minilab-3.html" />
+    <link rel="next" title="MiniLab 3: Plotting Eigenfunctions" href="minilab-3.html" />
     <link rel="prev" title="MiniLab 1: First Steps" href="minilab-1.html" /> 
 </head>
 
@@ -40,9 +40,9 @@
               <p class="caption"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="minilab-1.html">MiniLab 1: First Steps</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">MiniLab 2: Plotting Periods</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MiniLab 2: Plotting Frequencies</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#adding-periods-to-history-output">Adding Periods to History Output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#adding-frequencies-to-history-output">Adding Frequencies to History Output</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#adding-module-variables">Adding Module Variables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#setting-module-variables">Setting Module Variables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#adding-history-columns">Adding History Columns</a></li>
@@ -53,7 +53,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#quantifying-the-period-scaling">Quantifying the Period Scaling</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="minilab-3.html">MiniLab 3: Plotting Wavefunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minilab-3.html">MiniLab 3: Plotting Eigenfunctions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="maxilab.html">MaxiLab: Exploring the Instability Strip</a></li>
 <li class="toctree-l1"><a class="reference internal" href="supplementary.html">Supplementary Materials</a></li>
 </ul>
@@ -72,7 +72,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>MiniLab 2: Plotting Periods</li>
+      <li>MiniLab 2: Plotting Frequencies</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/minilab-2.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -82,25 +82,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="minilab-2-plotting-periods">
-<span id="minilab-2"></span><h1>MiniLab 2: Plotting Periods<a class="headerlink" href="#minilab-2-plotting-periods" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="minilab-2-plotting-frequencies">
+<span id="minilab-2"></span><h1>MiniLab 2: Plotting Frequencies<a class="headerlink" href="#minilab-2-plotting-frequencies" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>In Minilab 2, we’ll take mode periods calculated by GYRE and plot them
 using PGstar. This will involve first adding the periods to MESA’s
-history output; and then modifying <code class="docutils literal notranslate"><span class="pre">inlist_to_tams_pgstar</span></code> to set up
+history output; and then modifying <code class="docutils literal notranslate"><span class="pre">inlist_pgstar</span></code> to set up
 the plots. As the very first step, make a copy of your working
 directory from <a class="reference internal" href="minilab-1.html#minilab-1"><span class="std std-ref">MiniLab 1</span></a> (with all the changes you have made):</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> cp -a townsend-2019-mini-1 townsend-2019-mini-2
-<span class="gp">$</span> <span class="nb">cd</span> townsend-2019-mini-2
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> cp -a bellinger-2022-mini-1 bellinger-2022-mini-2
+<span class="gp">$</span> <span class="nb">cd</span> bellinger-2022-mini-2
 </pre></div>
 </div>
 <p>Alternatively, if you were unable to get things working with
 <a class="reference internal" href="minilab-1.html#minilab-1"><span class="std std-ref">MiniLab 1</span></a>, then you can grab a working directory
-for MiniLab 2 from <a class="reference external" href="http://www.astro.wisc.edu/~townsend/resource/teaching/mesa-summer-school-2019/townsend-2019-mini-2.tar.gz">here</a>.</p>
+for MiniLab 2 from <a class="reference external" href="TODO">here</a>.</p>
 </div>
-<div class="section" id="adding-periods-to-history-output">
-<h2>Adding Periods to History Output<a class="headerlink" href="#adding-periods-to-history-output" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adding-frequencies-to-history-output">
+<h2>Adding Frequencies to History Output<a class="headerlink" href="#adding-frequencies-to-history-output" title="Permalink to this headline">¶</a></h2>
 <p>The standard approach to adding extra columns to history output is to
 modify the <code class="docutils literal notranslate"><span class="pre">how_many_extra_history_columns</span></code> and
 <code class="docutils literal notranslate"><span class="pre">data_for_extra_history_columns</span></code> hooks. The former defines how many
@@ -321,7 +321,7 @@ the text area.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="minilab-1.html" class="btn btn-neutral float-left" title="MiniLab 1: First Steps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="minilab-3.html" class="btn btn-neutral float-right" title="MiniLab 3: Plotting Wavefunctions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="minilab-3.html" class="btn btn-neutral float-right" title="MiniLab 3: Plotting Eigenfunctions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
