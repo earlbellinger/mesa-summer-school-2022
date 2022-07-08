@@ -1,5 +1,5 @@
 ################
-Asteroseismology across the HRD
+Asteroseismology Across the HRD
 ################
 
 .. toctree::
