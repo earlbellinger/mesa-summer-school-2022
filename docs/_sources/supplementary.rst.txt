@@ -14,4 +14,4 @@ Instability Strips
 Plots of the mixed mode instability strips, constructed by
 the class during the :ref:`Maxilab <maxilab>`, are as follows:
 
-![HRD](https://github.com/earlbellinger/mesa-summer-school-2022/raw/main/work-dirs/grid/HR.png)
+<img src="https://github.com/earlbellinger/mesa-summer-school-2022/raw/main/work-dirs/grid/HR.png" />
