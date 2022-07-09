@@ -115,7 +115,7 @@ within <code class="docutils literal notranslate"><span class="pre">run_star_ext
 <h3>Adding Module Variables<a class="headerlink" href="#adding-module-variables" title="Permalink to this headline">¶</a></h3>
 <p>Let’s add a couple of module variables to store the frequencies of the
 radial and dipole modes, and the inertias of the dipole modes. Add the following
-highlighted code at the appropriate place near the top of
+code at the appropriate place near the top of
 <code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code>:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! &gt;&gt;&gt; Insert module variables below</span>
 
@@ -172,10 +172,10 @@ order, while <code class="docutils literal notranslate"><span class="pre">md%fre
 in the desired units (in this case, Hertz). The <code class="docutils literal notranslate"><span class="pre">REAL(...)</span></code> wrapper
 is required because <code class="docutils literal notranslate"><span class="pre">md%freq(...)</span></code> returns a complex value, with the
 real part containing the frequency and the imaginary part containing
-the growth rate. This also prints the spherical degree <code class="docutils literal notranslate"><span class="pre">md%l`,</span>
-<span class="pre">the</span> <span class="pre">g-mode</span> <span class="pre">radial</span> <span class="pre">order</span> <span class="pre">``md%n_g</span></code>, and the mode inertia <code class="docutils literal notranslate"><span class="pre">md%E_norm()</span></code>.</p>
+the growth rate. This also prints the spherical degree <code class="docutils literal notranslate"><span class="pre">md%l</span></code>,
+the g-mode radial order <code class="docutils literal notranslate"><span class="pre">md%n_g</span></code>, and the mode inertia <code class="docutils literal notranslate"><span class="pre">md%E_norm()</span></code>.</p>
 <p>With these points in mind, we can store the frequencies by adding the following
-highlighted code to the <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> subroutine. Note that we will calculate
+code to the <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> subroutine. Note that we will calculate
 the frequencies in microHertz (<code class="docutils literal notranslate"><span class="pre">'UHZ'</span></code>) and then normalize
 the frequencies by <code class="docutils literal notranslate"><span class="pre">s%</span> <span class="pre">nu_max</span></code> and <code class="docutils literal notranslate"><span class="pre">s%</span> <span class="pre">delta_nu</span></code> in order to make the plots look nicer.</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_p</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="p">.</span><span class="nb">and</span><span class="p">.</span> <span class="n">md</span><span class="p">%</span><span class="n">n_p</span> <span class="o">&lt;=</span> <span class="mi">50</span><span class="p">)</span> <span class="k">then</span>
@@ -205,8 +205,7 @@ the frequencies by <code class="docutils literal notranslate"><span class="pre">
 <span id="minilab-2-add-hist-cols"></span><h3>Adding History Columns<a class="headerlink" href="#adding-history-columns" title="Permalink to this headline">¶</a></h3>
 <p>We’re now in a position to add two extra columns to history output, in
 which we’ll store the frequencies we’ve calculated. First, edit
-<code class="docutils literal notranslate"><span class="pre">how_many_extra_history_columns</span></code> to set the number of columns (here,
-the modified line is highlighted):</p>
+<code class="docutils literal notranslate"><span class="pre">how_many_extra_history_columns</span></code> to set the number of columns:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! &gt;&gt;&gt; Change number of history columns below</span>
 
        <span class="n">how_many_extra_history_columns</span> <span class="o">=</span> <span class="mi">100</span>

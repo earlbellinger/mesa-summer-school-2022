@@ -44,7 +44,7 @@ Adding Module Variables
 
 Let's add a couple of module variables to store the frequencies of the
 radial and dipole modes, and the inertias of the dipole modes. Add the following
-highlighted code at the appropriate place near the top of
+code at the appropriate place near the top of
 ``run_star_extras.f90``:
 
 .. code-block:: fortran
@@ -113,11 +113,11 @@ order, while ``md%freq(...)`` is a function that returns the mode frequency
 in the desired units (in this case, Hertz). The ``REAL(...)`` wrapper
 is required because ``md%freq(...)`` returns a complex value, with the
 real part containing the frequency and the imaginary part containing
-the growth rate. This also prints the spherical degree ``md%l`, 
+the growth rate. This also prints the spherical degree ``md%l``, 
 the g-mode radial order ``md%n_g``, and the mode inertia ``md%E_norm()``.
 
 With these points in mind, we can store the frequencies by adding the following 
-highlighted code to the ``process_mode`` subroutine. Note that we will calculate 
+code to the ``process_mode`` subroutine. Note that we will calculate 
 the frequencies in microHertz (``'UHZ'``) and then normalize 
 the frequencies by ``s% nu_max`` and ``s% delta_nu`` in order to make the plots look nicer. 
 
@@ -152,8 +152,7 @@ Adding History Columns
 
 We're now in a position to add two extra columns to history output, in
 which we'll store the frequencies we've calculated. First, edit
-``how_many_extra_history_columns`` to set the number of columns (here,
-the modified line is highlighted):
+``how_many_extra_history_columns`` to set the number of columns:
 
 .. code-block:: fortran
 
