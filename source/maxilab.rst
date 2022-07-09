@@ -14,8 +14,8 @@ As the very first step, make a copy of your working directory from
 
 .. code-block:: console
 
-   $ cp -a townsend-2019-mini-3 townsend-2019-maxi
-   $ cd townsend-2019-maxi
+   $ cp -a bellinger-2022-mini-3 bellinger-2022-maxi
+   $ cd bellinger-2022-maxi
 
 Alternatively, if you were unable to get things working with
 :ref:`MiniLab 3 <minilab-3>`, then you can grab a working directory
