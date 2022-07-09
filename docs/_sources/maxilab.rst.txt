@@ -67,7 +67,7 @@ calculations.
 Picking a Mass
 --------------
 
-The first step is for each student to pick a (different) mass.
+The first step is for each student to pick a (different) mass and composition.
 
 .. admonition:: Exercise
 
@@ -90,7 +90,7 @@ strip boundaries.
    assigned value. Then, use the ``relax_initial_z`` and 
    ``relax_initial_y`` parameters in ``star_job`` (along with ``new_z``
    and ``new_y``) to input your new composition. In order to obtain a value for 
-   Y, we will assume the linear scaling :math:`Y = 0.2463 + 2 * Z`. 
+   Y, we will assume the linear scaling :math:`Y = 0.2463 + 2 \cdot Z`. 
    
    Finally, perform the calculations, and note down the log effective temperature
    :math:`\log T_{\rm eff}/{\rm K}` and log luminosity :math:`\log
