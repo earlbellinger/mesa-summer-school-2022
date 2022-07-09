@@ -157,68 +157,77 @@ As our final modification, add the following highlighted code at the
 end of ``run_star_extras.f90``:
 
 .. code-block:: fortran
-  :emphasize-lines: 3-
 
   ! >>> Insert additional subroutines/functions below
 
-  subroutine run_gyre (id, ierr)
+      subroutine run_gyre (id, ierr)
 
-    integer, intent(in)  :: id
-    integer, intent(out) :: ierr
+         integer, intent(in)  :: id
+         integer, intent(out) :: ierr
 
-    real(dp), allocatable :: global_data(:)
-    real(dp), allocatable :: point_data(:,:)
-    integer               :: ipar(0)
-    real(dp)              :: rpar(0)
+         real(dp), allocatable :: global_data(:)
+         real(dp), allocatable :: point_data(:,:)
+         integer               :: ipar(0)
+         real(dp)              :: rpar(0)
 
-    ! Pass model data to GYRE
+         ! Pass model data to GYRE
 
-    call star_get_pulse_data(id, 'GYRE', .FALSE., .TRUE., .FALSE., &
-         global_data, point_data, ierr)
-    if (ierr /= 0) then
-       print *,'Failed when calling star_get_pulse_data'
-       return
-    end if
+         call star_get_pulse_data(id, 'GYRE', .FALSE., .TRUE., .FALSE., &
+              global_data, point_data, ierr)
+         if (ierr /= 0) then
+            print *,'Failed when calling star_get_pulse_data'
+            return
+         end if
 
-    call gyre_set_model(global_data, point_data, 101)
+         call gyre_set_model(global_data, point_data, 101)
 
-    ! Run GYRE to get modes
+         ! Run GYRE to get modes
 
-    call gyre_get_modes(0, process_mode, ipar, rpar)
+         call gyre_get_modes(0, process_mode, ipar, rpar)
+         call gyre_get_modes(1, process_mode, ipar, rpar)
 
-  contains
+         gyre_has_run = .true.
 
-    subroutine process_mode (md, ipar, rpar, retcode)
+      contains
 
-      type(mode_t), intent(in) :: md
-      integer, intent(inout)   :: ipar(:)
-      real(dp), intent(inout)  :: rpar(:)
-      integer, intent(out)     :: retcode
+         subroutine process_mode (md, ipar, rpar, retcode)
 
-      ! Print out radial order and frequency
+            type(mode_t), intent(in) :: md
+            integer, intent(inout)   :: ipar(:)
+            real(dp), intent(inout)  :: rpar(:)
+            integer, intent(out)     :: retcode
+            integer :: k
 
-      print *, 'Found mode: radial order, frequency = ', &
-               md%n_pg, REAL(md%freq('HZ'))
+            type (star_info), pointer :: s
+            ierr = 0
+            call star_ptr(id, s, ierr)
+            if (ierr /= 0) return
 
-      ! Set return code
+            if (md%n_p >= 1 .and. md%n_p <= 50) then
 
-      retcode = 0
+                ! Print out degree, radial order, mode inertia, and frequency
+                print *, 'Found mode: l, n_p, n_g, E, nu = ', &
+                    md%l, md%n_p, md%n_g, md%E_norm(), REAL(md%freq('HZ'))
 
-    end subroutine process_mode
+            end if
 
-  end subroutine run_gyre
+            retcode = 0
+         end subroutine process_mode
+
+
+      end subroutine run_gyre
 
 The new subroutine runs GYRE on the current stellar model indexed by
 the ``id`` variable. First, the ``star_get_pulse_data`` call copies
 pulsation data from the model into the local arrays ``global_data``
 and ``point_data``. Then, the ``gyre_set_model`` call passes these
 data through to GYRE. Finally, the ``gyre_get_modes`` call instructs
-GYRE to find modes with harmonic degree :math:`\ell=0` --- i.e.,
-radial modes. The ``process_mode`` routine is passed into
+GYRE to find modes with harmonic degrees :math:`\ell=0` and :math:`\ell=1` 
+--- i.e., radial and dipole modes. The ``process_mode`` routine is passed into
 ``gyre_get_modes`` as a 'callback' routine; each time GYRE finds a
 mode, it will call ``process_mode``. Here, as a starting point for
-later work, we've set up ``process_mode`` to print out the mode radial
-order and frequency (in Hertz) of the mode.
+later work, we've set up ``process_mode`` to print out some information
+about the mode. 
 
 Compile and Run
 ===============
