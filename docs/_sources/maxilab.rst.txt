@@ -46,7 +46,8 @@ takes on a nonzero value of :math:`n_g`.
   :math:`n_g` in an integer array. 
   Therefore, you will want to allocate and initialize an array (like 
   we did previously with the ``frequencies`` and ``inertias`` arrays)
-  and then store the values inside the ``process_mode`` subroutine. 
+  and then store the values of ``md%n_g`` inside the 
+  ``process_mode`` subroutine. 
 
 Mapping the Instability Strip
 =============================
