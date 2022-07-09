@@ -103,14 +103,17 @@ for the MaxiLab from <a class="reference external" href="https://github.com/earl
 <div class="section" id="finding-the-mixed-mode">
 <h2>Finding the mixed mode<a class="headerlink" href="#finding-the-mixed-mode" title="Permalink to this headline">¶</a></h2>
 <p>The next step is to add code to determine when the dipole mode
-closest to <span class="math notranslate nohighlight">\(\nu_\max\)</span> becomes mixed.</p>
+closest to <span class="math notranslate nohighlight">\(\nu_\max\)</span> becomes mixed. Since we have normalized
+our frequencies by subtracting <span class="math notranslate nohighlight">\(\nu_\max\)</span>, it will be sufficient
+to check when the dipole mode whose frequency is closest to zero
+takes on a nonzero value of <span class="math notranslate nohighlight">\(n_g\)</span>.</p>
 <div class="admonition-exercise admonition">
 <p class="admonition-title">Exercise</p>
-<p>Add a stopping condition to your run by modifying <code class="docutils literal notranslate"><span class="pre">extras_finish_step</span></code>.
-Since we have normalized our frequencies by subtracting <span class="math notranslate nohighlight">\(\nu_\max\)</span>,
-it is sufficient to check when the dipole mode whose frequency is closest
-to zero takes on a nonzero <span class="math notranslate nohighlight">\(n_g\)</span>. In order to accomplish this, you
-will need to store the values of <span class="math notranslate nohighlight">\(n_g\)</span> in an integer array.
+<p>Add a stopping condition to your run by modifying <code class="docutils literal notranslate"><span class="pre">extras_finish_step</span></code>
+that checks when the dipole mode closest to zero takes on a nonzero
+value of <span class="math notranslate nohighlight">\(n_g\)</span>.
+In order to accomplish this, you will need to store the values of
+<span class="math notranslate nohighlight">\(n_g\)</span> in an integer array.
 Therefore, you will want to allocate and initialize an array (like
 we did previously with the <code class="docutils literal notranslate"><span class="pre">frequencies</span></code> and <code class="docutils literal notranslate"><span class="pre">inertias</span></code> arrays)
 and then store the values inside the <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> subroutine.</p>

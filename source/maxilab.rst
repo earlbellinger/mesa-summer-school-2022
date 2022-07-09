@@ -32,15 +32,18 @@ Finding the mixed mode
 ======================
 
 The next step is to add code to determine when the dipole mode 
-closest to :math:`\nu_\max` becomes mixed. 
+closest to :math:`\nu_\max` becomes mixed. Since we have normalized 
+our frequencies by subtracting :math:`\nu_\max`, it will be sufficient 
+to check when the dipole mode whose frequency is closest to zero 
+takes on a nonzero value of :math:`n_g`.
 
 .. admonition:: Exercise
 
-  Add a stopping condition to your run by modifying ``extras_finish_step``.
-  Since we have normalized our frequencies by subtracting :math:`\nu_\max`, 
-  it is sufficient to check when the dipole mode whose frequency is closest 
-  to zero takes on a nonzero :math:`n_g`. In order to accomplish this, you 
-  will need to store the values of :math:`n_g` in an integer array. 
+  Add a stopping condition to your run by modifying ``extras_finish_step``
+  that checks when the dipole mode closest to zero takes on a nonzero 
+  value of :math:`n_g`. 
+  In order to accomplish this, you will need to store the values of 
+  :math:`n_g` in an integer array. 
   Therefore, you will want to allocate and initialize an array (like 
   we did previously with the ``frequencies`` and ``inertias`` arrays)
   and then store the values inside the ``process_mode`` subroutine. 
