@@ -8,11 +8,11 @@ Overview
 ========
 
 In this maxilab, we will determine when mixed modes are expected to 
-become observable. Recall that :math`\nu_\max` is the frequency at 
+become observable. Recall that :math:`\nu_\max` is the frequency at 
 maximum oscillation power, and that we have normalized our frequencies 
 by this frequency. Recall also that only non-radial modes can become 
 mixed modes. Thus, we want to stop our run when the dipole mode closest to 
-:math`\nu_\max` becomes mixed, which we can determine by inspecting its value 
+:math:`\nu_\max` becomes mixed, which we can determine by inspecting its value 
 of ``md%n_g`` and seeing when it becomes nonzero. 
 
 As the very first step, make a copy of your working directory from
@@ -32,15 +32,15 @@ Finding the mixed mode
 ======================
 
 The next step is to add code to determine when the dipole mode 
-closest to :math`\nu_\max` becomes mixed. 
+closest to :math:`\nu_\max` becomes mixed. 
 
 .. admonition:: Exercise
 
   Add a stopping condition to your run by modifying ``extras_finish_step``.
-  Since we have normalized our frequencies by subtracting :math`\nu_\max`, 
+  Since we have normalized our frequencies by subtracting :math:`\nu_\max`, 
   it is sufficient to check when the dipole mode whose frequency is closest 
-  to zero takes on a nonzero :math`n_g`. In order to accomplish this, you 
-  will need to store the values of :math`n_g` in an integer array. 
+  to zero takes on a nonzero :math:`n_g`. In order to accomplish this, you 
+  will need to store the values of :math:`n_g` in an integer array. 
   Therefore, you will want to allocate and initialize an array (like 
   we did previously with the ``frequencies`` and ``inertias`` arrays)
   and then store the values inside the ``process_mode`` subroutine. 
@@ -53,7 +53,7 @@ map out the extent of the "mixed mode" instability strip for
 dipole modes. This will involve repeating the evolution for a range of
 different stellar masses and metallicities, and noting the effective 
 temperature and luminosity when the dipole mode closest to 
-:math`\nu_\max` becomes mixed. To speed things
+:math:`\nu_\max` becomes mixed. To speed things
 up, we'll crowd-source the calculations: each student will focus on a
 single stellar mass, and record their results in a shared online
 spreadsheet.
@@ -90,14 +90,17 @@ strip boundaries.
    assigned value. Then, use the ``relax_initial_z`` and 
    ``relax_initial_y`` parameters in ``star_job`` (along with ``new_z``
    and ``new_y``) to input your new composition. In order to obtain a value for 
-   Y, we will assume the linear scaling :math`Y = 0.2463 + 2 * Z`. 
+   Y, we will assume the linear scaling :math:`Y = 0.2463 + 2 * Z`. 
    
    Finally, perform the calculations, and note down the log effective temperature
    :math:`\log T_{\rm eff}/{\rm K}` and log luminosity :math:`\log
    L/{\rm L_{\odot}}` at the new stopping point 
    (you can do this by inspecting the terminal output, or by analyzing
    the ``history.data`` file after the run). **Be
-   sure to enter logarithmic values, and use 3 decimal places**.
+   sure to enter logarithmic values, and use 3 decimal places**. Note
+   that you may wish to turn off the writing of profile files, and 
+   depending on your mass and metallicity, you may need to alter the 
+   pre-existing stopping conditions of the inlist. 
 
 .. admonition:: *Optional* Exercise
 

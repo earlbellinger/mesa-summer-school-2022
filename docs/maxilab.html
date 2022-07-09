@@ -84,11 +84,11 @@
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>In this maxilab, we will determine when mixed modes are expected to
-become observable. Recall that :math`nu_max` is the frequency at
+become observable. Recall that <span class="math notranslate nohighlight">\(\nu_\max\)</span> is the frequency at
 maximum oscillation power, and that we have normalized our frequencies
 by this frequency. Recall also that only non-radial modes can become
 mixed modes. Thus, we want to stop our run when the dipole mode closest to
-:math`nu_max` becomes mixed, which we can determine by inspecting its value
+<span class="math notranslate nohighlight">\(\nu_\max\)</span> becomes mixed, which we can determine by inspecting its value
 of <code class="docutils literal notranslate"><span class="pre">md%n_g</span></code> and seeing when it becomes nonzero.</p>
 <p>As the very first step, make a copy of your working directory from
 <a class="reference internal" href="minilab-3.html#minilab-3"><span class="std std-ref">MiniLab 3</span></a> (with all the changes you have made):</p>
@@ -103,14 +103,14 @@ for the MaxiLab from <a class="reference external" href="https://github.com/earl
 <div class="section" id="finding-the-mixed-mode">
 <h2>Finding the mixed mode<a class="headerlink" href="#finding-the-mixed-mode" title="Permalink to this headline">¶</a></h2>
 <p>The next step is to add code to determine when the dipole mode
-closest to :math`nu_max` becomes mixed.</p>
+closest to <span class="math notranslate nohighlight">\(\nu_\max\)</span> becomes mixed.</p>
 <div class="admonition-exercise admonition">
 <p class="admonition-title">Exercise</p>
 <p>Add a stopping condition to your run by modifying <code class="docutils literal notranslate"><span class="pre">extras_finish_step</span></code>.
-Since we have normalized our frequencies by subtracting :math`nu_max`,
+Since we have normalized our frequencies by subtracting <span class="math notranslate nohighlight">\(\nu_\max\)</span>,
 it is sufficient to check when the dipole mode whose frequency is closest
-to zero takes on a nonzero :math`n_g`. In order to accomplish this, you
-will need to store the values of :math`n_g` in an integer array.
+to zero takes on a nonzero <span class="math notranslate nohighlight">\(n_g\)</span>. In order to accomplish this, you
+will need to store the values of <span class="math notranslate nohighlight">\(n_g\)</span> in an integer array.
 Therefore, you will want to allocate and initialize an array (like
 we did previously with the <code class="docutils literal notranslate"><span class="pre">frequencies</span></code> and <code class="docutils literal notranslate"><span class="pre">inertias</span></code> arrays)
 and then store the values inside the <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> subroutine.</p>
@@ -123,7 +123,7 @@ map out the extent of the “mixed mode” instability strip for
 dipole modes. This will involve repeating the evolution for a range of
 different stellar masses and metallicities, and noting the effective
 temperature and luminosity when the dipole mode closest to
-:math`nu_max` becomes mixed. To speed things
+<span class="math notranslate nohighlight">\(\nu_\max\)</span> becomes mixed. To speed things
 up, we’ll crowd-source the calculations: each student will focus on a
 single stellar mass, and record their results in a shared online
 spreadsheet.</p>
@@ -153,13 +153,16 @@ to set the initial stellar mass to your
 assigned value. Then, use the <code class="docutils literal notranslate"><span class="pre">relax_initial_z</span></code> and
 <code class="docutils literal notranslate"><span class="pre">relax_initial_y</span></code> parameters in <code class="docutils literal notranslate"><span class="pre">star_job</span></code> (along with <code class="docutils literal notranslate"><span class="pre">new_z</span></code>
 and <code class="docutils literal notranslate"><span class="pre">new_y</span></code>) to input your new composition. In order to obtain a value for
-Y, we will assume the linear scaling :math`Y = 0.2463 + 2 * Z`.</p>
+Y, we will assume the linear scaling <span class="math notranslate nohighlight">\(Y = 0.2463 + 2 * Z\)</span>.</p>
 <p>Finally, perform the calculations, and note down the log effective temperature
 <span class="math notranslate nohighlight">\(\log T_{\rm eff}/{\rm K}\)</span> and log luminosity <span class="math notranslate nohighlight">\(\log
 L/{\rm L_{\odot}}\)</span> at the new stopping point
 (you can do this by inspecting the terminal output, or by analyzing
 the <code class="docutils literal notranslate"><span class="pre">history.data</span></code> file after the run). <strong>Be
-sure to enter logarithmic values, and use 3 decimal places</strong>.</p>
+sure to enter logarithmic values, and use 3 decimal places</strong>. Note
+that you may wish to turn off the writing of profile files, and
+depending on your mass and metallicity, you may need to alter the
+pre-existing stopping conditions of the inlist.</p>
 </div>
 <div class="admonition-optional-exercise admonition">
 <p class="admonition-title"><em>Optional</em> Exercise</p>
