@@ -116,9 +116,9 @@ cut-and-paste rather than typing this by hand):
     call gyre_set_constant('C_LIGHT', clight)
     call gyre_set_constant('A_RADIATION', crad)
 
-    call gyre_set_constant('M_SUN', msol)
-    call gyre_set_constant('R_SUN', rsol)
-    call gyre_set_constant('L_SUN', lsol)
+    call gyre_set_constant('M_SUN', Msun)
+    call gyre_set_constant('R_SUN', Rsun)
+    call gyre_set_constant('L_SUN', Lsun)
 
     call gyre_set_constant('GYRE_DIR', TRIM(mesa_dir)//'/gyre/gyre')
 
