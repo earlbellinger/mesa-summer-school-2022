@@ -147,8 +147,8 @@ highlighted code below the comment line:
 Here, we call the subroutine ``run_gyre`` to take care of running GYRE
 (we'll create this subroutine in the next step). The enclosing ``if``
 statement checks the ``x_logical_ctrl(1)`` control to decide whether
-to make the call; this allows us to skip running GYRE during certain
-evolutionary phases (e.g., during the pre-main sequence).
+to make the call; this would allow us, for example, 
+to skip running GYRE during certain evolutionary phases. 
 
 Create ``run_gyre``
 -------------------
@@ -157,6 +157,7 @@ As our final modification, add the following highlighted code at the
 end of ``run_star_extras.f90``:
 
 .. code-block:: fortran
+    :emphasize-lines: 3-
 
   ! >>> Insert additional subroutines/functions below
 

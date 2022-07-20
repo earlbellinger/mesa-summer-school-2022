@@ -141,7 +141,7 @@ calculations.</p>
 <div class="admonition-exercise admonition">
 <p class="admonition-title">Exercise</p>
 <p>Visit the Google spreadsheet <a class="reference external" href="https://docs.google.com/spreadsheets/d/1HMFr3RsocZoBkcyLmRLYiyz-xBB33kvZygJtlYrov9w/edit?usp=sharing">here</a>,
-and claim a row (identified by a unique <em>Task Index</em> number) by
+and claim a row by
 entering your name to the <em>Name</em> column. Make a note of the
 mass and metallicity listed in the following columns.</p>
 </div>
@@ -157,7 +157,8 @@ to set the initial stellar mass to your
 assigned value. Then, use the <code class="docutils literal notranslate"><span class="pre">relax_initial_z</span></code> and
 <code class="docutils literal notranslate"><span class="pre">relax_initial_y</span></code> parameters in <code class="docutils literal notranslate"><span class="pre">star_job</span></code> (along with <code class="docutils literal notranslate"><span class="pre">new_z</span></code>
 and <code class="docutils literal notranslate"><span class="pre">new_y</span></code>) to input your new composition. In order to obtain a value for
-Y, we will assume the linear scaling <span class="math notranslate nohighlight">\(Y = 0.2463 + 2 \cdot Z\)</span>.</p>
+Y, we will assume the linear scaling <span class="math notranslate nohighlight">\(Y = 0.2463 + 2 \cdot Z\)</span>.
+Make sure to also modify <code class="docutils literal notranslate"><span class="pre">Zbase</span></code> in the <code class="docutils literal notranslate"><span class="pre">&amp;kap</span></code> namelist.</p>
 <p>Finally, perform the calculations, and note down the log effective temperature
 <span class="math notranslate nohighlight">\(\log T_{\rm eff}/{\rm K}\)</span> and log luminosity <span class="math notranslate nohighlight">\(\log
 L/{\rm L_{\odot}}\)</span> at the new stopping point

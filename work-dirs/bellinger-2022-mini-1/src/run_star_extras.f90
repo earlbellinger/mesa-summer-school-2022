@@ -262,8 +262,7 @@
          integer, intent(in) :: id
          integer :: ierr
 
-         integer :: k, best_k
-         real(dp) :: best_freq
+  ! >>> Declare additional variables below 
 
          type (star_info), pointer :: s
          ierr = 0

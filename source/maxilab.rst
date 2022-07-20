@@ -77,7 +77,7 @@ The first step is for each student to pick a (different) mass and composition.
 
    Visit the Google spreadsheet `here
    <https://docs.google.com/spreadsheets/d/1HMFr3RsocZoBkcyLmRLYiyz-xBB33kvZygJtlYrov9w/edit?usp=sharing>`__,
-   and claim a row (identified by a unique *Task Index* number) by
+   and claim a row by
    entering your name to the *Name* column. Make a note of the
    mass and metallicity listed in the following columns.
 
@@ -95,6 +95,7 @@ strip boundaries.
    ``relax_initial_y`` parameters in ``star_job`` (along with ``new_z``
    and ``new_y``) to input your new composition. In order to obtain a value for 
    Y, we will assume the linear scaling :math:`Y = 0.2463 + 2 \cdot Z`. 
+   Make sure to also modify ``Zbase`` in the ``&kap`` namelist. 
    
    Finally, perform the calculations, and note down the log effective temperature
    :math:`\log T_{\rm eff}/{\rm K}` and log luminosity :math:`\log

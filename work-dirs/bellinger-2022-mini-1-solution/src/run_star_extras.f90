@@ -280,8 +280,7 @@
          integer, intent(in) :: id
          integer :: ierr
 
-         integer :: k, best_k
-         real(dp) :: best_freq
+  ! >>> Declare additional variables below 
 
          type (star_info), pointer :: s
          ierr = 0
@@ -338,8 +337,6 @@
 
          call gyre_get_modes(0, process_mode, ipar, rpar)
          call gyre_get_modes(1, process_mode, ipar, rpar)
-
-         gyre_has_run = .true.
 
       contains
 
