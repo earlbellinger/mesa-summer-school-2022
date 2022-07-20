@@ -337,6 +337,8 @@
       integer function extras_finish_step(id)
          integer, intent(in) :: id
          integer :: ierr
+
+  ! >>> Insert additional code below
          
          integer :: k, best_k
          real(dp) :: best_freq

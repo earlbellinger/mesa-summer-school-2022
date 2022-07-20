@@ -22,7 +22,7 @@
     mixing_length_alpha = 2.22
 
   ! when to stop
-    log_Teff_lower_limit = 3.69
+    log_Teff_lower_limit = 3.7
 
   ! run GYRE to calculate oscillation modes 
     x_logical_ctrl(1) = .true.

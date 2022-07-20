@@ -350,8 +350,6 @@
          integer, intent(in) :: id
          integer :: ierr
 
-  ! >>> Declare additional variables below 
-
          integer :: k, best_k
          real(dp) :: best_freq
 

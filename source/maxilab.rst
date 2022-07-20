@@ -105,7 +105,9 @@ strip boundaries.
    sure to enter logarithmic values, and use 3 decimal places**. Note
    that you may wish to turn off the writing of profile files, and 
    depending on your mass and metallicity, you may need to alter the 
-   pre-existing stopping conditions of the inlist. 
+   pre-existing stopping conditions of the inlist. You may also wish to only
+   begin computing the oscillations when nearing the end of the main sequence,
+   for example by adding logic like ``if (s%xa(1,s%nz) < 0.01) then ...``.
 
 .. admonition:: *Optional* Exercise
 
