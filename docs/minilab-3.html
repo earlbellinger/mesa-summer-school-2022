@@ -130,8 +130,9 @@ module variables. GYRE provides the radial displacement eigenfunction
 at the <code class="docutils literal notranslate"><span class="pre">k</span></code>’th grid point via the <code class="docutils literal notranslate"><span class="pre">md%xi_r(k)</span></code> function. However, a
 wrinkle here is that GYRE indexes its grid points in the opposite
 order to MESA. With this in mind, the following code
-illustrates how to set up the <code class="docutils literal notranslate"><span class="pre">xi_r_radial</span></code> variable for the <code class="docutils literal notranslate"><span class="pre">md%n_p==16</span></code>
-radial mode:</p>
+illustrates how to set up the <code class="docutils literal notranslate"><span class="pre">xi_r_radial</span></code> variable for a
+radial mode whose radial order we specify in the inlist using
+<code class="docutils literal notranslate"><span class="pre">x_integer_ctrl</span></code>:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="kt">integer</span> <span class="kd">::</span> <span class="n">k</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_p</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="p">.</span><span class="nb">and</span><span class="p">.</span> <span class="n">md</span><span class="p">%</span><span class="n">n_p</span> <span class="o">&lt;=</span> <span class="mi">50</span><span class="p">)</span> <span class="k">then</span>
@@ -143,7 +144,7 @@ radial mode:</p>
     <span class="k">if</span> <span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">l</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span> <span class="c">! radial modes</span>
         <span class="n">frequencies</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">md</span><span class="p">%</span><span class="n">n_p</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">freq</span><span class="p">(</span><span class="s1">&#39;UHZ&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="n">s</span><span class="p">%</span> <span class="n">nu_max</span><span class="p">)</span> <span class="o">/</span> <span class="n">s</span><span class="p">%</span> <span class="n">delta_nu</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_p</span> <span class="o">==</span> <span class="mi">16</span><span class="p">)</span> <span class="k">then</span> <span class="c">! store the eigenfunction</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_p</span> <span class="o">==</span> <span class="n">x_integer_ctrl</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="k">then</span> <span class="c">! store the eigenfunction</span>
            <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">xi_r_radial</span><span class="p">))</span> <span class="k">deallocate</span><span class="p">(</span><span class="n">xi_r_radial</span><span class="p">)</span>
            <span class="k">allocate</span><span class="p">(</span><span class="n">xi_r_radial</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_k</span><span class="p">))</span>
 
@@ -175,10 +176,12 @@ the order of elements in this array (the strange-looking expression
 <code class="docutils literal notranslate"><span class="pre">xi_r_radial(md%n_k:1:-1)</span></code> uses Fortran’s array-slice notation to access
 the elements of <code class="docutils literal notranslate"><span class="pre">xi_r_radial</span></code> from the last to the first, in increments
 of <code class="docutils literal notranslate"><span class="pre">-1</span></code>).</p>
+<p>Make sure to also set <code class="docutils literal notranslate"><span class="pre">x_integer_ctrl(1)</span> <span class="pre">=</span> <span class="pre">10</span></code> in your inlist.</p>
 <div class="admonition-exercise admonition">
 <p class="admonition-title">Exercise</p>
 <p>Add further code to <code class="docutils literal notranslate"><span class="pre">process_mode</span></code>, to store the radial
-displacement eigenfunction of the <code class="docutils literal notranslate"><span class="pre">md%n_p==15</span></code> dipole mode into <code class="docutils literal notranslate"><span class="pre">xi_r_dipole</span></code>.</p>
+displacement eigenfunction of the <code class="docutils literal notranslate"><span class="pre">md%n_p</span> <span class="pre">==</span> <span class="pre">x_integer_ctrl(1)-1</span></code>
+dipole mode into <code class="docutils literal notranslate"><span class="pre">xi_r_dipole</span></code>.</p>
 </div>
 </div>
 <div class="section" id="adding-profile-columns">
@@ -303,7 +306,7 @@ scaling.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Earl Bellinger, Rich Townsend, Alina Istrate &amp; Anne Thoul.</p>
+    <p>&#169; Copyright 2022, Earl Bellinger, Matthias Fabry, Rich Townsend, Alina Istrate &amp; Anne Thoul.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

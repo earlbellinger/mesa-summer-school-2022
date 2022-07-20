@@ -59,8 +59,9 @@ module variables. GYRE provides the radial displacement eigenfunction
 at the ``k``'th grid point via the ``md%xi_r(k)`` function. However, a
 wrinkle here is that GYRE indexes its grid points in the opposite
 order to MESA. With this in mind, the following code
-illustrates how to set up the ``xi_r_radial`` variable for the ``md%n_p==16``
-radial mode:
+illustrates how to set up the ``xi_r_radial`` variable for a
+radial mode whose radial order we specify in the inlist using 
+``x_integer_ctrl``:
 
 .. code-block:: fortran
 
@@ -75,7 +76,7 @@ radial mode:
             if (md%l == 0) then ! radial modes 
                 frequencies(md%l+1, md%n_p) = (md%freq('UHZ') - s% nu_max) / s% delta_nu
 
-                if (md%n_p == 16) then ! store the eigenfunction 
+                if (md%n_p == x_integer_ctrl(1)) then ! store the eigenfunction 
                    if (allocated(xi_r_radial)) deallocate(xi_r_radial)
                    allocate(xi_r_radial(md%n_k))
 
@@ -107,12 +108,15 @@ storing values in the ``xi_r_radial`` array. . As a final step, we reverse
 the order of elements in this array (the strange-looking expression
 ``xi_r_radial(md%n_k:1:-1)`` uses Fortran's array-slice notation to access
 the elements of ``xi_r_radial`` from the last to the first, in increments
-of ``-1``).
+of ``-1``). 
+
+Make sure to also set ``x_integer_ctrl(1) = 10`` in your inlist. 
 
 .. admonition:: Exercise
       
    Add further code to ``process_mode``, to store the radial
-   displacement eigenfunction of the ``md%n_p==15`` dipole mode into ``xi_r_dipole``.
+   displacement eigenfunction of the ``md%n_p == x_integer_ctrl(1)-1`` 
+   dipole mode into ``xi_r_dipole``.
    
 Adding Profile Columns
 ----------------------

@@ -463,7 +463,7 @@
                 if (md%l == 0) then ! radial modes 
                     frequencies(md%l+1, md%n_p) = (md%freq('UHZ') - s% nu_max) / s% delta_nu
 
-                    if (md%n_p == 16) then ! store the eigenfunction 
+                    if (md%n_p == s% x_integer_ctrl(1)) then ! store the eigenfunction 
                        if (allocated(xi_r_radial)) deallocate(xi_r_radial)
                        allocate(xi_r_radial(md%n_k))
 
@@ -482,7 +482,7 @@
                     frequencies(md%l+1, md%n_p) = (md%freq('UHZ') - s% nu_max) / s% delta_nu
                     n_gs(md%n_p) = md%n_g
 
-                    if (md%n_p == 15) then ! store the eigenfunction 
+                    if (md%n_p == s% x_integer_ctrl(1) - 1) then ! store the eigenfunction 
                        if (allocated(xi_r_dipole)) deallocate(xi_r_dipole)
                        allocate(xi_r_dipole(md%n_k))
 

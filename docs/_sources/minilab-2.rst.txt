@@ -237,8 +237,8 @@ Open up ``inlist_pgstar``, and add the following code at the bottom:
   History_Panels1_xaxis_name = 'model_number'
   History_Panels1_max_width = 0
 
-  History_Panels1_yaxis_name(1) = 'nu_radial_16'
-  History_Panels1_other_yaxis_name(1) = 'nu_dipole_15'
+  History_Panels1_yaxis_name(1) = 'nu_radial_10'
+  History_Panels1_other_yaxis_name(1) = 'nu_dipole_9'
   
   History_Panels1_same_yaxis_range(1) = .true.
 

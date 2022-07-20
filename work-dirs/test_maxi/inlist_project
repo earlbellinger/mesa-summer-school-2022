@@ -1,6 +1,10 @@
 &star_job
     pgstar_flag = .true.
     pause_before_terminate = .true.
+    relax_initial_y = .true.
+    relax_initial_z = .true.
+    new_y = 0.2465
+    new_z = 0.0001
 
 / ! end of star_job namelist
 
@@ -10,7 +14,7 @@
 
 
 &kap
-    Zbase = 0.02
+    Zbase = 0.0001
 / ! end of kap namelist
 
 
@@ -18,11 +22,11 @@
   ! see star/defaults/controls.defaults
 
   ! starting specifications
-    initial_mass = 1 ! in Msun units
+    initial_mass = 3 ! in Msun units
     mixing_length_alpha = 2.22
 
   ! when to stop
-    log_Teff_lower_limit = 3.69
+    log_Teff_lower_limit = 3.7
 
   ! run GYRE to calculate oscillation modes 
     x_logical_ctrl(1) = .true.

@@ -26,6 +26,7 @@
 
   ! run GYRE to calculate oscillation modes 
     x_logical_ctrl(1) = .true.
+    x_integer_ctrl(1) = 10
 
 / ! end of controls namelist
 

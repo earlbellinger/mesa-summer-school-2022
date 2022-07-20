@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Asteroseismology Across the HRD'
-copyright = '2022, Earl Bellinger, Rich Townsend, Alina Istrate & Anne Thoul'
+copyright = '2022, Earl Bellinger, Matthias Fabry, Rich Townsend, Alina Istrate & Anne Thoul'
 author = 'Earl Bellinger, Rich Townsend, Alina Istrate & Anne Thoul'
 
 
