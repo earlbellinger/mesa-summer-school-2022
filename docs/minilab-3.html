@@ -176,7 +176,10 @@ the order of elements in this array (the strange-looking expression
 <code class="docutils literal notranslate"><span class="pre">xi_r_radial(md%n_k:1:-1)</span></code> uses Fortran’s array-slice notation to access
 the elements of <code class="docutils literal notranslate"><span class="pre">xi_r_radial</span></code> from the last to the first, in increments
 of <code class="docutils literal notranslate"><span class="pre">-1</span></code>).</p>
-<p>Make sure to also set <code class="docutils literal notranslate"><span class="pre">x_integer_ctrl(1)</span> <span class="pre">=</span> <span class="pre">10</span></code> in your inlist.</p>
+<p>Make sure to also set <code class="docutils literal notranslate"><span class="pre">x_integer_ctrl(1)</span></code> in your inlist;
+<code class="docutils literal notranslate"><span class="pre">x_integer_ctrl(1)</span> <span class="pre">=</span> <span class="pre">10</span></code> is a good value, though you can of course change it
+to look at others as well. Note that this code could crash if you set it to
+a mode that isn’t computed!</p>
 <div class="admonition-exercise admonition">
 <p class="admonition-title">Exercise</p>
 <p>Add further code to <code class="docutils literal notranslate"><span class="pre">process_mode</span></code>, to store the radial

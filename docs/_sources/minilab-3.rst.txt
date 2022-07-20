@@ -110,7 +110,10 @@ the order of elements in this array (the strange-looking expression
 the elements of ``xi_r_radial`` from the last to the first, in increments
 of ``-1``). 
 
-Make sure to also set ``x_integer_ctrl(1) = 10`` in your inlist. 
+Make sure to also set ``x_integer_ctrl(1)`` in your inlist; 
+``x_integer_ctrl(1) = 10`` is a good value, though you can of course change it 
+to look at others as well. Note that this code could crash if you set it to 
+a mode that isn't computed! 
 
 .. admonition:: Exercise
       
