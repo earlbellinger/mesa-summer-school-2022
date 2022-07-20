@@ -159,7 +159,7 @@ end of ``run_star_extras.f90``:
 .. code-block:: fortran
     :emphasize-lines: 3-
 
-  ! >>> Insert additional subroutines/functions below
+      ! >>> Insert additional subroutines/functions below
 
       subroutine run_gyre (id, ierr)
 

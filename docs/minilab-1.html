@@ -206,6 +206,66 @@ to skip running GYRE during certain evolutionary phases.</p>
 <h3>Create <code class="docutils literal notranslate"><span class="pre">run_gyre</span></code><a class="headerlink" href="#create-run-gyre" title="Permalink to this headline">¶</a></h3>
 <p>As our final modification, add the following highlighted code at the
 end of <code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code>:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span>  <span class="c">! &gt;&gt;&gt; Insert additional subroutines/functions below</span>
+
+<span class="hll">  <span class="k">subroutine </span><span class="n">run_gyre</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">ierr</span><span class="p">)</span>
+</span><span class="hll">
+</span><span class="hll">     <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">id</span>
+</span><span class="hll">     <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ierr</span>
+</span><span class="hll">
+</span><span class="hll">     <span class="kt">real</span><span class="p">(</span><span class="n">dp</span><span class="p">),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">global_data</span><span class="p">(:)</span>
+</span><span class="hll">     <span class="kt">real</span><span class="p">(</span><span class="n">dp</span><span class="p">),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">point_data</span><span class="p">(:,:)</span>
+</span><span class="hll">     <span class="kt">integer</span>               <span class="kd">::</span> <span class="n">ipar</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span class="hll">     <span class="kt">real</span><span class="p">(</span><span class="n">dp</span><span class="p">)</span>              <span class="kd">::</span> <span class="n">rpar</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span class="hll">
+</span><span class="hll">     <span class="c">! Pass model data to GYRE</span>
+</span><span class="hll">
+</span><span class="hll">     <span class="k">call </span><span class="n">star_get_pulse_data</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="s1">&#39;GYRE&#39;</span><span class="p">,</span> <span class="p">.</span><span class="n">FALSE</span><span class="p">.,</span> <span class="p">.</span><span class="n">TRUE</span><span class="p">.,</span> <span class="p">.</span><span class="n">FALSE</span><span class="p">.,</span> <span class="p">&amp;</span>
+</span><span class="hll">          <span class="n">global_data</span><span class="p">,</span> <span class="n">point_data</span><span class="p">,</span> <span class="n">ierr</span><span class="p">)</span>
+</span><span class="hll">     <span class="k">if</span> <span class="p">(</span><span class="n">ierr</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
+</span><span class="hll"><span class="k">        print</span> <span class="o">*</span><span class="p">,</span><span class="s1">&#39;Failed when calling star_get_pulse_data&#39;</span>
+</span><span class="hll">        <span class="k">return</span>
+</span><span class="hll"><span class="k">     end if</span>
+</span><span class="hll">
+</span><span class="hll"><span class="k">     call </span><span class="n">gyre_set_model</span><span class="p">(</span><span class="n">global_data</span><span class="p">,</span> <span class="n">point_data</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+</span><span class="hll">
+</span><span class="hll">     <span class="c">! Run GYRE to get modes</span>
+</span><span class="hll">
+</span><span class="hll">     <span class="k">call </span><span class="n">gyre_get_modes</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">process_mode</span><span class="p">,</span> <span class="n">ipar</span><span class="p">,</span> <span class="n">rpar</span><span class="p">)</span>
+</span><span class="hll">     <span class="k">call </span><span class="n">gyre_get_modes</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">process_mode</span><span class="p">,</span> <span class="n">ipar</span><span class="p">,</span> <span class="n">rpar</span><span class="p">)</span>
+</span><span class="hll">
+</span><span class="hll">     <span class="n">gyre_has_run</span> <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>
+</span><span class="hll">
+</span><span class="hll">  <span class="k">contains</span>
+</span><span class="hll">
+</span><span class="hll"><span class="k">     subroutine </span><span class="n">process_mode</span> <span class="p">(</span><span class="n">md</span><span class="p">,</span> <span class="n">ipar</span><span class="p">,</span> <span class="n">rpar</span><span class="p">,</span> <span class="n">retcode</span><span class="p">)</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="k">type</span><span class="p">(</span><span class="n">mode_t</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">md</span>
+</span><span class="hll">        <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">ipar</span><span class="p">(:)</span>
+</span><span class="hll">        <span class="kt">real</span><span class="p">(</span><span class="n">dp</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">rpar</span><span class="p">(:)</span>
+</span><span class="hll">        <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>     <span class="kd">::</span> <span class="n">retcode</span>
+</span><span class="hll">        <span class="kt">integer</span> <span class="kd">::</span> <span class="n">k</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="k">type</span> <span class="p">(</span><span class="n">star_info</span><span class="p">),</span> <span class="k">pointer</span> <span class="kd">::</span> <span class="n">s</span>
+</span><span class="hll">        <span class="n">ierr</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="hll">        <span class="k">call </span><span class="n">star_ptr</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">ierr</span><span class="p">)</span>
+</span><span class="hll">        <span class="k">if</span> <span class="p">(</span><span class="n">ierr</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span>
+</span><span class="hll">
+</span><span class="hll"><span class="k">        if</span> <span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_p</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="p">.</span><span class="nb">and</span><span class="p">.</span> <span class="n">md</span><span class="p">%</span><span class="n">n_p</span> <span class="o">&lt;=</span> <span class="mi">50</span><span class="p">)</span> <span class="k">then</span>
+</span><span class="hll">
+</span><span class="hll">            <span class="c">! Print out degree, radial order, mode inertia, and frequency</span>
+</span><span class="hll">            <span class="k">print</span> <span class="o">*</span><span class="p">,</span> <span class="s1">&#39;Found mode: l, n_p, n_g, E, nu = &#39;</span><span class="p">,</span> <span class="p">&amp;</span>
+</span><span class="hll">                <span class="n">md</span><span class="p">%</span><span class="n">l</span><span class="p">,</span> <span class="n">md</span><span class="p">%</span><span class="n">n_p</span><span class="p">,</span> <span class="n">md</span><span class="p">%</span><span class="n">n_g</span><span class="p">,</span> <span class="n">md</span><span class="p">%</span><span class="n">E_norm</span><span class="p">(),</span> <span class="kt">REAL</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">freq</span><span class="p">(</span><span class="s1">&#39;HZ&#39;</span><span class="p">))</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="k">end if</span>
+</span><span class="hll">
+</span><span class="hll"><span class="k">        </span><span class="n">retcode</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="hll">     <span class="k">end subroutine </span><span class="n">process_mode</span>
+</span><span class="hll">
+</span><span class="hll">
+</span><span class="hll">  <span class="k">end subroutine </span><span class="n">run_gyre</span>
+</span></pre></div>
+</div>
 <p>The new subroutine runs GYRE on the current stellar model indexed by
 the <code class="docutils literal notranslate"><span class="pre">id</span></code> variable. First, the <code class="docutils literal notranslate"><span class="pre">star_get_pulse_data</span></code> call copies
 pulsation data from the model into the local arrays <code class="docutils literal notranslate"><span class="pre">global_data</span></code>
