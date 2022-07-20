@@ -109,7 +109,7 @@ other routines in <code class="docutils literal notranslate"><span class="pre">r
 variables.</p>
 <div class="section" id="adding-module-variables">
 <h3>Adding Module Variables<a class="headerlink" href="#adding-module-variables" title="Permalink to this headline">¶</a></h3>
-<p>Add the following highlighted code at the appropriate place near the
+<p>Add the following code at the appropriate place near the
 top of <code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code>:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! &gt;&gt;&gt; Insert module variables below</span>
 
@@ -263,23 +263,23 @@ GYRE has been run.</p></li>
 <p>Our final step is to add a PGstar window to our run,
 showing how the mode radial displacement eigenfunctions change as the
 star evolves. For this window, we’ll use a ‘profile panel’.</p>
-<p>Open up <code class="docutils literal notranslate"><span class="pre">inlist_pgstar</span></code>, and add the following highlighted
+<p>Open up <code class="docutils literal notranslate"><span class="pre">inlist_pgstar</span></code>, and add the following
 code at the bottom:</p>
-<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="c">! Profile panel showing eigenfunctions</span>
-</span><span class="hll">
-</span><span class="hll"><span class="n">Grid1_plot_name</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;Profile_Panels1&#39;</span>
-</span><span class="hll">
-</span><span class="hll"><span class="n">Profile_Panels1_num_panels</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span class="hll"><span class="n">Profile_Panels1_title</span> <span class="o">=</span> <span class="s1">&#39;Eigenfunctions&#39;</span>
-</span><span class="hll"><span class="n">Profile_Panels1_xaxis_name</span> <span class="o">=</span> <span class="s1">&#39;logR&#39;</span> <span class="c">! &#39;logxq&#39;</span>
-</span><span class="hll"><span class="n">Profile_Panels1_yaxis_name</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;xi_r_radial&#39;</span>
-</span><span class="hll"><span class="n">Profile_Panels1_other_yaxis_name</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;xi_r_dipole&#39;</span>
-</span><span class="hll">
-</span><span class="hll"><span class="n">Profile_Panels1_ymin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
-</span><span class="hll"><span class="n">Profile_Panels1_ymax</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">10</span>
-</span><span class="hll"><span class="n">Profile_Panels1_other_ymin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
-</span><span class="hll"><span class="n">Profile_Panels1_other_ymax</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">10</span>
-</span></pre></div>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! Profile panel showing eigenfunctions</span>
+
+<span class="n">Grid1_plot_name</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;Profile_Panels1&#39;</span>
+
+<span class="n">Profile_Panels1_num_panels</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">Profile_Panels1_title</span> <span class="o">=</span> <span class="s1">&#39;Eigenfunctions&#39;</span>
+<span class="n">Profile_Panels1_xaxis_name</span> <span class="o">=</span> <span class="s1">&#39;logR&#39;</span> <span class="c">! &#39;logxq&#39;</span>
+<span class="n">Profile_Panels1_yaxis_name</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;xi_r_radial&#39;</span>
+<span class="n">Profile_Panels1_other_yaxis_name</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;xi_r_dipole&#39;</span>
+
+<span class="n">Profile_Panels1_ymin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
+<span class="n">Profile_Panels1_ymax</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">Profile_Panels1_other_ymin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
+<span class="n">Profile_Panels1_other_ymax</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
 </div>
 <p>Now watch the evolution, and see how the sensitivity in the dipole
 mode develops as the star becomes a subgiant!</p>

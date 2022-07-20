@@ -36,7 +36,7 @@ variables.
 Adding Module Variables
 -----------------------
 
-Add the following highlighted code at the appropriate place near the
+Add the following code at the appropriate place near the
 top of ``run_star_extras.f90``:
 
 .. code-block:: fortran
@@ -209,11 +209,10 @@ Our final step is to add a PGstar window to our run,
 showing how the mode radial displacement eigenfunctions change as the
 star evolves. For this window, we'll use a 'profile panel'.
 
-Open up ``inlist_pgstar``, and add the following highlighted
+Open up ``inlist_pgstar``, and add the following 
 code at the bottom:
 
 .. code-block:: fortran
-  :emphasize-lines: 1-
 
   ! Profile panel showing eigenfunctions
 

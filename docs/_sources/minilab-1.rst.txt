@@ -83,13 +83,12 @@ looks like this:
 Add code below this comment line like this:
 
 .. code-block:: fortran
-   :emphasize-lines: 3
 
    ! >>> Insert additional use statements below
 
    use gyre_lib
 
-(here and throughout, the added code is highlighted). This will import
+This will import
 the ``gyre_lib`` library, making its subroutines and functions
 available for us to call.
 
@@ -97,12 +96,11 @@ Initialize GYRE
 ---------------
 
 Let's now add code to initialize GYRE. Find the ``extras_startup``
-subroutine and add the following highlighted code below the comment
+subroutine and add the following code below the comment
 line (to avoid the possibility of typos, it's better you can use
 cut-and-paste rather than typing this by hand):
 
 .. code-block:: fortran
-    :emphasize-lines: 3-
    
     ! >>> Insert additional code below
 
@@ -133,10 +131,9 @@ Call ``run_gyre``
 -----------------
 
 Find the ``extras_check_model`` subroutine and add the following
-highlighted code below the comment line:
+code below the comment line:
 
 .. code-block:: fortran
-    :emphasize-lines: 3-
 
     ! >>> Insert additional code below
 
@@ -153,13 +150,12 @@ to skip running GYRE during certain evolutionary phases.
 Create ``run_gyre``
 -------------------
 
-As our final modification, add the following highlighted code at the
+As our final modification, add the following code at the
 end of ``run_star_extras.f90``:
 
 .. code-block:: fortran
-    :emphasize-lines: 3-
 
-      ! >>> Insert additional subroutines/functions below
+  ! >>> Insert additional subroutines/functions below
 
       subroutine run_gyre (id, ierr)
 
