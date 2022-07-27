@@ -251,8 +251,6 @@ Now re-run the evolution, and consider the following question:
   - Why do the frequencies move in lockstep, with the dipole mode 
     having a nearly constant offset from the radial mode? 
 
-<details>
-  <summary>The answer</summary>
 The answer can be found by considering the asymptotic relation, 
 which gives that the frequencies of the modes scale with the 
 large frequency separation ``delta_nu``, the spherical degree,
@@ -266,4 +264,3 @@ where :math:`\nu_{n,\ell}` is the frequency of a mode with
 radial order :math:`n` and spherical degree :math:`\ell`;
 :math:`\Delta\nu` is the large frequency separation, and 
 :math:`\epsilon` is a phase term. 
-</details>

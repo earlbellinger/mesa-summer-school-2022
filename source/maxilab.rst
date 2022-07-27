@@ -48,6 +48,11 @@ takes on a nonzero value of :math:`n_g`.
   we did previously with the ``frequencies`` and ``inertias`` arrays)
   and then store the values of ``md%n_g`` inside the 
   ``process_mode`` subroutine. 
+  Then you will want to write a do loop inside ``extras_finish_step`` 
+  that iterates through the dipole mode frequencies and stores the index 
+  of the mode whose normalized frequency is closest to zero. Finally, 
+  you will check whether the stored ``n_g`` value for that mode is nonzero, 
+  and if so, then set ``extras_finish_step = terminate``. 
 
 Mapping the Instability Strip
 =============================

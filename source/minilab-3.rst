@@ -119,7 +119,8 @@ a mode that isn't computed!
       
    Add further code to ``process_mode``, to store the radial
    displacement eigenfunction of the ``md%n_p == s% x_integer_ctrl(1)-1`` 
-   dipole mode into ``xi_r_dipole``.
+   dipole mode into ``xi_r_dipole``. This code will be otherwise essentially
+   identical to the addition made above. 
    
 Adding Profile Columns
 ----------------------
