@@ -119,8 +119,8 @@ we did previously with the <code class="docutils literal notranslate"><span clas
 and then store the values of <code class="docutils literal notranslate"><span class="pre">md%n_g</span></code> inside the
 <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> subroutine.
 Then you will want to write a do loop inside <code class="docutils literal notranslate"><span class="pre">extras_finish_step</span></code>
-that iterates through the dipole mode frequencies and stores the index
-of the mode whose normalized frequency is closest to zero. Finally,
+that iterates through the dipole modes and stores the index
+of the mode whose normalized frequency closest to zero. Finally,
 you will check whether the stored <code class="docutils literal notranslate"><span class="pre">n_g</span></code> value for that mode is nonzero,
 and if so, then set <code class="docutils literal notranslate"><span class="pre">extras_finish_step</span> <span class="pre">=</span> <span class="pre">terminate</span></code>.</p>
 </div>
