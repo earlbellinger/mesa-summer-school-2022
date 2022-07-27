@@ -144,7 +144,7 @@ radial mode whose radial order we specify in the inlist using
     <span class="k">if</span> <span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">l</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span> <span class="c">! radial modes</span>
         <span class="n">frequencies</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">md</span><span class="p">%</span><span class="n">n_p</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">freq</span><span class="p">(</span><span class="s1">&#39;UHZ&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="n">s</span><span class="p">%</span> <span class="n">nu_max</span><span class="p">)</span> <span class="o">/</span> <span class="n">s</span><span class="p">%</span> <span class="n">delta_nu</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_p</span> <span class="o">==</span> <span class="n">x_integer_ctrl</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="k">then</span> <span class="c">! store the eigenfunction</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_p</span> <span class="o">==</span> <span class="n">s</span><span class="p">%</span> <span class="n">x_integer_ctrl</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="k">then</span> <span class="c">! store the eigenfunction</span>
            <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">xi_r_radial</span><span class="p">))</span> <span class="k">deallocate</span><span class="p">(</span><span class="n">xi_r_radial</span><span class="p">)</span>
            <span class="k">allocate</span><span class="p">(</span><span class="n">xi_r_radial</span><span class="p">(</span><span class="n">md</span><span class="p">%</span><span class="n">n_k</span><span class="p">))</span>
 
@@ -183,7 +183,7 @@ a mode that isn’t computed!</p>
 <div class="admonition-exercise admonition">
 <p class="admonition-title">Exercise</p>
 <p>Add further code to <code class="docutils literal notranslate"><span class="pre">process_mode</span></code>, to store the radial
-displacement eigenfunction of the <code class="docutils literal notranslate"><span class="pre">md%n_p</span> <span class="pre">==</span> <span class="pre">x_integer_ctrl(1)-1</span></code>
+displacement eigenfunction of the <code class="docutils literal notranslate"><span class="pre">md%n_p</span> <span class="pre">==</span> <span class="pre">s%</span> <span class="pre">x_integer_ctrl(1)-1</span></code>
 dipole mode into <code class="docutils literal notranslate"><span class="pre">xi_r_dipole</span></code>.</p>
 </div>
 </div>
@@ -195,7 +195,8 @@ store the radial displacement eigenfunctions we’ve calculated.</p>
 <p class="admonition-title">Exercise</p>
 <p>Modify <code class="docutils literal notranslate"><span class="pre">how_many_extra_profile_columns</span></code> to set the number of
 columns, and <code class="docutils literal notranslate"><span class="pre">data_for_extra_profile_columns</span></code> to set up the names
-and values of the columns. Be sure to check <code class="docutils literal notranslate"><span class="pre">s%x_logical_ctrl(1)</span></code>
+and values of the columns. Name them <code class="docutils literal notranslate"><span class="pre">'xi_r_radial'</span></code> and <code class="docutils literal notranslate"><span class="pre">'xi_r_dipole'</span></code>.
+Be sure to check <code class="docutils literal notranslate"><span class="pre">s%x_logical_ctrl(1)</span></code>
 before setting the <code class="docutils literal notranslate"><span class="pre">vals</span></code> array, as we did <a class="reference internal" href="minilab-2.html#minilab-2-add-hist-cols"><span class="std std-ref">here</span></a> when adding history columns.</p>
 </div>
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">vals</span></code> array in <code class="docutils literal notranslate"><span class="pre">data_for_extra_profile_columns</span></code> is
@@ -309,7 +310,7 @@ scaling.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Earl Bellinger, Matthias Fabry, Rich Townsend, Alina Istrate &amp; Anne Thoul.</p>
+    <p>&#169; Copyright 2022, Earl Bellinger, Matthias Fabry, Thomas Steindl, Giulia Cinquegrana, Rich Townsend, Alina Istrate &amp; Anne Thoul.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

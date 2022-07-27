@@ -76,7 +76,7 @@ radial mode whose radial order we specify in the inlist using
             if (md%l == 0) then ! radial modes 
                 frequencies(md%l+1, md%n_p) = (md%freq('UHZ') - s% nu_max) / s% delta_nu
 
-                if (md%n_p == x_integer_ctrl(1)) then ! store the eigenfunction 
+                if (md%n_p == s% x_integer_ctrl(1)) then ! store the eigenfunction 
                    if (allocated(xi_r_radial)) deallocate(xi_r_radial)
                    allocate(xi_r_radial(md%n_k))
 
@@ -118,7 +118,7 @@ a mode that isn't computed!
 .. admonition:: Exercise
       
    Add further code to ``process_mode``, to store the radial
-   displacement eigenfunction of the ``md%n_p == x_integer_ctrl(1)-1`` 
+   displacement eigenfunction of the ``md%n_p == s% x_integer_ctrl(1)-1`` 
    dipole mode into ``xi_r_dipole``.
    
 Adding Profile Columns
@@ -131,7 +131,8 @@ store the radial displacement eigenfunctions we've calculated.
 
    Modify ``how_many_extra_profile_columns`` to set the number of
    columns, and ``data_for_extra_profile_columns`` to set up the names
-   and values of the columns. Be sure to check ``s%x_logical_ctrl(1)``
+   and values of the columns. Name them ``'xi_r_radial'`` and ``'xi_r_dipole'``.
+   Be sure to check ``s%x_logical_ctrl(1)``
    before setting the ``vals`` array, as we did :ref:`here
    <minilab-2-add-hist-cols>` when adding history columns.
 

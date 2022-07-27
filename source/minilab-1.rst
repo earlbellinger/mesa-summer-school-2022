@@ -183,8 +183,6 @@ end of ``run_star_extras.f90``:
          call gyre_get_modes(0, process_mode, ipar, rpar)
          call gyre_get_modes(1, process_mode, ipar, rpar)
 
-         gyre_has_run = .true.
-
       contains
 
          subroutine process_mode (md, ipar, rpar, retcode)
