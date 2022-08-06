@@ -31,13 +31,15 @@ modify the ``how_many_extra_history_columns`` and
 ``data_for_extra_history_columns`` hooks. The former defines how many
 extra columns we want to add; while the latter specifies the data to
 put into the columns, together with their associated names. Before we
-make these modifications, however, we have solve a logistical problem:
+make these modifications, however, we have to solve a logistical problem:
 how do we access the GYRE results outside of the ``process_mode``
 callback routine?
 
 The answer is to store these results in 'module variables' ---
 effectively, global variables that can be accessed from anywhere
 within ``run_star_extras.f90``.
+
+.. _minilab-2-mod-vars:
 
 Adding Module Variables
 -----------------------
@@ -85,8 +87,6 @@ That is because we want the most p-dominated modes, and therefore
 need to select the modes with the lowest mode inertias. 
 We have allocated space for 100 modes, but in practice we will find 
 an *a priori* unknown amount of around 70 or so. 
-
-.. _minilab-2-mod-vars:
 
 Setting Module Variables
 ------------------------

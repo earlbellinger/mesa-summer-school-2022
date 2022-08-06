@@ -104,7 +104,7 @@ integer variable ``k``).
 In this code, we first deallocate ``xi_r_radial`` (if currently allocated),
 and then allocate it at the correct size (``md%n_k`` is the number of
 grid points). Following that, we loop over the grid index ``k``,
-storing values in the ``xi_r_radial`` array. . As a final step, we reverse
+storing values in the ``xi_r_radial`` array. As a final step, we reverse
 the order of elements in this array (the strange-looking expression
 ``xi_r_radial(md%n_k:1:-1)`` uses Fortran's array-slice notation to access
 the elements of ``xi_r_radial`` from the last to the first, in increments
@@ -165,7 +165,7 @@ an error message something like this:
 .. code-block:: console
 
   At line 239 of file ../src/run_star_extras.f90
-  Fortran runtime error: Array bound mismatch for dimension 1 of array 'vals' (1917/1910)
+  Fortran runtime error: Array bound mismatch for dimension 1 of array 'vals' (3832/1)
 
 We'll address this error in the following step.
 

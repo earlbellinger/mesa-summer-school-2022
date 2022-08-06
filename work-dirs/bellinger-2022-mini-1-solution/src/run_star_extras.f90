@@ -210,7 +210,7 @@
          !   vals(k,1) = s% Pgas(k)/s% P(k)
          !end do
 
-  ! >>> Insert code to set history column names/values below
+  ! >>> Insert code to set profile column names/values below
 
       end subroutine data_for_extra_profile_columns
 

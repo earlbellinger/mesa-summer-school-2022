@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MiniLab 1: First Steps &mdash; Asteroseismology Across the HRD  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>MiniLab 1: First Steps &mdash; Asteroseismology Across the HRD  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/style.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -37,7 +39,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">MiniLab 1: First Steps</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
@@ -83,22 +85,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="minilab-1-first-steps">
-<span id="minilab-1"></span><h1>MiniLab 1: First Steps<a class="headerlink" href="#minilab-1-first-steps" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+  <section id="minilab-1-first-steps">
+<span id="minilab-1"></span><h1>MiniLab 1: First Steps<a class="headerlink" href="#minilab-1-first-steps" title="Permalink to this headline"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
 <p>In MiniLab 1, we’ll create a model for a solar-type
 star and track it as it evolves from the zero-age main sequence
 (ZAMS) through to the base of the red giant branch (BRGB).</p>
 <p>Once we’ve got our model working, we’ll modify our
 <code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code> file to run the <a class="reference external" href="https://gyre.readthedocs.io/">GYRE</a> oscillation code
 after each timestep, calculating the star’s oscillation frequencies.</p>
-</div>
-<div class="section" id="download-a-working-directory">
-<h2>Download a Working Directory<a class="headerlink" href="#download-a-working-directory" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="download-a-working-directory">
+<h2>Download a Working Directory<a class="headerlink" href="#download-a-working-directory" title="Permalink to this headline"></a></h2>
 <p>To get started, let’s set up a new working directory. Download <a class="reference external" href="https://github.com/earlbellinger/mesa-summer-school-2022/raw/main/work-dirs/bellinger-2022-mini-1.tar.gz">this</a>
 file and unpack it using tar:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> tar xf bellinger-2022-mini-1.tar.gz
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tar xf bellinger-2022-mini-1.tar.gz
 </pre></div>
 </div>
 <p>This working directory contains a pre-configured set of inlist files
@@ -106,15 +108,15 @@ and columns files, a custom <code class="docutils literal notranslate"><span cla
 editing extensively, and some other support files. After making sure
 your <code class="docutils literal notranslate"><span class="pre">MESA_DIR</span></code> environment variable is properly set, change into
 the working directory and build the code:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> bellinger-2022-mini-1
-<span class="gp">$</span> ./mk
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> bellinger-2022-mini-1
+<span class="gp">$ </span>./mk
 </pre></div>
 </div>
-</div>
-<div class="section" id="evolve-the-model">
-<h2>Evolve the Model<a class="headerlink" href="#evolve-the-model" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="evolve-the-model">
+<h2>Evolve the Model<a class="headerlink" href="#evolve-the-model" title="Permalink to this headline"></a></h2>
 <p>Now let’s evolve the model.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ./rn
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./rn
 </pre></div>
 </div>
 <p>During the runs a single PGstar window will display various plots in a
@@ -125,18 +127,18 @@ the <code class="docutils literal notranslate"><span class="pre">Grid1_win_width
 the <code class="docutils literal notranslate"><span class="pre">inlist_pgstar</span></code> file.</p>
 <p>To get an idea of what settings we’re using for these calculations,
 take a look inside <code class="docutils literal notranslate"><span class="pre">inlist_project</span></code>. We set the initial mass to
-<span class="math notranslate nohighlight">\(1\,{\rm M_{\odot}}\)</span>, and chose the helium abundance,
-mixing length, and metallicity to be similar to that of the Sun.</p>
-</div>
-<div class="section" id="modify-the-code">
-<h2>Modify the Code<a class="headerlink" href="#modify-the-code" title="Permalink to this headline">¶</a></h2>
+<span class="math notranslate nohighlight">\(1\,{\rm M_{\odot}}\)</span> and choose a mixing length that is
+appropriate for the Sun.</p>
+</section>
+<section id="modify-the-code">
+<h2>Modify the Code<a class="headerlink" href="#modify-the-code" title="Permalink to this headline"></a></h2>
 <p>As the next step, open <code class="docutils literal notranslate"><span class="pre">src/run_star_extras.f90</span></code> in a text
 editor. We’re going to modify this file to run GYRE after each
 timestep, using a new subroutine we provide called <code class="docutils literal notranslate"><span class="pre">run_gyre</span></code>. This
 will require edits in four places, as detailed in the following four
 subsections.</p>
-<div class="section" id="import-the-gyre-library">
-<h3>Import the GYRE Library<a class="headerlink" href="#import-the-gyre-library" title="Permalink to this headline">¶</a></h3>
+<section id="import-the-gyre-library">
+<h3>Import the GYRE Library<a class="headerlink" href="#import-the-gyre-library" title="Permalink to this headline"></a></h3>
 <p>At a number of points in the <code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code> file, there are
 comments lines that mark where to add the new code. The first one
 looks like this:</p>
@@ -152,13 +154,13 @@ looks like this:</p>
 <p>This will import
 the <code class="docutils literal notranslate"><span class="pre">gyre_lib</span></code> library, making its subroutines and functions
 available for us to call.</p>
-</div>
-<div class="section" id="initialize-gyre">
-<h3>Initialize GYRE<a class="headerlink" href="#initialize-gyre" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="initialize-gyre">
+<h3>Initialize GYRE<a class="headerlink" href="#initialize-gyre" title="Permalink to this headline"></a></h3>
 <p>Let’s now add code to initialize GYRE. Find the <code class="docutils literal notranslate"><span class="pre">extras_startup</span></code>
 subroutine and add the following code below the comment
-line (to avoid the possibility of typos, it’s better you can use
-cut-and-paste rather than typing this by hand):</p>
+line (to avoid the possibility of typos, it’s better to use
+copy-and-paste rather than typing this by hand):</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! &gt;&gt;&gt; Insert additional code below</span>
 
 <span class="c">! Initialize GYRE</span>
@@ -184,16 +186,16 @@ from. Inside your working directory, the file <code class="docutils literal notr
 already be present; we’ll be editing it later on. The subsequent calls
 to <code class="docutils literal notranslate"><span class="pre">gyre_set_constant</span></code> are used to set GYRE’s physical constants to
 the same values that MESA adopts.</p>
-</div>
-<div class="section" id="call-run-gyre">
-<h3>Call <code class="docutils literal notranslate"><span class="pre">run_gyre</span></code><a class="headerlink" href="#call-run-gyre" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="call-run-gyre">
+<h3>Call <code class="docutils literal notranslate"><span class="pre">run_gyre</span></code><a class="headerlink" href="#call-run-gyre" title="Permalink to this headline"></a></h3>
 <p>Find the <code class="docutils literal notranslate"><span class="pre">extras_check_model</span></code> subroutine and add the following
 code below the comment line:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! &gt;&gt;&gt; Insert additional code below</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">%</span><span class="n">x_logical_ctrl</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="k">then</span>
 <span class="k">   call </span><span class="n">run_gyre</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">ierr</span><span class="p">)</span>
-<span class="n">endif</span>
+<span class="k">endif</span>
 </pre></div>
 </div>
 <p>Here, we call the subroutine <code class="docutils literal notranslate"><span class="pre">run_gyre</span></code> to take care of running GYRE
@@ -201,9 +203,9 @@ code below the comment line:</p>
 statement checks the <code class="docutils literal notranslate"><span class="pre">x_logical_ctrl(1)</span></code> control to decide whether
 to make the call; this would allow us, for example,
 to skip running GYRE during certain evolutionary phases.</p>
-</div>
-<div class="section" id="create-run-gyre">
-<h3>Create <code class="docutils literal notranslate"><span class="pre">run_gyre</span></code><a class="headerlink" href="#create-run-gyre" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="create-run-gyre">
+<h3>Create <code class="docutils literal notranslate"><span class="pre">run_gyre</span></code><a class="headerlink" href="#create-run-gyre" title="Permalink to this headline"></a></h3>
 <p>As our final modification, add the following code at the
 end of <code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code>:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! &gt;&gt;&gt; Insert additional subroutines/functions below</span>
@@ -275,13 +277,13 @@ GYRE to find modes with harmonic degrees <span class="math notranslate nohighlig
 mode, it will call <code class="docutils literal notranslate"><span class="pre">process_mode</span></code>. Here, as a starting point for
 later work, we’ve set up <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> to print out some information
 about the mode.</p>
-</div>
-</div>
-<div class="section" id="compile-and-run">
-<h2>Compile and Run<a class="headerlink" href="#compile-and-run" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="compile-and-run">
+<h2>Compile and Run<a class="headerlink" href="#compile-and-run" title="Permalink to this headline"></a></h2>
 <p>With <code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code> modified as described above, re-compile
 the code:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ./mk
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./mk
 </pre></div>
 </div>
 <p>Next, edit <code class="docutils literal notranslate"><span class="pre">inlist_project</span></code> to add the following line to the <code class="docutils literal notranslate"><span class="pre">controls</span></code> namelist:</p>
@@ -290,7 +292,7 @@ the code:</p>
 </div>
 <p>This will make sure that <code class="docutils literal notranslate"><span class="pre">run_gyre</span></code> is called during the
 ZAMS-to-TAMS evolution. You’re now ready to go ahead and run the code:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ./rn
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./rn
 </pre></div>
 </div>
 <p>As the run proceeds, you should be able to see terminal output that looks similar to this:</p>
@@ -305,8 +307,8 @@ ZAMS-to-TAMS evolution. You’re now ready to go ahead and run the code:</p>
 <p>This confirms that GYRE is being run, and that modes are being found.
 The frequencies of the modes are of the order <span class="math notranslate nohighlight">\(10^{-3}\,{\rm Hz}\)</span>,
 just what we’d expect for solar-like stars.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

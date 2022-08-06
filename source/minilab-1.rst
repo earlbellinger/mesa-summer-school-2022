@@ -56,8 +56,8 @@ the ``inlist_pgstar`` file.
 
 To get an idea of what settings we're using for these calculations,
 take a look inside ``inlist_project``. We set the initial mass to 
-:math:`1\,{\rm M_{\odot}}`, and chose the helium abundance, 
-mixing length, and metallicity to be similar to that of the Sun. 
+:math:`1\,{\rm M_{\odot}}` and choose a mixing length that is 
+appropriate for the Sun. 
 
 
 Modify the Code
@@ -97,8 +97,8 @@ Initialize GYRE
 
 Let's now add code to initialize GYRE. Find the ``extras_startup``
 subroutine and add the following code below the comment
-line (to avoid the possibility of typos, it's better you can use
-cut-and-paste rather than typing this by hand):
+line (to avoid the possibility of typos, it's better to use
+copy-and-paste rather than typing this by hand):
 
 .. code-block:: fortran
    
