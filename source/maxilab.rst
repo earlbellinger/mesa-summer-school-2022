@@ -124,3 +124,15 @@ strip boundaries.
 
 When all the data are collected, we'll combine them to create a map of
 the instability strip boundaries in the Hertzsprung-Russell diagram.
+
+.. admonition:: *Optional* Open-Source Development
+   
+   Wouldn't it be great if MESA were able to output some asteroseismic quantities by default in its history and profile files? 
+   Then one could simply add, for example, ``large_frequency_separation`` to ``history_columns.list`` and MESA would call GYRE to perform this calculation — without needing to modify ``run_star_extras.f``. 
+
+   Let's modify MESA's source code to calculate the some of these quantities, such as the large frequency separation or the period of the fundamental mode. 
+   Then, let's open a [pull request](https://docs.mesastar.org/en/release-r22.05.1/developing/contributing.html#pull-requests) on the MESA GitHub to share our modifications with the wider MESA community. 
+
+   A tutorial for modifying MESA's source and adding calculations that are then output into the history/profile files can be found [here](https://docs.mesastar.org/en/release-r22.05.1/developing/common_tasks.html#history-profile-output).
+
+   This task is intended to be done collaboratively. Communicate on Slack with others who are working on this. Distribute tasks, such as (a) creating the history column outputs, (b) calling GYRE within MESA, and (c) creating an appropriate ``test_suite`` case. Anyone who attempts this task will be credited by name on the pull request. 
