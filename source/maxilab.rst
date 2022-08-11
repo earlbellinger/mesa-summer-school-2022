@@ -131,7 +131,7 @@ the instability strip boundaries in the Hertzsprung-Russell diagram.
    Then one could simply add, for example, ``large_frequency_separation`` to ``history_columns.list`` and MESA would call GYRE to perform this calculation — without needing to modify ``run_star_extras.f``. 
 
    Let's modify MESA's source code to calculate the some of these quantities, such as the large frequency separation or the period of the fundamental mode. 
-   Then, let's open a `pull request <https://docs.mesastar.org/en/release-r22.05.1/developing/contributing.html#pull-requests>`_ on the MESA GitHub to share our modifications with the wider MESA community. 
+   Then, let's open a `pull request <https://docs.mesastar.org/en/release-r22.05.1/developing/contributing.html#pull-requests>`_ on the `MESA GitHub <https://github.com/MESAHub/mesa>`_ to share our modifications with the wider MESA community. 
 
    A tutorial for modifying MESA's source and adding calculations that are then output into the history/profile files can be found `here <https://docs.mesastar.org/en/release-r22.05.1/developing/common_tasks.html#history-profile-output>`_.
 
