@@ -123,6 +123,10 @@
 
   ! >>> Insert additional code below
 
+        if (s%x_logical_ctrl(1)) then
+           call run_gyre(id, ierr)
+        endif
+
          ! if you want to check multiple conditions, it can be useful
          ! to set a different termination code depending on which
          ! condition was triggered.  MESA provides 9 customizeable
