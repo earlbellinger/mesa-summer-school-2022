@@ -6,7 +6,7 @@ Talk Slides
 ===========
 
 The slides for the talk accompanying the Asteroseismology Across the HRD lab are
-available as a `PDF file <asteroseismology.pdf>`__.
+available on `Google slides <https://docs.google.com/presentation/d/1jAKV4V4UHE0STbBDdj4zbaoA7NBm7qK0bFSXo8Vy9DU/edit?usp=sharing>`__.
 
 Instability Strips
 ==================
