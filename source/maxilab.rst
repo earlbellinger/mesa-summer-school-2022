@@ -26,7 +26,7 @@ As the very first step, make a copy of your working directory from
 Alternatively, if you were unable to get things working with
 :ref:`MiniLab 3 <minilab-3>`, then you can grab a working directory
 for the MaxiLab from `here
-<https://github.com/earlbellinger/mesa-summer-school-2022/blob/main/work-dirs/bellinger-2022-mini-3-solution.tar.gz>`__.
+<https://github.com/earlbellinger/mesa-summer-school-2022/raw/main/work-dirs/bellinger-2022-mini-3-solution.tar.gz>`__.
 
 Finding the mixed mode 
 ======================
@@ -113,6 +113,8 @@ strip boundaries.
    pre-existing stopping conditions of the inlist. You may also wish to only
    begin computing the oscillations when nearing the end of the main sequence,
    for example by adding logic like ``if (s%xa(1,s%nz) < 0.01) then ...``.
+
+A solution can be found `here <https://github.com/earlbellinger/mesa-summer-school-2022/raw/main/work-dirs/bellinger-2022-maxi-solution.tar.gz>`_. 
 
 .. admonition:: *Optional* Exercise
 
