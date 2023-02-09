@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MaxiLab: Exploring Mixed Oscillation Modes &mdash; Asteroseismology Across the HRD  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>MaxiLab: Exploring Mixed Oscillation Modes &mdash; Asteroseismology Across the HRD  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/style.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -39,7 +37,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+              <p class="caption"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="minilab-1.html">MiniLab 1: First Steps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="minilab-2.html">MiniLab 2: Plotting Frequencies</a></li>
@@ -81,10 +79,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="maxilab-exploring-mixed-oscillation-modes">
-<span id="maxilab"></span><h1>MaxiLab: Exploring Mixed Oscillation Modes<a class="headerlink" href="#maxilab-exploring-mixed-oscillation-modes" title="Permalink to this headline"></a></h1>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+  <div class="section" id="maxilab-exploring-mixed-oscillation-modes">
+<span id="maxilab"></span><h1>MaxiLab: Exploring Mixed Oscillation Modes<a class="headerlink" href="#maxilab-exploring-mixed-oscillation-modes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>In this maxilab, we will determine when mixed modes are expected to
 become observable. Recall that <span class="math notranslate nohighlight">\(\nu_\max\)</span> is the frequency at
 maximum oscillation power, and that we have normalized our frequencies
@@ -94,16 +92,16 @@ mixed modes. Thus, we want to stop our run when the dipole mode closest to
 of <code class="docutils literal notranslate"><span class="pre">md%n_g</span></code> and seeing when it becomes nonzero.</p>
 <p>As the very first step, make a copy of your working directory from
 <a class="reference internal" href="minilab-3.html#minilab-3"><span class="std std-ref">MiniLab 3</span></a> (with all the changes you have made):</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cp -a bellinger-2022-mini-3 bellinger-2022-maxi
-<span class="gp">$ </span><span class="nb">cd</span> bellinger-2022-maxi
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> cp -a bellinger-2022-mini-3 bellinger-2022-maxi
+<span class="gp">$</span> <span class="nb">cd</span> bellinger-2022-maxi
 </pre></div>
 </div>
 <p>Alternatively, if you were unable to get things working with
 <a class="reference internal" href="minilab-3.html#minilab-3"><span class="std std-ref">MiniLab 3</span></a>, then you can grab a working directory
 for the MaxiLab from <a class="reference external" href="https://github.com/earlbellinger/mesa-summer-school-2022/raw/main/work-dirs/bellinger-2022-mini-3-solution.tar.gz">here</a>.</p>
-</section>
-<section id="finding-the-mixed-mode">
-<h2>Finding the mixed mode<a class="headerlink" href="#finding-the-mixed-mode" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="finding-the-mixed-mode">
+<h2>Finding the mixed mode<a class="headerlink" href="#finding-the-mixed-mode" title="Permalink to this headline">¶</a></h2>
 <p>The next step is to add code to determine when the dipole mode
 closest to <span class="math notranslate nohighlight">\(\nu_\max\)</span> becomes mixed. Since we have normalized
 our frequencies by subtracting <span class="math notranslate nohighlight">\(\nu_\max\)</span>, it will be sufficient
@@ -126,9 +124,9 @@ of the mode whose normalized frequency closest to zero. Finally,
 you will check whether the stored <code class="docutils literal notranslate"><span class="pre">n_g</span></code> value for that mode is nonzero,
 and if so, then set <code class="docutils literal notranslate"><span class="pre">extras_finish_step</span> <span class="pre">=</span> <span class="pre">terminate</span></code>.</p>
 </div>
-</section>
-<section id="mapping-the-instability-strip">
-<h2>Mapping the Instability Strip<a class="headerlink" href="#mapping-the-instability-strip" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="mapping-the-instability-strip">
+<h2>Mapping the Instability Strip<a class="headerlink" href="#mapping-the-instability-strip" title="Permalink to this headline">¶</a></h2>
 <p>As the final part of the MaxiLab, we’re going to use GYRE and MESA to
 map out the extent of the “mixed mode” instability strip for
 dipole modes. This will involve repeating the evolution for a range of
@@ -142,8 +140,8 @@ spreadsheet.</p>
 working, then you can grab the solution from <a class="reference external" href="https://github.com/earlbellinger/mesa-summer-school-2022/raw/main/work-dirs/bellinger-2022-maxi-solution.tar.gz">here</a>;
 use this as your working directory for the mixed mode
 calculations.</p>
-<section id="picking-a-mass">
-<h3>Picking a Mass<a class="headerlink" href="#picking-a-mass" title="Permalink to this headline"></a></h3>
+<div class="section" id="picking-a-mass">
+<h3>Picking a Mass<a class="headerlink" href="#picking-a-mass" title="Permalink to this headline">¶</a></h3>
 <p>The first step is for each student to pick a (different) mass and composition.</p>
 <div class="admonition-exercise admonition">
 <p class="admonition-title">Exercise</p>
@@ -152,9 +150,9 @@ and claim a row by
 entering your name to the <em>Name</em> column. Make a note of the
 mass and metallicity listed in the following columns.</p>
 </div>
-</section>
-<section id="determining-boundaries">
-<h3>Determining Boundaries<a class="headerlink" href="#determining-boundaries" title="Permalink to this headline"></a></h3>
+</div>
+<div class="section" id="determining-boundaries">
+<h3>Determining Boundaries<a class="headerlink" href="#determining-boundaries" title="Permalink to this headline">¶</a></h3>
 <p>The next step is to perform the calculation and record the instability
 strip boundaries.</p>
 <div class="admonition-exercise admonition">
@@ -198,9 +196,9 @@ Then, let’s open a <a class="reference external" href="https://docs.mesastar.o
 <p>A tutorial for modifying MESA’s source and adding calculations that are then output into the history/profile files can be found <a class="reference external" href="https://docs.mesastar.org/en/release-r22.05.1/developing/common_tasks.html#history-profile-output">here</a>.</p>
 <p>This task is intended to be done collaboratively. Communicate on Slack with others who are working on this. Distribute tasks, such as (a) creating the history column outputs, (b) calling GYRE within MESA, (c) handling the GYRE inlist, and (d) creating an appropriate <code class="docutils literal notranslate"><span class="pre">test_suite</span></code> case. Anyone who attempts this task will be credited by name on the pull request.</p>
 </div>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

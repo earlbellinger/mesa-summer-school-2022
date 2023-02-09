@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MiniLab 2: Plotting Frequencies &mdash; Asteroseismology Across the HRD  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>MiniLab 2: Plotting Frequencies &mdash; Asteroseismology Across the HRD  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/style.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -39,7 +37,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+              <p class="caption"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="minilab-1.html">MiniLab 1: First Steps</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">MiniLab 2: Plotting Frequencies</a><ul>
@@ -83,25 +81,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="minilab-2-plotting-frequencies">
-<span id="minilab-2"></span><h1>MiniLab 2: Plotting Frequencies<a class="headerlink" href="#minilab-2-plotting-frequencies" title="Permalink to this headline"></a></h1>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+  <div class="section" id="minilab-2-plotting-frequencies">
+<span id="minilab-2"></span><h1>MiniLab 2: Plotting Frequencies<a class="headerlink" href="#minilab-2-plotting-frequencies" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>In Minilab 2, we’ll take mode frequencies calculated by GYRE and plot them
 using PGstar. This will involve first adding the frequencies to MESA’s
 history output; and then modifying <code class="docutils literal notranslate"><span class="pre">inlist_pgstar</span></code> to set up
 the plots. As the very first step, make a copy of your working
 directory from <a class="reference internal" href="minilab-1.html#minilab-1"><span class="std std-ref">MiniLab 1</span></a> (with all the changes you have made):</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cp -a bellinger-2022-mini-1 bellinger-2022-mini-2
-<span class="gp">$ </span><span class="nb">cd</span> bellinger-2022-mini-2
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> cp -a bellinger-2022-mini-1 bellinger-2022-mini-2
+<span class="gp">$</span> <span class="nb">cd</span> bellinger-2022-mini-2
 </pre></div>
 </div>
 <p>Alternatively, if you were unable to get things working with
 <a class="reference internal" href="minilab-1.html#minilab-1"><span class="std std-ref">MiniLab 1</span></a>, then you can grab a working directory
 for MiniLab 2 from <a class="reference external" href="https://github.com/earlbellinger/mesa-summer-school-2022/raw/main/work-dirs/bellinger-2022-mini-1-solution.tar.gz">here</a>.</p>
-</section>
-<section id="adding-frequencies-to-history-output">
-<h2>Adding Frequencies to History Output<a class="headerlink" href="#adding-frequencies-to-history-output" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="adding-frequencies-to-history-output">
+<h2>Adding Frequencies to History Output<a class="headerlink" href="#adding-frequencies-to-history-output" title="Permalink to this headline">¶</a></h2>
 <p>The standard approach to adding extra columns to history output is to
 modify the <code class="docutils literal notranslate"><span class="pre">how_many_extra_history_columns</span></code> and
 <code class="docutils literal notranslate"><span class="pre">data_for_extra_history_columns</span></code> hooks. The former defines how many
@@ -113,8 +111,8 @@ callback routine?</p>
 <p>The answer is to store these results in ‘module variables’ —
 effectively, global variables that can be accessed from anywhere
 within <code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code>.</p>
-<section id="adding-module-variables">
-<span id="minilab-2-mod-vars"></span><h3>Adding Module Variables<a class="headerlink" href="#adding-module-variables" title="Permalink to this headline"></a></h3>
+<div class="section" id="adding-module-variables">
+<span id="minilab-2-mod-vars"></span><h3>Adding Module Variables<a class="headerlink" href="#adding-module-variables" title="Permalink to this headline">¶</a></h3>
 <p>Let’s add a couple of module variables to store the frequencies of the
 radial and dipole modes, and the inertias of the dipole modes. Add the following
 code at the appropriate place near the top of
@@ -152,9 +150,9 @@ That is because we want the most p-dominated modes, and therefore
 need to select the modes with the lowest mode inertias.
 We have allocated space for 100 modes, but in practice we will find
 an <em>a priori</em> unknown amount of around 70 or so.</p>
-</section>
-<section id="setting-module-variables">
-<h3>Setting Module Variables<a class="headerlink" href="#setting-module-variables" title="Permalink to this headline"></a></h3>
+</div>
+<div class="section" id="setting-module-variables">
+<h3>Setting Module Variables<a class="headerlink" href="#setting-module-variables" title="Permalink to this headline">¶</a></h3>
 <p>Let’s now modify the <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> callback routine to set these
 module variables. As a reminder, <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> is called each
 time GYRE finds a mode. Therefore, we have to add checks to see
@@ -202,9 +200,9 @@ the frequencies by <code class="docutils literal notranslate"><span class="pre">
 </pre></div>
 </div>
 <p>Notice here that we are only saving the dipole mode with the lowest inertia.</p>
-</section>
-<section id="adding-history-columns">
-<span id="minilab-2-add-hist-cols"></span><h3>Adding History Columns<a class="headerlink" href="#adding-history-columns" title="Permalink to this headline"></a></h3>
+</div>
+<div class="section" id="adding-history-columns">
+<span id="minilab-2-add-hist-cols"></span><h3>Adding History Columns<a class="headerlink" href="#adding-history-columns" title="Permalink to this headline">¶</a></h3>
 <p>We’re now in a position to add two extra columns to history output, in
 which we’ll store the frequencies we’ve calculated. First, edit
 <code class="docutils literal notranslate"><span class="pre">how_many_extra_history_columns</span></code> to set the number of columns:</p>
@@ -237,32 +235,32 @@ the names and values of the two extra columns:</p>
               <span class="n">vals</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
           <span class="k">end do</span>
 
-<span class="k">       endif</span>
+<span class="k">       </span><span class="n">endif</span>
 </pre></div>
 </div>
 <p>Note that we check <code class="docutils literal notranslate"><span class="pre">s%x_logical_ctrl(1)</span></code> before setting the <code class="docutils literal notranslate"><span class="pre">vals</span></code>
 array; that way, we avoid copying undefined values if running GYRE has been skipped.</p>
-</section>
-</section>
-<section id="running-the-code">
-<h2>Running the Code<a class="headerlink" href="#running-the-code" title="Permalink to this headline"></a></h2>
+</div>
+</div>
+<div class="section" id="running-the-code">
+<h2>Running the Code<a class="headerlink" href="#running-the-code" title="Permalink to this headline">¶</a></h2>
 <p>With these changes to <code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code>, re-compile and re-run
 the code:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./mk
-<span class="gp">$ </span>./rn
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ./mk
+<span class="gp">$</span> ./rn
 </pre></div>
 </div>
 <p>The history file written to <code class="docutils literal notranslate"><span class="pre">LOGS/history.data</span></code> should now contain
 extra columns, containing the frequency data. An easy way to check
 this is to use the <code class="docutils literal notranslate"><span class="pre">less</span></code> command with the <code class="docutils literal notranslate"><span class="pre">-S</span></code> (chop long lines)
 flag:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>less -S LOGS/history.data
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> less -S LOGS/history.data
 </pre></div>
 </div>
 <p>(Use the left/right cursors key to scan through the columns).</p>
-</section>
-<section id="plotting-the-frequencies">
-<h2>Plotting the Frequencies<a class="headerlink" href="#plotting-the-frequencies" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="plotting-the-frequencies">
+<h2>Plotting the Frequencies<a class="headerlink" href="#plotting-the-frequencies" title="Permalink to this headline">¶</a></h2>
 <p>We’re now in a position to add a PGstar panel to our
 run, showing how the mode frequencies change as the star evolves. The type
 of panel we’ll use is called a ‘history panel’, which plots columns
@@ -305,8 +303,8 @@ and radial order:</p>
 radial order <span class="math notranslate nohighlight">\(n\)</span> and spherical degree <span class="math notranslate nohighlight">\(\ell\)</span>;
 <span class="math notranslate nohighlight">\(\Delta\nu\)</span> is the large frequency separation, and
 <span class="math notranslate nohighlight">\(\epsilon\)</span> is a phase term.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

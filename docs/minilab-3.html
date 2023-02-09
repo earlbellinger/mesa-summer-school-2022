@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MiniLab 3: Plotting Eigenfunctions &mdash; Asteroseismology Across the HRD  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>MiniLab 3: Plotting Eigenfunctions &mdash; Asteroseismology Across the HRD  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/style.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -39,7 +37,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+              <p class="caption"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="minilab-1.html">MiniLab 1: First Steps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="minilab-2.html">MiniLab 2: Plotting Frequencies</a></li>
@@ -84,10 +82,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="minilab-3-plotting-eigenfunctions">
-<span id="minilab-3"></span><h1>MiniLab 3: Plotting Eigenfunctions<a class="headerlink" href="#minilab-3-plotting-eigenfunctions" title="Permalink to this headline"></a></h1>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+  <div class="section" id="minilab-3-plotting-eigenfunctions">
+<span id="minilab-3"></span><h1>MiniLab 3: Plotting Eigenfunctions<a class="headerlink" href="#minilab-3-plotting-eigenfunctions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>In <a class="reference internal" href="minilab-2.html#minilab-2"><span class="std std-ref">MiniLab 2</span></a>, we calculated the frequencies of the
 modes, and plotted a radial and a dipole mode.
 In MiniLab 3, we’re going to examine the radial displacement eigenfunctions
@@ -96,21 +94,21 @@ first we’ll add the <span class="math notranslate nohighlight">\(\xi_{r}\)</sp
 then modify <code class="docutils literal notranslate"><span class="pre">inlist_pgstar</span></code> to plot these eigenfunctions. As
 the very first step, make a copy of your working directory from
 <a class="reference internal" href="minilab-2.html#minilab-2"><span class="std std-ref">MiniLab 2</span></a> (with all the changes you have made):</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cp -a bellinger-2022-mini-2 bellinger-2022-mini-3
-<span class="gp">$ </span><span class="nb">cd</span> bellinger-2022-mini-3
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> cp -a bellinger-2022-mini-2 bellinger-2022-mini-3
+<span class="gp">$</span> <span class="nb">cd</span> bellinger-2022-mini-3
 </pre></div>
 </div>
 <p>Alternatively, if you were unable to get things working with
 <a class="reference internal" href="minilab-2.html#minilab-2"><span class="std std-ref">MiniLab 2</span></a>, then you can grab a working directory
 for MiniLab 3 from <a class="reference external" href="https://github.com/earlbellinger/mesa-summer-school-2022/raw/main/work-dirs/bellinger-2022-mini-2-solution.tar.gz">here</a>.</p>
-</section>
-<section id="adding-eigenfunctions-to-profile-output">
-<h2>Adding Eigenfunctions to Profile Output<a class="headerlink" href="#adding-eigenfunctions-to-profile-output" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="adding-eigenfunctions-to-profile-output">
+<h2>Adding Eigenfunctions to Profile Output<a class="headerlink" href="#adding-eigenfunctions-to-profile-output" title="Permalink to this headline">¶</a></h2>
 <p>As with the mode frequencies, to communicate data from <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> to
 other routines in <code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code>, we’ll make use of module
 variables.</p>
-<section id="adding-module-variables">
-<h3>Adding Module Variables<a class="headerlink" href="#adding-module-variables" title="Permalink to this headline"></a></h3>
+<div class="section" id="adding-module-variables">
+<h3>Adding Module Variables<a class="headerlink" href="#adding-module-variables" title="Permalink to this headline">¶</a></h3>
 <p>Add the following code at the appropriate place near the
 top of <code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code>:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! &gt;&gt;&gt; Insert module variables below</span>
@@ -124,9 +122,9 @@ top of <code class="docutils literal notranslate"><span class="pre">run_star_ext
     <span class="kt">real</span><span class="p">(</span><span class="n">dp</span><span class="p">),</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">save</span> <span class="kd">::</span> <span class="n">xi_r_dipole</span><span class="p">(:)</span>
 </pre></div>
 </div>
-</section>
-<section id="setting-module-variables">
-<h3>Setting Module Variables<a class="headerlink" href="#setting-module-variables" title="Permalink to this headline"></a></h3>
+</div>
+<div class="section" id="setting-module-variables">
+<h3>Setting Module Variables<a class="headerlink" href="#setting-module-variables" title="Permalink to this headline">¶</a></h3>
 <p>Next, modify the <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> callback routine to set the two
 module variables. GYRE provides the radial displacement eigenfunction
 at the <code class="docutils literal notranslate"><span class="pre">k</span></code>’th grid point via the <code class="docutils literal notranslate"><span class="pre">md%xi_r(k)</span></code> function. However, a
@@ -189,9 +187,9 @@ displacement eigenfunction of the <code class="docutils literal notranslate"><sp
 dipole mode into <code class="docutils literal notranslate"><span class="pre">xi_r_dipole</span></code>. This code will be otherwise essentially
 identical to the addition made above.</p>
 </div>
-</section>
-<section id="adding-profile-columns">
-<h3>Adding Profile Columns<a class="headerlink" href="#adding-profile-columns" title="Permalink to this headline"></a></h3>
+</div>
+<div class="section" id="adding-profile-columns">
+<h3>Adding Profile Columns<a class="headerlink" href="#adding-profile-columns" title="Permalink to this headline">¶</a></h3>
 <p>Next, we’ll add two extra columns to profile output, in which we’ll
 store the radial displacement eigenfunctions we’ve calculated.</p>
 <div class="admonition-exercise admonition">
@@ -210,10 +208,10 @@ like this:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">vals</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">xi_r_radial</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="running-the-code">
-<h2>Running the Code<a class="headerlink" href="#running-the-code" title="Permalink to this headline"></a></h2>
+</div>
+</div>
+<div class="section" id="running-the-code">
+<h2>Running the Code<a class="headerlink" href="#running-the-code" title="Permalink to this headline">¶</a></h2>
 <p>With these changes to <code class="docutils literal notranslate"><span class="pre">run_star_extras.f90</span></code>, re-compile and re-run
 the code.</p>
 <div class="admonition-exercise admonition">
@@ -229,9 +227,9 @@ an error message something like this:</p>
 </pre></div>
 </div>
 <p>We’ll address this error in the following step.</p>
-</section>
-<section id="fixing-the-crash">
-<h2>Fixing the Crash<a class="headerlink" href="#fixing-the-crash" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="fixing-the-crash">
+<h2>Fixing the Crash<a class="headerlink" href="#fixing-the-crash" title="Permalink to this headline">¶</a></h2>
 <p>The code crashes at the end of execution because the
 <code class="docutils literal notranslate"><span class="pre">extras_check_model</span></code> hook (and hence the <code class="docutils literal notranslate"><span class="pre">run_gyre</span></code> and
 <code class="docutils literal notranslate"><span class="pre">process_mode</span></code> routines) doesn’t get called before the final call to
@@ -260,16 +258,16 @@ GYRE has been run.</p></li>
 <code class="docutils literal notranslate"><span class="pre">gyre_has_run</span></code>, you can use a conditional block like this:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(.</span><span class="nb">NOT</span><span class="p">.</span> <span class="n">gyre_has_run</span><span class="p">)</span> <span class="k">then</span>
    <span class="p">...</span>
-<span class="k">endif</span>
+<span class="n">endif</span>
 </pre></div>
 </div>
 </li>
 </ul>
 </div>
 <p>Be sure to check that these changes fix the crash.</p>
-</section>
-<section id="plotting-the-eigenfunctions">
-<h2>Plotting the Eigenfunctions<a class="headerlink" href="#plotting-the-eigenfunctions" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="plotting-the-eigenfunctions">
+<h2>Plotting the Eigenfunctions<a class="headerlink" href="#plotting-the-eigenfunctions" title="Permalink to this headline">¶</a></h2>
 <p>Our final step is to add a PGstar window to our run,
 showing how the mode radial displacement eigenfunctions change as the
 star evolves. For this window, we’ll use a ‘profile panel’.</p>
@@ -299,8 +297,8 @@ the radial displacement at the stellar surface is tens or even
 hundreds times <span class="math notranslate nohighlight">\(R\)</span>. This shouldn’t alarm you; GYRE is a <em>linear</em>
 oscillation code, and therefore its eigenfunctions have an arbitrary
 scaling.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
