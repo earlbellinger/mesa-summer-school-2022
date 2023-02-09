@@ -2,7 +2,7 @@
 Asteroseismology Across the HRD
 ###############################
 
-Tutorial for the [2022 MESA Summer School](https://mesahub.github.io/summer-school-2022/) at UC Santa Barbara, given by Earl Bellinger on Aug 11. 
+Tutorial for the [2022 MESA Summer School](https://mesahub.github.io/summer-school-2022/) at UC Santa Barbara, given by [Earl Bellinger](https://www.earlbellinger.com) on Aug 11. 
 
 This series of labs teaches how to extend MESA in order to do stellar pulsation calculations with GYRE. The test-case is evolving a solar-type star from the main sequence through to the red giant branch phase and observing the emergence and evolution of mixed oscillation modes (see Supplementary Materials below for background information). 
 
